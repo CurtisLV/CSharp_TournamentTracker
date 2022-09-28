@@ -15,8 +15,4 @@ internal class TeamModel
         get; set;
     }
 
-    public TeamModel()
-    {
-        TeamMembers = new List<Person>();
-    }
 }
