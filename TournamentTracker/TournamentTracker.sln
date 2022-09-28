@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TournamentTracker", "TournamentTracker\TournamentTracker.csproj", "{014E6657-713B-480E-81B2-A624E9411311}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackerLibrary", "TournamentTracker\TrackerLibrary.csproj", "{014E6657-713B-480E-81B2-A624E9411311}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
