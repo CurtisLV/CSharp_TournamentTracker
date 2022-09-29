@@ -16,5 +16,9 @@ namespace TrackerUI
         {
             InitializeComponent();
         }
+
+        private void teamOneScoreValue_TextChanged(object sender, EventArgs e) { }
+
+        private void teamOneScoreLabel_Click(object sender, EventArgs e) { }
     }
 }
