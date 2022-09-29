@@ -33,6 +33,8 @@
             this.tournamentName = new System.Windows.Forms.Label();
             this.roundLabel = new System.Windows.Forms.Label();
             this.roundDropDown = new System.Windows.Forms.ComboBox();
+            this.unplayedOnlyCheckBox = new System.Windows.Forms.CheckBox();
+            this.matchupListBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
             // headerLabel
@@ -50,7 +52,7 @@
             // 
             this.tournamentName.AutoSize = true;
             this.tournamentName.Font = new System.Drawing.Font("Segoe UI Light", 28.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.tournamentName.Location = new System.Drawing.Point(289, 9);
+            this.tournamentName.Location = new System.Drawing.Point(276, 9);
             this.tournamentName.Name = "tournamentName";
             this.tournamentName.Size = new System.Drawing.Size(189, 62);
             this.tournamentName.TabIndex = 1;
@@ -72,15 +74,38 @@
             this.roundDropDown.FormattingEnabled = true;
             this.roundDropDown.Location = new System.Drawing.Point(153, 97);
             this.roundDropDown.Name = "roundDropDown";
-            this.roundDropDown.Size = new System.Drawing.Size(261, 45);
+            this.roundDropDown.Size = new System.Drawing.Size(252, 45);
             this.roundDropDown.TabIndex = 3;
+            // 
+            // unplayedOnlyCheckBox
+            // 
+            this.unplayedOnlyCheckBox.AutoSize = true;
+            this.unplayedOnlyCheckBox.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.unplayedOnlyCheckBox.Location = new System.Drawing.Point(187, 148);
+            this.unplayedOnlyCheckBox.Name = "unplayedOnlyCheckBox";
+            this.unplayedOnlyCheckBox.Size = new System.Drawing.Size(218, 42);
+            this.unplayedOnlyCheckBox.TabIndex = 4;
+            this.unplayedOnlyCheckBox.Text = "Unplayed Only";
+            this.unplayedOnlyCheckBox.UseVisualStyleBackColor = true;
+            // 
+            // matchupListBox
+            // 
+            this.matchupListBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.matchupListBox.FormattingEnabled = true;
+            this.matchupListBox.ItemHeight = 37;
+            this.matchupListBox.Location = new System.Drawing.Point(30, 219);
+            this.matchupListBox.Name = "matchupListBox";
+            this.matchupListBox.Size = new System.Drawing.Size(375, 520);
+            this.matchupListBox.TabIndex = 5;
             // 
             // TournamentViewerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(15F, 37F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(1050, 686);
+            this.ClientSize = new System.Drawing.Size(1241, 800);
+            this.Controls.Add(this.matchupListBox);
+            this.Controls.Add(this.unplayedOnlyCheckBox);
             this.Controls.Add(this.roundDropDown);
             this.Controls.Add(this.roundLabel);
             this.Controls.Add(this.tournamentName);
@@ -102,5 +127,7 @@
         private Label tournamentName;
         private Label roundLabel;
         private ComboBox roundDropDown;
+        private CheckBox unplayedOnlyCheckBox;
+        private ListBox matchupListBox;
     }
 }
