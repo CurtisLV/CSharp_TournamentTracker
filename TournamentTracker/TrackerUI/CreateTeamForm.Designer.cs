@@ -36,14 +36,14 @@
             this.selectTeamMemberDropDown = new System.Windows.Forms.ComboBox();
             this.selectTeamMemberLabel = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.firstNameValue = new System.Windows.Forms.TextBox();
-            this.firstNameLabel = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.lastNameLabel = new System.Windows.Forms.Label();
+            this.cellphoneValue = new System.Windows.Forms.TextBox();
+            this.cellphoneLabel = new System.Windows.Forms.Label();
             this.emailValue = new System.Windows.Forms.TextBox();
             this.emailLabel = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.cellphoneValue = new System.Windows.Forms.Label();
+            this.lastNameValue = new System.Windows.Forms.TextBox();
+            this.lastNameLabel = new System.Windows.Forms.Label();
+            this.firstNameValue = new System.Windows.Forms.TextBox();
+            this.firstNameLabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -109,55 +109,38 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox3);
             this.groupBox1.Controls.Add(this.cellphoneValue);
+            this.groupBox1.Controls.Add(this.cellphoneLabel);
             this.groupBox1.Controls.Add(this.emailValue);
             this.groupBox1.Controls.Add(this.emailLabel);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.lastNameValue);
             this.groupBox1.Controls.Add(this.lastNameLabel);
             this.groupBox1.Controls.Add(this.firstNameValue);
             this.groupBox1.Controls.Add(this.firstNameLabel);
             this.groupBox1.Location = new System.Drawing.Point(24, 416);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(446, 297);
+            this.groupBox1.Size = new System.Drawing.Size(446, 272);
             this.groupBox1.TabIndex = 20;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Add New Member";
             // 
-            // firstNameValue
+            // cellphoneValue
             // 
-            this.firstNameValue.Location = new System.Drawing.Point(188, 41);
-            this.firstNameValue.Name = "firstNameValue";
-            this.firstNameValue.Size = new System.Drawing.Size(240, 43);
-            this.firstNameValue.TabIndex = 22;
+            this.cellphoneValue.Location = new System.Drawing.Point(188, 209);
+            this.cellphoneValue.Name = "cellphoneValue";
+            this.cellphoneValue.Size = new System.Drawing.Size(240, 43);
+            this.cellphoneValue.TabIndex = 28;
             // 
-            // firstNameLabel
+            // cellphoneLabel
             // 
-            this.firstNameLabel.AutoSize = true;
-            this.firstNameLabel.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.firstNameLabel.Location = new System.Drawing.Point(8, 39);
-            this.firstNameLabel.Name = "firstNameLabel";
-            this.firstNameLabel.Size = new System.Drawing.Size(176, 45);
-            this.firstNameLabel.TabIndex = 21;
-            this.firstNameLabel.Text = "First Name";
-            this.firstNameLabel.Click += new System.EventHandler(this.firstNameLabel_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(188, 97);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(240, 43);
-            this.textBox1.TabIndex = 24;
-            // 
-            // lastNameLabel
-            // 
-            this.lastNameLabel.AutoSize = true;
-            this.lastNameLabel.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lastNameLabel.Location = new System.Drawing.Point(6, 94);
-            this.lastNameLabel.Name = "lastNameLabel";
-            this.lastNameLabel.Size = new System.Drawing.Size(174, 45);
-            this.lastNameLabel.TabIndex = 23;
-            this.lastNameLabel.Text = "Last Name";
+            this.cellphoneLabel.AutoSize = true;
+            this.cellphoneLabel.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.cellphoneLabel.Location = new System.Drawing.Point(8, 206);
+            this.cellphoneLabel.Name = "cellphoneLabel";
+            this.cellphoneLabel.Size = new System.Drawing.Size(157, 45);
+            this.cellphoneLabel.TabIndex = 27;
+            this.cellphoneLabel.Text = "Phone Nr";
+            this.cellphoneLabel.Click += new System.EventHandler(this.cellphoneValue_Click);
             // 
             // emailValue
             // 
@@ -176,23 +159,40 @@
             this.emailLabel.TabIndex = 25;
             this.emailLabel.Text = "Email";
             // 
-            // textBox3
+            // lastNameValue
             // 
-            this.textBox3.Location = new System.Drawing.Point(188, 209);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(240, 43);
-            this.textBox3.TabIndex = 28;
+            this.lastNameValue.Location = new System.Drawing.Point(188, 97);
+            this.lastNameValue.Name = "lastNameValue";
+            this.lastNameValue.Size = new System.Drawing.Size(240, 43);
+            this.lastNameValue.TabIndex = 24;
             // 
-            // cellphoneValue
+            // lastNameLabel
             // 
-            this.cellphoneValue.AutoSize = true;
-            this.cellphoneValue.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cellphoneValue.Location = new System.Drawing.Point(8, 206);
-            this.cellphoneValue.Name = "cellphoneValue";
-            this.cellphoneValue.Size = new System.Drawing.Size(157, 45);
-            this.cellphoneValue.TabIndex = 27;
-            this.cellphoneValue.Text = "Phone Nr";
-            this.cellphoneValue.Click += new System.EventHandler(this.cellphoneValue_Click);
+            this.lastNameLabel.AutoSize = true;
+            this.lastNameLabel.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lastNameLabel.Location = new System.Drawing.Point(6, 94);
+            this.lastNameLabel.Name = "lastNameLabel";
+            this.lastNameLabel.Size = new System.Drawing.Size(174, 45);
+            this.lastNameLabel.TabIndex = 23;
+            this.lastNameLabel.Text = "Last Name";
+            // 
+            // firstNameValue
+            // 
+            this.firstNameValue.Location = new System.Drawing.Point(188, 41);
+            this.firstNameValue.Name = "firstNameValue";
+            this.firstNameValue.Size = new System.Drawing.Size(240, 43);
+            this.firstNameValue.TabIndex = 22;
+            // 
+            // firstNameLabel
+            // 
+            this.firstNameLabel.AutoSize = true;
+            this.firstNameLabel.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.firstNameLabel.Location = new System.Drawing.Point(8, 39);
+            this.firstNameLabel.Name = "firstNameLabel";
+            this.firstNameLabel.Size = new System.Drawing.Size(176, 45);
+            this.firstNameLabel.TabIndex = 21;
+            this.firstNameLabel.Text = "First Name";
+            this.firstNameLabel.Click += new System.EventHandler(this.firstNameLabel_Click);
             // 
             // CreateTeamForm
             // 
@@ -231,11 +231,11 @@
         private GroupBox groupBox1;
         private TextBox firstNameValue;
         private Label firstNameLabel;
-        private TextBox textBox3;
-        private Label cellphoneValue;
+        private TextBox cellphoneValue;
+        private Label cellphoneLabel;
         private TextBox emailValue;
         private Label emailLabel;
-        private TextBox textBox1;
+        private TextBox lastNameValue;
         private Label lastNameLabel;
     }
 }
