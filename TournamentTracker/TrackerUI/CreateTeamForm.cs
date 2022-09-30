@@ -18,5 +18,9 @@ namespace TrackerUI
         }
 
         private void headerLabel_Click(object sender, EventArgs e) { }
+
+        private void cellphoneValue_Click(object sender, EventArgs e) { }
+
+        private void firstNameLabel_Click(object sender, EventArgs e) { }
     }
 }
