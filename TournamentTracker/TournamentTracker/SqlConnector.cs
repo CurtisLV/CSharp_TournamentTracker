@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace TrackerLibrary;
 
-internal interface IDataConnection
+internal class SqlConnector : IDataConnection
 {
-    PrizeModel CreatePrize(PrizeModel model);
+    //
+    public PrizeModel CreatePrize(PrizeModel model)
+    {
+        //
+    }
 }
