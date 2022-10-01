@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace TrackerLibrary;
 
-internal static class GlobalConfig 
+internal static class GlobalConfig
 {
-    //
+    public static List<IDataConnection> Connections { get; private set; }
+
+    public static void InitializeConnections(bool database, bool Textfiles)
+    {
+        Connections = new List<IDataConnection>();
+    }
 }
