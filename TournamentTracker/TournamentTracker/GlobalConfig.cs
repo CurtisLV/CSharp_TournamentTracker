@@ -10,8 +10,15 @@ internal static class GlobalConfig
 {
     public static List<IDataConnection> Connections { get; private set; }
 
-    public static void InitializeConnections(bool database, bool Textfiles)
+    public static void InitializeConnections(bool database, bool textfiles)
     {
-        Connections = new List<IDataConnection>();
+        if (database)
+        {
+            // TODO - Create the SQL connection
+        }
+        if (textfiles)
+        {
+            // TODO - Create the Text connection
+        }
     }
 }
