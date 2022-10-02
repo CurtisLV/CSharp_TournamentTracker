@@ -12,4 +12,8 @@
     <Folder Include="Resources\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TournamentTracker\TrackerLibrary.csproj" />
+  </ItemGroup>
+
 </Project>
