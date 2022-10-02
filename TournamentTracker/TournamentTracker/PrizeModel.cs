@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,4 +34,32 @@ public class PrizeModel
     /// zero if it is not used. % is a fraction of 1 (so 0.5 for 50%)
     /// </summary>
     public double PrizePercentage { get; set; }
+
+    public PrizeModel()
+    {
+        //
+    }
+
+    public PrizeModel(
+        string placeNumber,
+        string placeName,
+        string prizeAmount,
+        string prizePercentage
+    )
+    {
+        // Parse all string to numbers where necessary
+        PlaceName = placeName;
+
+        int placeNumberValue = 0;
+        int.TryParse(placeNumber, out placeNumberValue);
+        PlaceNumber = placeNumberValue;
+
+        decimal prizeAmountValue = 0;
+        decimal.TryParse(prizeAmount, out prizeAmountValue);
+        PrizeAmount = prizeAmountValue;
+
+        double prizePerecentageValue = 0;
+        double.TryParse(prizePercentage, out prizePerecentageValue);
+        PrizePercentage = prizePerecentageValue;
+    }
 }
