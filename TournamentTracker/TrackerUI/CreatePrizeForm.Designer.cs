@@ -87,7 +87,6 @@
             this.placeNameLabel.TabIndex = 26;
             this.placeNameLabel.Text = "Place Name";
             this.placeNameLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.placeNameLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // prizeAmountValue
             // 
