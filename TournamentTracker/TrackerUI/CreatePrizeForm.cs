@@ -30,8 +30,21 @@ namespace TrackerUI
                 );
                 foreach (IDataConnection db in GlobalConfig.Connections)
                 {
-
-                };
+                    db.CreatePrize(model);
+                }
+                placeNumberValue.Text = "";
+                placeNameValue.Text = "";
+                prizeAmountValue.Text = "0";
+                prizePercentageValue.Text = "0";
+            }
+            else
+            {
+                MessageBox.Show(
+                    "This form has invalid information. Please check and try again!",
+                    "ALAAARMAAAAAAAAA!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error
+                );
             }
         }
 
@@ -48,7 +61,7 @@ namespace TrackerUI
             }
 
             // if it is a valid number but less than zero
-            if (placeNumber < 0)
+            if (placeNumber < 1)
             {
                 output = false;
             }
