@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TrackerLibrary;
 
-internal class TournamentModel
+public class TournamentModel
 {
     public string TournamentName { get; set; }
     public decimal EntryFee { get; set; }

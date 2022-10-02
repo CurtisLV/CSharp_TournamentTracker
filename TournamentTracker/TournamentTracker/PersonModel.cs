@@ -9,7 +9,7 @@ namespace TrackerLibrary;
 /// <summary>
 /// Represents one person
 /// </summary>
-internal class PersonModel
+public class PersonModel
 {
     public string FirstName { get; set; }
 

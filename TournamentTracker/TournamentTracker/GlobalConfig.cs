@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TrackerLibrary;
 
-internal static class GlobalConfig
+public static class GlobalConfig
 {
     public static List<IDataConnection> Connections { get; private set; } =
         new List<IDataConnection>();
@@ -15,13 +15,15 @@ internal static class GlobalConfig
     {
         if (database)
         {
-            // TODO - Create the SQL connection
+            // TODO - Set up the SQL connector properly
             SqlConnector sql = new SqlConnector();
             Connections.Add(sql);
         }
         if (textfiles)
         {
-            // TODO - Create the Text connection
+            // TODO - Set up text connector properly
+            TextConnection text = new TextConnection();
+            Connections.Add(text);
         }
     }
 }

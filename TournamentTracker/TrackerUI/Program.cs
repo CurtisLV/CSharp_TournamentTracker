@@ -9,6 +9,10 @@ namespace TrackerUI
         static void Main()
         {
             ApplicationConfiguration.Initialize();
+
+            // Initialize database connections
+            TrackerLibrary.GlobalConfig.InitializeConnections(true, true);
+
             Application.Run(new TournamentDashbordForm());
         }
     }
