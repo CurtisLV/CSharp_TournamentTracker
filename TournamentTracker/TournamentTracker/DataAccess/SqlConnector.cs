@@ -18,12 +18,15 @@ public class SqlConnector : IDataConnection
     /// <returns> The prize information, including the unique identifier </returns>
     public PrizeModel CreatePrize(PrizeModel model)
     {
+
+        // Using statement makes sure that connection is closed at the end of curly brace
         using (
             IDbConnection connection = new System.Data.SqlClient.SqlConnection(
                 GlobalConfig.ConnectionString("Tournaments")
             )
         )
-            ;
-            
+        {
+            //
+        }
     }
 }
