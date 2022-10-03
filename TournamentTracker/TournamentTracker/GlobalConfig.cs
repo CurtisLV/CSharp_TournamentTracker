@@ -23,7 +23,7 @@ public static class GlobalConfig
         if (textfiles)
         {
             // TODO - Set up text connector properly
-            TextConnection text = new TextConnection();
+            TextConnector text = new TextConnector();
             Connections.Add(text);
         }
     }
