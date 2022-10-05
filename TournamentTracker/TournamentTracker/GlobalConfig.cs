@@ -12,7 +12,6 @@ public static class GlobalConfig
 {
     public static IDataConnection Connections { get; private set; }
 
-
     public static void InitializeConnections(string connectionType)
     {
         if (connectionType == "sql")
