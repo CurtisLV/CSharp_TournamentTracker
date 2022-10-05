@@ -12,15 +12,15 @@ public static class GlobalConfig
 {
     public static IDataConnection Connections { get; private set; }
 
-    public static void InitializeConnections(string connectionType)
+    public static void InitializeConnections(DatabaseType db)
     {
-        if (connectionType == "sql")
+        if (db == DatabaseType.Sql)
         {
             // TODO - Set up the SQL connector properly
             SqlConnector sql = new SqlConnector();
             Connections = sql;
         }
-        else if (connectionType == "text")
+        else if (db == DatabaseType.TextFile)
         {
             // TODO - Set up text connector properly
             TextConnector text = new TextConnector();

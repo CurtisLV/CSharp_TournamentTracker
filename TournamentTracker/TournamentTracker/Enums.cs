@@ -1,11 +1,7 @@
-﻿namespace TrackerLibrary
+﻿namespace TrackerLibrary;
+
+public enum DatabaseType
 {
-    public class Enums
-    {
-        public enum databaseType
-        {
-            Sql,
-            TextFile
-        }
-    }
+    Sql,
+    TextFile
 }
