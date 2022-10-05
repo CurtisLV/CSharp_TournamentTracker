@@ -24,7 +24,7 @@ BEGIN
 
     -- Insert statements for procedure here
 	insert into dbo.Prizes (PlaceNumber, PlaceName, PrizeAmount, PrizePercentage)
-	values (@PlaceNumber, @PlaceNumber, @PrizeAmount, @PrizePercentage);
+	values (@PlaceNumber, @PlaceName, @PrizeAmount, @PrizePercentage);
 
 	select @id = SCOPE_IDENTITY(); -- last identity created
 END
