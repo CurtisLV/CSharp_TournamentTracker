@@ -1,9 +1,12 @@
-﻿using System;
+﻿using Dapper;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
 using TrackerLibrary.Models;
 
 namespace TrackerLibrary.DataAccess;
@@ -25,7 +28,12 @@ public class SqlConnector : IDataConnection
             )
         )
         {
-            //
+            var p = new DynamicParameters();
+            p.Add("@PlaceNumber", model.PlaceNumber);
+            p.Add("@PlaceName", model.PlaceName);
+            p.Add("@PrizeAmount", model.PrizeAmount);
+            p.Add("@PrizePercentage", model.PrizePercentage);
+            p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
         }
     }
 }
