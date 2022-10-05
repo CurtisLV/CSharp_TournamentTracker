@@ -39,6 +39,8 @@ public class SqlConnector : IDataConnection
             connection.Execute("dbo.spPrizes_Insert", p, commandType: CommandType.StoredProcedure);
 
             model.Id = p.Get<int>("@id");
+
+            return model;
         }
     }
 }
