@@ -4,7 +4,8 @@
     {
         public enum databaseType
         {
-            Sql, TextFile
+            Sql,
+            TextFile
         }
     }
 }
