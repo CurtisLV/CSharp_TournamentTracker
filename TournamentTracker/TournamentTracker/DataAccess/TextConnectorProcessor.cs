@@ -1,13 +1,13 @@
 ﻿using System.Configuration;
 using TrackerLibrary.Models;
 
-namespace TrackerLibrary.DataAccess.TextConnector;
+namespace TrackerLibrary.DataAccess.TextHelpers;
 
 public static class TextConnectorProcessor
 {
     // * Load the text file
 
-    // Convert the text to List<PrizeModel>
+    // * Convert the text to List<PrizeModel>
 
     // Find the max ID (like last row)
 
@@ -57,4 +57,6 @@ public static class TextConnectorProcessor
         }
         return output;
     }
+
+    // Find the max ID (like last row)
 }
