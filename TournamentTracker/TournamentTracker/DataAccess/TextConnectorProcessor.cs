@@ -1,4 +1,5 @@
 ﻿using System.Configuration;
+using TrackerLibrary.Models;
 
 namespace TrackerLibrary.DataAccess.TextConnector;
 
@@ -34,5 +35,26 @@ public static class TextConnectorProcessor
             return new List<string>();
         }
         return File.ReadAllLines(file).ToList();
+    }
+
+    // Convert the text to List<PrizeModel>
+    public static List<PrizeModel> ConvertToPrizeModels(this List<string> lines)
+    {
+        List<PrizeModel> output = new List<PrizeModel>();
+
+        foreach (string line in lines)
+        {
+            string[] columns = line.Split(',');
+
+            PrizeModel p = new PrizeModel();
+            p.Id = int.Parse(columns[0]);
+            p.PlaceNumber = int.Parse(columns[1]);
+            p.PlaceName = columns[2];
+            p.PrizeAmount = decimal.Parse(columns[3]);
+            p.PrizePercentage = double.Parse(columns[4]);
+
+            output.Add(p);
+        }
+        return output;
     }
 }
