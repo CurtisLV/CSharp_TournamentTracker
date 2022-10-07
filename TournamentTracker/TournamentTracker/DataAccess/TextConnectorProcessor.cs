@@ -63,9 +63,7 @@ public static class TextConnectorProcessor
         List<string> lines = new List<string>();
         foreach (PrizeModel p in models)
         {
-            lines.Add(
-                $"{p.Id},{p.PlaceNumber}, {p.PlaceName}, {p.PrizeAmount}, {p.PrizePercentage}"
-            );
+            lines.Add($"{p.Id},{p.PlaceNumber},{p.PlaceName},{p.PrizeAmount},{p.PrizePercentage}");
 
             File.WriteAllLines(fileName.FullFilePath(), lines);
         }
