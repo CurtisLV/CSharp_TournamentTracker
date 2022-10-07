@@ -77,7 +77,6 @@
             this.headerLabel.Size = new System.Drawing.Size(272, 62);
             this.headerLabel.TabIndex = 11;
             this.headerLabel.Text = "Create Team";
-            this.headerLabel.Click += new System.EventHandler(this.headerLabel_Click);
             // 
             // addMemberButton
             // 
@@ -161,7 +160,6 @@
             this.cellphoneLabel.Size = new System.Drawing.Size(157, 45);
             this.cellphoneLabel.TabIndex = 27;
             this.cellphoneLabel.Text = "Phone Nr";
-            this.cellphoneLabel.Click += new System.EventHandler(this.cellphoneValue_Click);
             // 
             // emailValue
             // 
@@ -213,7 +211,6 @@
             this.firstNameLabel.Size = new System.Drawing.Size(176, 45);
             this.firstNameLabel.TabIndex = 21;
             this.firstNameLabel.Text = "First Name";
-            this.firstNameLabel.Click += new System.EventHandler(this.firstNameLabel_Click);
             // 
             // teamMemberListBox
             // 
