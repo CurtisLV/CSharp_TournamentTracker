@@ -14,7 +14,11 @@ public class TextConnector : IDataConnection
         List<PrizeModel> prizes = PrizesFile.FullFilePath().LoadFile().ConvertToPrizeModels();
 
         // Find the max ID (like last row)
-        int currentId = prizes.OrderByDescending(x => x.Id).First().Id + 1;
+        int currentId = 1;
+        if (prizes.Count > 0)
+        {
+            currentId = prizes.OrderByDescending(x => x.Id).First().Id + 1;
+        }
 
         model.Id = currentId;
 
@@ -25,5 +29,7 @@ public class TextConnector : IDataConnection
         // Save the List<string> to the text file
 
         prizes.SaveToPrizeFile(PrizesFile);
+
+        return model;
     }
 }
