@@ -23,13 +23,17 @@ public partial class CreateTeamForm : Form
             p.PhoneNumber = cellphoneValue.Text;
 
             GlobalConfig.Connection.CreatePerson(p);
+
+            // clear out the form
+            firstNameValue.Text = "";
+            lastNameValue.Text = "";
+            emailValue.Text = "";
+            cellphoneValue.Text = "";
         }
         else
         {
             MessageBox.Show("You need to fill in all fields in the form!");
         }
-
-        // clear out the form
     }
 
     private bool ValidateForm()

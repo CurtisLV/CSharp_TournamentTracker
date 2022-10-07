@@ -12,9 +12,11 @@ internal static class Program
         ApplicationConfiguration.Initialize();
 
         // Initialize database connections
-        TrackerLibrary.GlobalConfig.InitializeConnections(DatabaseType.TextFile);
+        TrackerLibrary.GlobalConfig.InitializeConnections(DatabaseType.Sql);
 
-        Application.Run(new CreatePrizeForm());
+        Application.Run(new CreateTeamForm());
+        //Application.Run(new CreatePrizeForm());
+
         //Application.Run(new TournamentDashbordForm());
     }
 }

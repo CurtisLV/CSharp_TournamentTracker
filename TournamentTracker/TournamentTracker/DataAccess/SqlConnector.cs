@@ -23,7 +23,7 @@ public class SqlConnector : IDataConnection
             p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
             // executes stored procedure with above .add() as parametres
-            connection.Execute("dbo.spPrizes_Insert", p, commandType: CommandType.StoredProcedure);
+            connection.Execute("dbo.spPeople_Insert", p, commandType: CommandType.StoredProcedure);
 
             model.Id = p.Get<int>("@id");
 
