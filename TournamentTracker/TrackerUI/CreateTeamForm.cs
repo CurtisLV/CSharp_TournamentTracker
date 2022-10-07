@@ -1,4 +1,7 @@
-﻿namespace TrackerUI;
+﻿using TrackerLibrary;
+using TrackerLibrary.Models;
+
+namespace TrackerUI;
 
 public partial class CreateTeamForm : Form
 {
@@ -13,6 +16,13 @@ public partial class CreateTeamForm : Form
         if (ValidateForm())
         {
             // take info from all 4 fields, create person model from them and then save to sql or text
+            PersonModel p = new PersonModel();
+            p.FirstName = firstNameValue.Text;
+            p.LastName = lastNameValue.Text;
+            p.EmailAddress = emailValue.Text;
+            p.PhoneNumber = cellphoneValue.Text;
+
+            GlobalConfig.Connection.CreatePerson(p);
         }
         else
         {
