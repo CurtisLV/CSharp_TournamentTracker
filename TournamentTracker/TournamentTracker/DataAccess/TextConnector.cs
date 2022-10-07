@@ -22,9 +22,8 @@ public class TextConnector : IDataConnection
         prizes.Add(model);
 
         // Convert prizes to List<string>
-
-
-
         // Save the List<string> to the text file
+
+        prizes.SaveToPrizeFile(PrizesFile);
     }
 }
