@@ -10,7 +10,7 @@ public class TextConnector : IDataConnection
 
     public PersonModel CreatePerson(PersonModel model)
     {
-        List<PersonModel> persons = new List<PersonModel>();
+        List<PersonModel> persons = PeopleFile.FullFilePath().LoadFile().ConvertToPersonModel();
         int currentId = 1;
         if (persons.Count > 0)
         {
@@ -19,7 +19,7 @@ public class TextConnector : IDataConnection
 
         model.Id = currentId;
         persons.Add(model);
-        persons.
+        persons.SaveToPer
     }
 
     public PrizeModel CreatePrize(PrizeModel model)

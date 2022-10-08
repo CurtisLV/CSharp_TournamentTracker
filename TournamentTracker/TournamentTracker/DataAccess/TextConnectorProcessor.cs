@@ -1,4 +1,5 @@
 ﻿using System.Configuration;
+using System.Security.Cryptography.X509Certificates;
 using TrackerLibrary.Models;
 
 namespace TrackerLibrary.DataAccess.TextHelpers;
@@ -87,5 +88,5 @@ public static class TextConnectorProcessor
 
             File.WriteAllLines(fileName.FullFilePath(), lines);
         }
-    }
+  
 }
