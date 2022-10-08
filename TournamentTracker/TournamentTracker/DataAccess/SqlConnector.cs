@@ -61,4 +61,16 @@ public class SqlConnector : IDataConnection
             return model;
         }
     }
+
+    public List<PersonModel> GetPerson_All()
+    {
+        using (
+            IDbConnection connection = new System.Data.SqlClient.SqlConnection(
+                GlobalConfig.ConnectionString("Tournaments")
+            )
+        )
+        {
+            //
+        }
+    }
 }
