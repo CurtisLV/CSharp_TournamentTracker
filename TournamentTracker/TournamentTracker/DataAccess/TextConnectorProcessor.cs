@@ -60,11 +60,22 @@ public static class TextConnectorProcessor
 
     public static List<PersonModel> ConvertToPersonModel(this List<string> lines)
     {
-        List<string> lines = new List<string>();
+        List<PersonModel> output = new List<PersonModel>();
+
         foreach (string line in lines)
         {
             string[] columns = line.Split(',');
+
+            PersonModel p = new PersonModel();
+            p.Id = int.Parse(columns[0]);
+            p.FirstName = columns[1];
+            p.LastName = columns[2];
+            p.EmailAddress = columns[3];
+            p.PhoneNumber = columns[4];
+
+            output.Add(p);
         }
+        return output;
     }
 
     public static void SaveToPrizeFile(this List<PrizeModel> models, string fileName)
