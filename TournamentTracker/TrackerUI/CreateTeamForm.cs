@@ -5,9 +5,17 @@ namespace TrackerUI;
 
 public partial class CreateTeamForm : Form
 {
+    private List<PersonModel> availableTeamMembers = new List<PersonModel>();
+    private List<PersonModel> selectedTeamMembers = new List<PersonModel>();
+
     public CreateTeamForm()
     {
         InitializeComponent();
+    }
+
+    private void WireUpLists()
+    {
+        //
     }
 
     private void createMemberButton_Click(object sender, EventArgs e)
