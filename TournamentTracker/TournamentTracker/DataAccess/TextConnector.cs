@@ -19,7 +19,9 @@ public class TextConnector : IDataConnection
 
         model.Id = currentId;
         persons.Add(model);
-        persons.SaveToPer
+        persons.SaveToPeopleFile(PeopleFile);
+
+        return model;
     }
 
     public PrizeModel CreatePrize(PrizeModel model)
