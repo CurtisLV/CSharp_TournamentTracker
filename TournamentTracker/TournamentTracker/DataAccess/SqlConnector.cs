@@ -64,13 +64,16 @@ public class SqlConnector : IDataConnection
 
     public List<PersonModel> GetPerson_All()
     {
+        List<PersonModel> output;
         using (
             IDbConnection connection = new System.Data.SqlClient.SqlConnection(
                 GlobalConfig.ConnectionString("Tournaments")
             )
         )
         {
-            //
+            output = connection.Query<PersonModel>("dbo.spPeople_GetAll").ToList();
+
         }
+        return output;
     }
 }
