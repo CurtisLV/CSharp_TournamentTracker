@@ -92,5 +92,10 @@ public static class TextConnectorProcessor
     public static void SaveToPeopleFile(this List<PersonModel> models, string fileName)
     {
         List<string> lines = new List<string>();
+        foreach (PersonModel p in models)
+        {
+            lines.Add($"{p.Id},{p.FirstName},{p.LastName},{p.EmailAddress},{p.PhoneNumber}");
+            File.WriteAllLines(fileName.FullFilePath(), lines);
+        }
     }
 }
