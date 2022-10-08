@@ -15,7 +15,8 @@ public partial class CreateTeamForm : Form
 
     private void WireUpLists()
     {
-        //
+        selectTeamMemberDropDown.DataSource = availableTeamMembers;
+        selectTeamMemberDropDown.DisplayMember = "FullName";
     }
 
     private void createMemberButton_Click(object sender, EventArgs e)
