@@ -11,7 +11,17 @@ public partial class CreateTeamForm : Form
     public CreateTeamForm()
     {
         InitializeComponent();
+        CreateSampleData();
         WireUpLists();
+    }
+
+    private void CreateSampleData()
+    {
+        availableTeamMembers.Add(new PersonModel { FirstName = "Kārlis", LastName = "Eglīte" });
+        availableTeamMembers.Add(new PersonModel { FirstName = "Kaža", LastName = "Draugs" });
+
+        selectedTeamMembers.Add(new PersonModel { FirstName = "Dace", LastName = "DabūjaPaAci" });
+        selectedTeamMembers.Add(new PersonModel { FirstName = "Twitter", LastName = "Robot" });
     }
 
     private void WireUpLists()
