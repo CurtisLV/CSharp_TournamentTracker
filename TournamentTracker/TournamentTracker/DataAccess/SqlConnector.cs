@@ -1,5 +1,5 @@
-﻿using Dapper;
-using System.Data;
+﻿using System.Data;
+using Dapper;
 using TrackerLibrary.Models;
 
 namespace TrackerLibrary.DataAccess;

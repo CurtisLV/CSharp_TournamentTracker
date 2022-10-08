@@ -58,6 +58,15 @@ public static class TextConnectorProcessor
         return output;
     }
 
+    public static List<PersonModel> ConvertToPersonModel(this List<string> lines)
+    {
+        List<string> lines = new List<string>();
+        foreach (string line in lines)
+        {
+            string[] columns = line.Split(',');
+        }
+    }
+
     public static void SaveToPrizeFile(this List<PrizeModel> models, string fileName)
     {
         List<string> lines = new List<string>();

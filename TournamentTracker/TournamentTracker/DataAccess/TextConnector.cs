@@ -6,10 +6,20 @@ namespace TrackerLibrary.DataAccess;
 public class TextConnector : IDataConnection
 {
     private const string PrizesFile = "PrizesModels.csv";
+    private const string PeopleFile = "PersonModels.csv";
 
     public PersonModel CreatePerson(PersonModel model)
     {
-        throw new NotImplementedException();
+        List<PersonModel> persons = new List<PersonModel>();
+        int currentId = 1;
+        if (persons.Count > 0)
+        {
+            currentId = persons.OrderByDescending(x => x.Id).First().Id + 1;
+        }
+
+        model.Id = currentId;
+        persons.Add(model);
+        persons.
     }
 
     public PrizeModel CreatePrize(PrizeModel model)
