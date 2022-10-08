@@ -11,12 +11,16 @@ public partial class CreateTeamForm : Form
     public CreateTeamForm()
     {
         InitializeComponent();
+        WireUpLists();
     }
 
     private void WireUpLists()
     {
         selectTeamMemberDropDown.DataSource = availableTeamMembers;
         selectTeamMemberDropDown.DisplayMember = "FullName";
+
+        teamMemberListBox.DataSource = selectedTeamMembers;
+        teamMemberListBox.DisplayMember = "FullName";
     }
 
     private void createMemberButton_Click(object sender, EventArgs e)
