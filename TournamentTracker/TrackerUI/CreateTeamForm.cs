@@ -26,11 +26,20 @@ public partial class CreateTeamForm : Form
 
     private void WireUpLists()
     {
+
+        // solves dropdownlist not updating
+        selectTeamMemberDropDown.DataSource = null;
+
         selectTeamMemberDropDown.DataSource = availableTeamMembers;
         selectTeamMemberDropDown.DisplayMember = "FullName";
 
+        // solves listBox not updating
+        teamMemberListBox.DataSource = null;
+
         teamMemberListBox.DataSource = selectedTeamMembers;
         teamMemberListBox.DisplayMember = "FullName";
+
+        selectTeamMemberDropDown.Refresh();
     }
 
     private void createMemberButton_Click(object sender, EventArgs e)
