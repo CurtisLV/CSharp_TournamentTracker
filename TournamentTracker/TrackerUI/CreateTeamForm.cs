@@ -55,7 +55,10 @@ public partial class CreateTeamForm : Form
             p.EmailAddress = emailValue.Text;
             p.PhoneNumber = cellphoneValue.Text;
 
-            GlobalConfig.Connection.CreatePerson(p);
+            p = GlobalConfig.Connection.CreatePerson(p);
+
+            selectedTeamMembers.Add(p);
+            WireUpLists();
 
             // clear out the form
             firstNameValue.Text = "";
@@ -94,14 +97,13 @@ public partial class CreateTeamForm : Form
     {
         PersonModel p = (PersonModel)selectTeamMemberDropDown.SelectedItem;
 
-        if (p == null)
+        if (p != null)
         {
             availableTeamMembers.Remove(p);
             selectedTeamMembers.Add(p);
 
             WireUpLists();
         }
-
     }
 
     private void removeSelectedMemberButton_Click(object sender, EventArgs e)
