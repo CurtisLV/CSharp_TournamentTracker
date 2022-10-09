@@ -94,9 +94,25 @@ public partial class CreateTeamForm : Form
     {
         PersonModel p = (PersonModel)selectTeamMemberDropDown.SelectedItem;
 
-        availableTeamMembers.Remove(p);
-        selectedTeamMembers.Add(p);
+        if (p == null)
+        {
+            availableTeamMembers.Remove(p);
+            selectedTeamMembers.Add(p);
 
-        WireUpLists();
+            WireUpLists();
+        }
+
+    }
+
+    private void removeSelectedMemberButton_Click(object sender, EventArgs e)
+    {
+        PersonModel p = (PersonModel)teamMemberListBox.SelectedItem;
+        if (p != null)
+        {
+            selectedTeamMembers.Remove(p);
+            availableTeamMembers.Add(p);
+
+            WireUpLists();
+        }
     }
 }
