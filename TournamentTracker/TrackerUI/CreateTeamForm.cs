@@ -80,4 +80,14 @@ public partial class CreateTeamForm : Form
         }
         return true;
     }
+
+    private void addMemberButton_Click(object sender, EventArgs e)
+    {
+        PersonModel p = (PersonModel)selectTeamMemberDropDown.SelectedItem;
+
+        availableTeamMembers.Remove(p);
+        selectedTeamMembers.Add(p);
+
+        WireUpLists();
+    }
 }
