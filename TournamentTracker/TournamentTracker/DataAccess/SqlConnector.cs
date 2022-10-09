@@ -6,12 +6,14 @@ namespace TrackerLibrary.DataAccess;
 
 public class SqlConnector : IDataConnection
 {
+    private const string db = "Tournaments";
+
     public PersonModel CreatePerson(PersonModel model)
     {
         // Using statement makes sure that connection is closed at the end of curly brace
         using (
             IDbConnection connection = new System.Data.SqlClient.SqlConnection(
-                GlobalConfig.ConnectionString("Tournaments")
+                GlobalConfig.ConnectionString(db)
             )
         )
         {
@@ -42,7 +44,7 @@ public class SqlConnector : IDataConnection
         // Using statement makes sure that connection is closed at the end of curly brace
         using (
             IDbConnection connection = new System.Data.SqlClient.SqlConnection(
-                GlobalConfig.ConnectionString("Tournaments")
+                GlobalConfig.ConnectionString(db)
             )
         )
         {
@@ -67,12 +69,11 @@ public class SqlConnector : IDataConnection
         List<PersonModel> output;
         using (
             IDbConnection connection = new System.Data.SqlClient.SqlConnection(
-                GlobalConfig.ConnectionString("Tournaments")
+                GlobalConfig.ConnectionString(db)
             )
         )
         {
             output = connection.Query<PersonModel>("dbo.spPeople_GetAll").ToList();
-
         }
         return output;
     }
