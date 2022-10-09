@@ -33,7 +33,6 @@ public class SqlConnector : IDataConnection
         }
     }
 
-    // TODO - Make the CreatePrize method actually save to the database
     /// <summary>
     /// Saves a new prize to the database
     /// </summary>

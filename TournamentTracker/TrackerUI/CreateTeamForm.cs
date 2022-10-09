@@ -26,6 +26,7 @@ public partial class CreateTeamForm : Form
 
     private void WireUpLists()
     {
+        // TODO - better refreshing
 
         // solves dropdownlist not updating
         selectTeamMemberDropDown.DataSource = null;
@@ -70,7 +71,6 @@ public partial class CreateTeamForm : Form
 
     private bool ValidateForm()
     {
-        // TODO add validation to the form
         if (firstNameValue.Text.Length == 0)
         {
             return false;
