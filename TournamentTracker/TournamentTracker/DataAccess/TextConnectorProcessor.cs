@@ -78,6 +78,24 @@ public static class TextConnectorProcessor
         return output;
     }
 
+    public static List<TeamModel> ConvertToTeamModels(this List<string> lines)
+    {
+        // id, team name, list of ids, separated by pipe |
+        // 3, Tim's team, 1|3|5
+
+        List<TeamModel> output = new List<TeamModel>();
+
+        foreach (string line in lines)
+        {
+            string[] columns = line.Split(',');
+
+            TeamModel t = new TeamModel();
+
+            t.Id = int.Parse(columns[0]);
+            t.TeamName = columns[1];
+        }
+    }
+
     public static void SaveToPrizeFile(this List<PrizeModel> models, string fileName)
     {
         List<string> lines = new List<string>();
