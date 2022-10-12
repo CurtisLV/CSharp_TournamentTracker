@@ -7,6 +7,7 @@ public class TextConnector : IDataConnection
 {
     private const string PrizesFile = "PrizesModels.csv";
     private const string PeopleFile = "PersonModels.csv";
+    private const string TeamFile = "TeamModels.csv";
 
     public PersonModel CreatePerson(PersonModel model)
     {
@@ -50,13 +51,13 @@ public class TextConnector : IDataConnection
         return model;
     }
 
-    public TeamModel CreateTeam(TeamModel model)
-    {
-        throw new NotImplementedException();
-    }
-
     public List<PersonModel> GetPerson_All()
     {
         return PeopleFile.FullFilePath().LoadFile().ConvertToPersonModel();
+    }
+
+    public TeamModel CreateTeam(TeamModel model)
+    {
+        List<TeamModel> teams = TeamFile.FullFilePath().LoadFile().ConvertToTeamModels();
     }
 }
