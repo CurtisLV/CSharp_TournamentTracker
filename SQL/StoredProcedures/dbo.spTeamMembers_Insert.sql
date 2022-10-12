@@ -10,7 +10,7 @@ BEGIN
 	SET NOCOUNT ON;
 
 
-	insert into dbo.TeamMembers(TeamID, PersonId)
+	insert into dbo.TeamMembers(TeamId, PersonId)
 	values (@TeamId, @PersonId)
 
 	select @id = SCOPE_IDENTITY();

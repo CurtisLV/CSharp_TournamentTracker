@@ -65,7 +65,37 @@ public class SqlConnector : IDataConnection
 
     public TeamModel CreateTeam(TeamModel model)
     {
-        throw new NotImplementedException();
+        using (
+            IDbConnection connection = new System.Data.SqlClient.SqlConnection(
+                GlobalConfig.ConnectionString(db)
+            )
+        )
+        {
+            var p = new DynamicParameters();
+            p.Add("@TeamName", model.TeamName);
+            p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+            // executes stored procedure with above .add() as parametres
+            connection.Execute("dbo.spTeams_Insert", p, commandType: CommandType.StoredProcedure);
+
+            model.Id = p.Get<int>("@id");
+
+            foreach (PersonModel tm in model.TeamMembers)
+            {
+                p = new DynamicParameters();
+                p.Add("@TeamId", model.Id);
+                p.Add("@PersonId", tm.Id);
+
+                // executes stored procedure with above .add() as parametres
+                connection.Execute(
+                    "dbo.spTeamMembers_Insert",
+                    p,
+                    commandType: CommandType.StoredProcedure
+                );
+            }
+
+            return model;
+        }
     }
 
     public List<PersonModel> GetPerson_All()
