@@ -50,6 +50,11 @@ public class TextConnector : IDataConnection
         return model;
     }
 
+    public TeamModel CreateTeam(TeamModel model)
+    {
+        throw new NotImplementedException();
+    }
+
     public List<PersonModel> GetPerson_All()
     {
         return PeopleFile.FullFilePath().LoadFile().ConvertToPersonModel();

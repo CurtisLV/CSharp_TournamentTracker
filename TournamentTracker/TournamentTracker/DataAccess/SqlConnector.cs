@@ -63,6 +63,11 @@ public class SqlConnector : IDataConnection
         }
     }
 
+    public TeamModel CreateTeam(TeamModel model)
+    {
+        throw new NotImplementedException();
+    }
+
     public List<PersonModel> GetPerson_All()
     {
         List<PersonModel> output;
