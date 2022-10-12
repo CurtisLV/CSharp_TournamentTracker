@@ -58,6 +58,6 @@ public class TextConnector : IDataConnection
 
     public TeamModel CreateTeam(TeamModel model)
     {
-        List<TeamModel> teams = TeamFile.FullFilePath().LoadFile().ConvertToTeamModels();
+        List<TeamModel> teams = TeamFile.FullFilePath().LoadFile().ConvertToTeamModels(PeopleFile);
     }
 }
