@@ -117,4 +117,9 @@ public partial class CreateTeamForm : Form
             WireUpLists();
         }
     }
+
+    private void createTeamButton_Click(object sender, EventArgs e)
+    {
+        //
+    }
 }
