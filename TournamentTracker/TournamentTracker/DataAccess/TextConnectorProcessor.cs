@@ -87,7 +87,7 @@ public static class TextConnectorProcessor
         // 3, Tim's team, 1|3|5
 
         List<TeamModel> output = new List<TeamModel>();
-        List<PersonModel> persons = peopleFileName.FullFilePath().LoadFile().ConvertToPersonModel();
+        List<PersonModel> people = peopleFileName.FullFilePath().LoadFile().ConvertToPersonModel();
 
         foreach (string line in lines)
         {
@@ -99,7 +99,14 @@ public static class TextConnectorProcessor
             t.TeamName = columns[1];
 
             string[] personIds = columns[2].Split('|');
+
+            foreach (string id in personIds)
+            {
+                t.TeamMembers.Add(people.Where(x => x.Id == int.Parse(id)).FirstOrDefault());
+                //t.TeamMembers.Add(people.FirstOrDefault(x => x.Id == int.Parse(id))); // simplified
+            }
         }
+        return output;
     }
 
     public static void SaveToPrizeFile(this List<PrizeModel> models, string fileName)
