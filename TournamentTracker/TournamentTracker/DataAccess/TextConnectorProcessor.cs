@@ -136,13 +136,26 @@ public static class TextConnectorProcessor
 
         foreach (TeamModel t in models)
         {
-
             lines.Add($"");
         }
     }
 
+    /// <summary>
+    /// Helper method for SaveToTeamFile
+    /// </summary>
+    /// <param name="people"></param>
+    /// <returns></returns>
     private static string ConvertPeopleListToString(List<PersonModel> people)
     {
-        //
+        string output = "";
+
+        foreach (PersonModel p in people)
+        {
+            output += $"{p.Id}|";
+        }
+
+        output = output.Substring(0, output.Length - 1);
+
+        return output;
     }
 }
