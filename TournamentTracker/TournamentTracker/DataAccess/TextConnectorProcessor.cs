@@ -136,7 +136,7 @@ public static class TextConnectorProcessor
 
         foreach (TeamModel t in models)
         {
-            lines.Add($"");
+            lines.Add($"{t.Id},{t.TeamName},{ConvertPeopleListToString(t.TeamMembers)}");
         }
     }
 
@@ -148,6 +148,11 @@ public static class TextConnectorProcessor
     private static string ConvertPeopleListToString(List<PersonModel> people)
     {
         string output = "";
+
+        if (people.Count > 0)
+        {
+            return output;
+        }
 
         foreach (PersonModel p in people)
         {
