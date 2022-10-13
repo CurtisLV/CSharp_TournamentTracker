@@ -115,9 +115,8 @@ public static class TextConnectorProcessor
         foreach (PrizeModel p in models)
         {
             lines.Add($"{p.Id},{p.PlaceNumber},{p.PlaceName},{p.PrizeAmount},{p.PrizePercentage}");
-
-            File.WriteAllLines(fileName.FullFilePath(), lines);
         }
+        File.WriteAllLines(fileName.FullFilePath(), lines);
     }
 
     public static void SaveToPeopleFile(this List<PersonModel> models, string fileName)
@@ -126,8 +125,8 @@ public static class TextConnectorProcessor
         foreach (PersonModel p in models)
         {
             lines.Add($"{p.Id},{p.FirstName},{p.LastName},{p.EmailAddress},{p.PhoneNumber}");
-            File.WriteAllLines(fileName.FullFilePath(), lines);
         }
+        File.WriteAllLines(fileName.FullFilePath(), lines);
     }
 
     public static void SaveToTeamFile(this List<TeamModel> models, string fileName)
@@ -138,6 +137,7 @@ public static class TextConnectorProcessor
         {
             lines.Add($"{t.Id},{t.TeamName},{ConvertPeopleListToString(t.TeamMembers)}");
         }
+        File.WriteAllLines(fileName.FullFilePath(), lines);
     }
 
     /// <summary>
