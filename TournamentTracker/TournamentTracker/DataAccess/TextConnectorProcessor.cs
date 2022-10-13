@@ -129,4 +129,20 @@ public static class TextConnectorProcessor
             File.WriteAllLines(fileName.FullFilePath(), lines);
         }
     }
+
+    public static void SaveToTeamFile(this List<TeamModel> models, string fileName)
+    {
+        List<string> lines = new List<string>();
+
+        foreach (TeamModel t in models)
+        {
+
+            lines.Add($"");
+        }
+    }
+
+    private static string ConvertPeopleListToString(List<PersonModel> people)
+    {
+        //
+    }
 }

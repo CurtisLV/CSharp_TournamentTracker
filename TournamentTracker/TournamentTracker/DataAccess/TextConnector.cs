@@ -59,5 +59,20 @@ public class TextConnector : IDataConnection
     public TeamModel CreateTeam(TeamModel model)
     {
         List<TeamModel> teams = TeamFile.FullFilePath().LoadFile().ConvertToTeamModels(PeopleFile);
+
+        // Find the max ID (like last row)
+        int currentId = 1;
+        if (teams.Count > 0)
+        {
+            currentId = teams.OrderByDescending(x => x.Id).First().Id + 1;
+        }
+
+        model.Id = currentId;
+
+        teams.Add(model);
+
+        teams.SaveToTeamFile(TeamFile);
+
+        return model;
     }
 }
