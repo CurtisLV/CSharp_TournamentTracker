@@ -14,9 +14,6 @@ internal static class Program
         // Initialize database connections
         TrackerLibrary.GlobalConfig.InitializeConnections(DatabaseType.Sql);
 
-        Application.Run(new CreateTeamForm());
-        //Application.Run(new CreatePrizeForm());
-
-        //Application.Run(new TournamentDashbordForm());
+        Application.Run(new CreateTournamentForm());
     }
 }

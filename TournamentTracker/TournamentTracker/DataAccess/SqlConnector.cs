@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Reflection;
 using Dapper;
 using TrackerLibrary.Models;
 
@@ -125,8 +126,14 @@ public class SqlConnector : IDataConnection
 
             foreach (TeamModel team in output)
             {
+                var p = new DynamicParameters();
+                p.Add("@TeamId", team.Id);
                 team.TeamMembers = connection
-                    .Query<PersonModel>("dbo.spTeamMembers_GetByTeam")
+                    .Query<PersonModel>(
+                        "dbo.spTeamMembers_GetByTeam",
+                        p,
+                        commandType: CommandType.StoredProcedure
+                    )
                     .ToList();
             }
         }
