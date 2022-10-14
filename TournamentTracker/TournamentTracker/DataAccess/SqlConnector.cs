@@ -111,4 +111,18 @@ public class SqlConnector : IDataConnection
         }
         return output;
     }
+
+    public List<TeamModel> GetTeam_All()
+    {
+        List<TeamModel> output;
+        using (
+            IDbConnection connection = new System.Data.SqlClient.SqlConnection(
+                GlobalConfig.ConnectionString(db)
+            )
+        )
+        {
+            output = connection.Query<TeamModel>("dbo.spTeams_GetAll").ToList();
+        }
+        return output;
+    }
 }
