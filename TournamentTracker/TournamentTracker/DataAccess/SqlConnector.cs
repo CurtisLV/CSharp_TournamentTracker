@@ -122,6 +122,11 @@ public class SqlConnector : IDataConnection
         )
         {
             output = connection.Query<TeamModel>("dbo.spTeams_GetAll").ToList();
+
+            foreach (TeamModel team in output)
+            {
+                //
+            }
         }
         return output;
     }
