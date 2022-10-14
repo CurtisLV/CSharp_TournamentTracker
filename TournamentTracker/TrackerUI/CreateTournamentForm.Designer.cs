@@ -83,7 +83,6 @@
             this.entryFeeValue.TabIndex = 12;
             this.entryFeeValue.Text = "0";
             this.entryFeeValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.entryFeeValue.TextChanged += new System.EventHandler(this.teamOneScoreValue_TextChanged);
             // 
             // entryFeeLabel
             // 
@@ -94,7 +93,6 @@
             this.entryFeeLabel.Size = new System.Drawing.Size(153, 45);
             this.entryFeeLabel.TabIndex = 11;
             this.entryFeeLabel.Text = "Entry Fee";
-            this.entryFeeLabel.Click += new System.EventHandler(this.teamOneScoreLabel_Click);
             // 
             // selectTeamDropDown
             // 

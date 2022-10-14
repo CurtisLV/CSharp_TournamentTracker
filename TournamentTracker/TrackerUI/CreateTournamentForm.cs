@@ -7,18 +7,18 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TrackerLibrary.Models;
 
 namespace TrackerUI
 {
     public partial class CreateTournamentForm : Form
     {
+
+        List<TeamModel> availableTeams = new List<TeamModel>();
+
         public CreateTournamentForm()
         {
             InitializeComponent();
         }
-
-        private void teamOneScoreValue_TextChanged(object sender, EventArgs e) { }
-
-        private void teamOneScoreLabel_Click(object sender, EventArgs e) { }
     }
 }
