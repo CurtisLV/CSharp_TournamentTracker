@@ -125,7 +125,9 @@ public class SqlConnector : IDataConnection
 
             foreach (TeamModel team in output)
             {
-                //
+                team.TeamMembers = connection
+                    .Query<PersonModel>("dbo.spTeamMembers_GetByTeam")
+                    .ToList();
             }
         }
         return output;
