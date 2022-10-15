@@ -3,7 +3,7 @@ using TrackerLibrary.Models;
 
 namespace TrackerUI
 {
-    public partial class CreateTournamentForm : Form
+    public partial class CreateTournamentForm : Form, IPrizeRequestor
     {
         List<TeamModel> availableTeams = GlobalConfig.Connection.GetTeam_All();
         List<TeamModel> selectedTeams = new List<TeamModel>();
@@ -52,6 +52,11 @@ namespace TrackerUI
 
 
             // take PrizeModel and put it in our list of selectedPrizes
+        }
+
+        public void PrizeComplete(PrizeModel model)
+        {
+            throw new NotImplementedException();
         }
     }
 }
