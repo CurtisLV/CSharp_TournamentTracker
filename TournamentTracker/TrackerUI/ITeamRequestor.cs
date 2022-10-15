@@ -2,10 +2,8 @@
 
 namespace TrackerUI
 {
-    public interface ITeamRequestor {
-        void TeamComplete(TeamModel model)
-        {
-            //
-        }
+    public interface ITeamRequestor
+    {
+        void TeamComplete(TeamModel model);
     }
 }
