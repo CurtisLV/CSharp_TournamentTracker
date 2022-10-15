@@ -93,18 +93,18 @@ public static class TextConnectorProcessor
         {
             string[] columns = line.Split(',');
 
-            TeamModel t = new TeamModel();
+            TeamModel t = new TeamModel { Id = int.Parse(columns[0]), TeamName = columns[1] };
 
-            t.Id = int.Parse(columns[0]);
-            t.TeamName = columns[1];
+            //t.Id = int.Parse(columns[0]);
+            //t.TeamName = columns[1];
 
             string[] personIds = columns[2].Split('|');
 
             foreach (string id in personIds)
             {
-                t.TeamMembers.Add(people.Where(x => x.Id == int.Parse(id)).FirstOrDefault());
-                //t.TeamMembers.Add(people.FirstOrDefault(x => x.Id == int.Parse(id))); // simplified
+                t.TeamMembers.Add(people.FirstOrDefault(x => x.Id == int.Parse(id)));
             }
+            output.Add(t);
         }
         return output;
     }
