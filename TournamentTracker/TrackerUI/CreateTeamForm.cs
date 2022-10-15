@@ -126,8 +126,9 @@ public partial class CreateTeamForm : Form
         t.TeamName = teamNameValue.Text;
         t.TeamMembers = selectedTeamMembers;
 
-        t = GlobalConfig.Connection.CreateTeam(t);
+        GlobalConfig.Connection.CreateTeam(t);
 
-        // TODO - if form not closed after creation, reset the form
+        callingForm.TeamComplete(t);
+        this.Close();
     }
 }
