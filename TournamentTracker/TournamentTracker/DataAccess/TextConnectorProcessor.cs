@@ -149,7 +149,7 @@ public static class TextConnectorProcessor
     {
         string output = "";
 
-        if (people.Count > 0)
+        if (people.Count == 0)
         {
             return output;
         }
