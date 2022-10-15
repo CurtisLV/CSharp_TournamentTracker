@@ -5,13 +5,14 @@ namespace TrackerUI;
 
 public partial class CreateTeamForm : Form
 {
+    private ITeamRequestor callingForm;
     private List<PersonModel> availableTeamMembers = GlobalConfig.Connection.GetPerson_All();
     private List<PersonModel> selectedTeamMembers = new List<PersonModel>();
 
-    public CreateTeamForm()
+    public CreateTeamForm(ITeamRequestor caller)
     {
         InitializeComponent();
-        //CreateSampleData();
+        callingForm = caller;
         WireUpLists();
     }
 

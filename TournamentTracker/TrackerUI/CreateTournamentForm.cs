@@ -59,7 +59,14 @@ namespace TrackerUI
 
         public void TeamComplete(TeamModel model)
         {
-            throw new NotImplementedException();
+            selectedTeams.Add(model);
+            WireUpLists();
+        }
+
+        private void createNewTeamLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            CreateTeamForm frm = new CreateTeamForm(this);
+            frm.Show();
         }
     }
 }
