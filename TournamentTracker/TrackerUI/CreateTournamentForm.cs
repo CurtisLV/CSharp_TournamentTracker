@@ -49,6 +49,8 @@ namespace TrackerUI
             frm.Show();
 
             // get back from form PrizeModel
+
+
             // take PrizeModel and put it in our list of selectedPrizes
         }
     }
