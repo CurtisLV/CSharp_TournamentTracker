@@ -45,18 +45,16 @@ namespace TrackerUI
         private void createPrizeButton_Click(object sender, EventArgs e)
         {
             // call the CreatePrizeForm
-            CreatePrizeForm frm = new CreatePrizeForm();
+            CreatePrizeForm frm = new CreatePrizeForm(this);
             frm.Show();
-
-            // get back from form PrizeModel
-
-
-            // take PrizeModel and put it in our list of selectedPrizes
         }
 
         public void PrizeComplete(PrizeModel model)
         {
-            throw new NotImplementedException();
+            // get back from form PrizeModel - done by parameter
+            // take PrizeModel and put it in our list of selectedPrizes
+            selectedPrizes.Add(model);
+            WireUpLists();
         }
     }
 }
