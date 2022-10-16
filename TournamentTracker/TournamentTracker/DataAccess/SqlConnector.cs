@@ -110,9 +110,20 @@ public class SqlConnector : IDataConnection
             var p = new DynamicParameters();
             p.Add("@TournamentName", model.TournamentName);
             p.Add("@EntryFee", model.EntryFee);
-            //p.Add("@Active", model.Active);
             p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+            model.Id = p.Get<int>("@id");
+
+            foreach (PrizeModel pz in model.Prizes)
+            {
+                connection.Execute(
+                    "dbo.spTournaments_Insert",
+                    p,
+                    commandType: CommandType.StoredProcedure
+                );
+            }
         }
+        return model;
     }
 
     public List<PersonModel> GetPerson_All()

@@ -2,7 +2,7 @@ CREATE PROCEDURE dbo.spTournaments_Insert
 
 @TournamentName nvarchar(200),
 @EntryFee money,
-@Active bit
+@id int = 0 output
 
 AS
 BEGIN
@@ -11,6 +11,7 @@ BEGIN
 	
 	insert into dbo.Tournaments(TournamentName, EntryFee, Active)
 	values (@TournamentName, @EntryFee, 1);
-
+	
+	select @id = SCOPE_IDENTITY();
 END
 GO
