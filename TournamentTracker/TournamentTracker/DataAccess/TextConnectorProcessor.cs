@@ -95,9 +95,6 @@ public static class TextConnectorProcessor
 
             TeamModel t = new TeamModel { Id = int.Parse(columns[0]), TeamName = columns[1] };
 
-            //t.Id = int.Parse(columns[0]);
-            //t.TeamName = columns[1];
-
             string[] personIds = columns[2].Split('|');
 
             foreach (string id in personIds)
