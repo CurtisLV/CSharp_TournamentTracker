@@ -132,6 +132,19 @@ public class SqlConnector : IDataConnection
                     commandType: CommandType.StoredProcedure
                 );
             }
+
+            foreach (TeamModel team in model.EnteredTeams)
+            {
+                p = new DynamicParameters();
+                p.Add("@TournamendID", model.Id);
+                p.Add("@TeamID", team.Id);
+
+                connection.Execute(
+                    "dbo.TournamentEntries_Insert",
+                    p,
+                    commandType: CommandType.StoredProcedure
+                );
+            }
         }
         return model;
     }
