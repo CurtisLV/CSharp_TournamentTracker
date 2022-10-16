@@ -138,9 +138,10 @@ public class SqlConnector : IDataConnection
                 p = new DynamicParameters();
                 p.Add("@TournamendID", model.Id);
                 p.Add("@TeamID", team.Id);
+                p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
                 connection.Execute(
-                    "dbo.TournamentEntries_Insert",
+                    "dbo.spTournamentEntries_Insert",
                     p,
                     commandType: CommandType.StoredProcedure
                 );
