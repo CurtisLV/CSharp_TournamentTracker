@@ -107,7 +107,11 @@ public class SqlConnector : IDataConnection
             )
         )
         {
-            //
+            var p = new DynamicParameters();
+            p.Add("@TournamentName", model.TournamentName);
+            p.Add("@EntryFee", model.EntryFee);
+            //p.Add("@Active", model.Active);
+            p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
         }
     }
 
