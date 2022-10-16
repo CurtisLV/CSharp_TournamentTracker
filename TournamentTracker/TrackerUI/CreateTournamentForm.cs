@@ -114,6 +114,10 @@ namespace TrackerUI
 
             tm.TournamentName = tournamentNameValue.Text;
             tm.EntryFee = fee;
+
+            tm.Prizes = selectedPrizes;
+            tm.EnteredTeams = selectedTeams;
+
             // Create Tournament entry
             // Create all of the prizes entries
             // Create all of the team entries
