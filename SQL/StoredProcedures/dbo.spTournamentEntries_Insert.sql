@@ -1,4 +1,4 @@
-CREATE PROCEDURE dbo.TournamentEntries_Insert
+CREATE PROCEDURE dbo.spTournamentEntries_Insert
 	@TournamendID int,
 	@TeamID int,
 	@id int = 0 output
