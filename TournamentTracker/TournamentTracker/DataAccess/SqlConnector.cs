@@ -99,6 +99,18 @@ public class SqlConnector : IDataConnection
         }
     }
 
+    public TournamentModel CreateTournament(TournamentModel model)
+    {
+        using (
+            IDbConnection connection = new System.Data.SqlClient.SqlConnection(
+                GlobalConfig.ConnectionString(db)
+            )
+        )
+        {
+            //
+        }
+    }
+
     public List<PersonModel> GetPerson_All()
     {
         List<PersonModel> output;

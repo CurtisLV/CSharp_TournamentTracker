@@ -80,4 +80,9 @@ public class TextConnector : IDataConnection
     {
         return TeamFile.FullFilePath().LoadFile().ConvertToTeamModels(PeopleFile);
     }
+
+    public TournamentModel CreateTournament(TournamentModel model)
+    {
+        throw new NotImplementedException();
+    }
 }
