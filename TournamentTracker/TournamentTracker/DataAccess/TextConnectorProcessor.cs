@@ -106,6 +106,30 @@ public static class TextConnectorProcessor
         return output;
     }
 
+    public static List<TournamentModel> ConvertToTournamentModels(this List<string> lines) 
+    {
+        //
+    }
+
+    private static string ConvertPeopleListToString(List<PersonModel> people)
+    {
+        string output = "";
+
+        if (people.Count == 0)
+        {
+            return output;
+        }
+
+        foreach (PersonModel p in people)
+        {
+            output += $"{p.Id}|";
+        }
+
+        output = output.Substring(0, output.Length - 1);
+
+        return output;
+    }
+
     public static void SaveToPrizeFile(this List<PrizeModel> models, string fileName)
     {
         List<string> lines = new List<string>();
@@ -142,22 +166,4 @@ public static class TextConnectorProcessor
     /// </summary>
     /// <param name="people"></param>
     /// <returns></returns>
-    private static string ConvertPeopleListToString(List<PersonModel> people)
-    {
-        string output = "";
-
-        if (people.Count == 0)
-        {
-            return output;
-        }
-
-        foreach (PersonModel p in people)
-        {
-            output += $"{p.Id}|";
-        }
-
-        output = output.Substring(0, output.Length - 1);
-
-        return output;
-    }
 }
