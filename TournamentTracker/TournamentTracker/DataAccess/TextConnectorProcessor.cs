@@ -108,7 +108,14 @@ public static class TextConnectorProcessor
 
     public static List<TournamentModel> ConvertToTournamentModels(this List<string> lines)
     {
+        // ID,TournamentName,EntryFee,(id|id|id - Entered Teams), (id|id|id - Prizes), (Rounds - id^id^id|id^id^id|id^id^id)
+
         List<TournamentModel> output = new List<TournamentModel>();
+
+        foreach (string line in lines)
+        {
+            string[] columns = line.Split(',');
+        }
     }
 
     private static string ConvertPeopleListToString(List<PersonModel> people)
