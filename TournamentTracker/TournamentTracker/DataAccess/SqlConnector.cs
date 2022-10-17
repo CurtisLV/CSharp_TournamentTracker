@@ -110,8 +110,6 @@ public class SqlConnector : IDataConnection
             SaveTournament(connection, model);
             SaveTournamentPrizes(connection, model);
             SaveTournamentEntries(connection, model);
-
-
         }
         return model;
     }
