@@ -84,6 +84,9 @@ public class TextConnector : IDataConnection
 
     public TournamentModel CreateTournament(TournamentModel model)
     {
-        List<TournamentModel> tournaments = TournamentFile.FullFilePath().LoadFile().ConvertToTournamentModels();
+        List<TournamentModel> tournaments = TournamentFile
+            .FullFilePath()
+            .LoadFile()
+            .ConvertToTournamentModels();
     }
 }

@@ -106,9 +106,9 @@ public static class TextConnectorProcessor
         return output;
     }
 
-    public static List<TournamentModel> ConvertToTournamentModels(this List<string> lines) 
+    public static List<TournamentModel> ConvertToTournamentModels(this List<string> lines)
     {
-        //
+        List<TournamentModel> output = new List<TournamentModel>();
     }
 
     private static string ConvertPeopleListToString(List<PersonModel> people)
