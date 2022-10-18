@@ -138,6 +138,15 @@ public static class TextConnectorProcessor
             {
                 tm.EnteredTeams.Add(teams.First(x => x.Id == int.Parse(team)));
             }
+
+            string[] prizeIds = columns[4].Split('|');
+
+            foreach (string prize in prizeIds)
+            {
+                tm.Prizes.Add(prizes.First(x => x.Id == int.Parse(prize)));
+            }
+
+            // TODO - Capture Rounds information
         }
     }
 
