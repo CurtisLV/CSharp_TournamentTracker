@@ -175,7 +175,9 @@ public static class TextConnectorProcessor
 
         foreach (TournamentModel tm in models)
         {
-            lines.Add($"{tm.Id},{tm.TournamentName},{tm.EntryFee},{""}");
+            lines.Add(
+                $@"{tm.Id},{tm.TournamentName},{tm.EntryFee},{ConvertTeamListToString(tm.EnteredTeams)},{ConvertPrizeListToString(tm.Prizes)}"
+            );
         }
     }
 
@@ -188,6 +190,23 @@ public static class TextConnectorProcessor
         }
 
         foreach (PersonModel p in people)
+        {
+            output += $"{p.Id}|";
+        }
+
+        output = output.Substring(0, output.Length - 1);
+        return output;
+    }
+
+    private static string ConvertPrizeListToString(List<PrizeModel> prizes)
+    {
+        string output = "";
+        if (prizes.Count == 0)
+        {
+            return output;
+        }
+
+        foreach (PrizeModel p in prizes)
         {
             output += $"{p.Id}|";
         }
