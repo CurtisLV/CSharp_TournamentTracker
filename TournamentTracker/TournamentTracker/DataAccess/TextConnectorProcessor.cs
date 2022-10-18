@@ -115,13 +115,13 @@ public static class TextConnectorProcessor
         // ID,TournamentName,EntryFee,(id|id|id - Entered Teams), (id|id|id - Prizes), (Rounds - id^id^id|id^id^id|id^id^id)
 
         List<TournamentModel> output = new List<TournamentModel>();
+        List<TeamModel> teams = teamFileName
+            .FullFilePath()
+            .LoadFile()
+            .ConvertToTeamModels(peopleFileName);
 
         foreach (string line in lines)
         {
-            List<TeamModel> teams = teamFileName
-                .FullFilePath()
-                .LoadFile()
-                .ConvertToTeamModels(peopleFileName);
             string[] columns = line.Split(',');
             TournamentModel tm = new TournamentModel();
 
@@ -133,7 +133,8 @@ public static class TextConnectorProcessor
 
             foreach (string team in teamIds)
             {
-                //
+                //t.TeamMembers.Add(people.FirstOrDefault(x => x.Id == int.Parse(id)));
+                tm.EnteredTeams.Add(teams.First(x => x.Id == int.Parse(team)));
             }
         }
     }
