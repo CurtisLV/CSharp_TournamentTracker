@@ -185,6 +185,7 @@ public static class TextConnectorProcessor
                     "
             );
         }
+        File.WriteAllLines(fileName.FullFilePath(), lines);
     }
 
     private static string ConvertRoundListToString(List<List<MatchupModel>> rounds)
