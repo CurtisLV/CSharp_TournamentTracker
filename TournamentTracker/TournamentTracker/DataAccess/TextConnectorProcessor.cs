@@ -180,9 +180,45 @@ public static class TextConnectorProcessor
                     {tm.TournamentName},
                     {tm.EntryFee},
                     {ConvertTeamListToString(tm.EnteredTeams)},
-                    {ConvertPrizeListToString(tm.Prizes)}"
+                    {ConvertPrizeListToString(tm.Prizes)},
+                    {ConvertRoundListToString(tm.Rounds)}
+                    "
             );
         }
+    }
+
+    private static string ConvertRoundListToString(List<List<MatchupModel>> rounds)
+    {
+        string output = "";
+        if (rounds.Count == 0)
+        {
+            return output;
+        }
+
+        foreach (List<MatchupModel> r in rounds)
+        {
+            output += $"{ConvertMatchupListToString(r)}|";
+        }
+
+        output = output.Substring(0, output.Length - 1);
+        return output;
+    }
+
+    private static string ConvertMatchupListToString(List<MatchupModel> matchups)
+    {
+        string output = "";
+        if (matchups.Count == 0)
+        {
+            return output;
+        }
+
+        foreach (MatchupModel m in matchups)
+        {
+            output += $"{m.Id}^";
+        }
+
+        output = output.Substring(0, output.Length - 1);
+        return output;
     }
 
     private static string ConvertPeopleListToString(List<PersonModel> people)

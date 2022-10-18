@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TrackerLibrary.Models;
+﻿namespace TrackerLibrary.Models;
 
 /// <summary>
 /// Represents one match in the tournament
@@ -25,4 +19,5 @@ public class MatchupModel
     /// Which round this match is a part of
     /// </summary>
     public int MatchupRound { get; set; }
+    public object Id { get; set; }
 }
