@@ -182,7 +182,6 @@ public static class TextConnectorProcessor
     private static string ConvertPeopleListToString(List<PersonModel> people)
     {
         string output = "";
-
         if (people.Count == 0)
         {
             return output;
@@ -194,7 +193,6 @@ public static class TextConnectorProcessor
         }
 
         output = output.Substring(0, output.Length - 1);
-
         return output;
     }
 
