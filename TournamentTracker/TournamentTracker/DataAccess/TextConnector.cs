@@ -82,7 +82,7 @@ public class TextConnector : IDataConnection
         return TeamFile.FullFilePath().LoadFile().ConvertToTeamModels(PeopleFile);
     }
 
-    public TournamentModel CreateTournament(TournamentModel model)
+    public void CreateTournament(TournamentModel model)
     {
         List<TournamentModel> tournaments = TournamentFile
             .FullFilePath()
@@ -100,7 +100,5 @@ public class TextConnector : IDataConnection
         tournaments.Add(model);
 
         tournaments.SaveToTournamentFile(TournamentFile);
-
-        return model;
     }
 }
