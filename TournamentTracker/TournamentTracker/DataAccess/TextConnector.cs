@@ -99,7 +99,7 @@ public class TextConnector : IDataConnection
 
         tournaments.Add(model);
 
-        tournaments.SaveToTournamentFile(TournamentFile);
+        tournaments.SaveToTournamentsFile(TournamentFile);
 
         return model;
     }

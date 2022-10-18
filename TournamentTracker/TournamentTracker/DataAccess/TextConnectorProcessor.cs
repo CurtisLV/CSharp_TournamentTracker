@@ -176,7 +176,11 @@ public static class TextConnectorProcessor
         foreach (TournamentModel tm in models)
         {
             lines.Add(
-                $@"{tm.Id},{tm.TournamentName},{tm.EntryFee},{ConvertTeamListToString(tm.EnteredTeams)},{ConvertPrizeListToString(tm.Prizes)}"
+                $@"{tm.Id},
+                    {tm.TournamentName},
+                    {tm.EntryFee},
+                    {ConvertTeamListToString(tm.EnteredTeams)},
+                    {ConvertPrizeListToString(tm.Prizes)}"
             );
         }
     }
