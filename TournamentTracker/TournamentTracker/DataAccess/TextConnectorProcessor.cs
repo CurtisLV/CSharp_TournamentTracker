@@ -197,8 +197,21 @@ public static class TextConnectorProcessor
 
         return output;
     }
+
     private static string ConvertTeamListToString(List<TeamModel> teams)
     {
-        //
+        string output = "";
+        if (teams.Count == 0)
+        {
+            return output;
+        }
+
+        foreach (TeamModel t in teams)
+        {
+            output += $"{t.Id}|";
+        }
+
+        output = output.Substring(0, output.Length - 1);
+        return output;
     }
 }
