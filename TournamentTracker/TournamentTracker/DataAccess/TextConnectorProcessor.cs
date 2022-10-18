@@ -197,4 +197,8 @@ public static class TextConnectorProcessor
 
         return output;
     }
+    private static string ConvertTeamListToString(List<TeamModel> teams)
+    {
+        //
+    }
 }
