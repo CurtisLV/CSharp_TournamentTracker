@@ -6,6 +6,11 @@
 public class MatchupModel
 {
     /// <summary>
+    /// The unique identifier for the matchup
+    /// </summary>
+    public int Id { get; set; }
+
+    /// <summary>
     /// Set of teams involved in this match
     /// </summary>
     public List<MatchupEntryModel> Entries { get; set; } = new List<MatchupEntryModel>();
@@ -19,5 +24,4 @@ public class MatchupModel
     /// Which round this match is a part of
     /// </summary>
     public int MatchupRound { get; set; }
-    public object Id { get; set; }
 }
