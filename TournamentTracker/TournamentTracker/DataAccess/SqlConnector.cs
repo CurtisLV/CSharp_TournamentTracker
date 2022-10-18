@@ -99,7 +99,7 @@ public class SqlConnector : IDataConnection
         }
     }
 
-    public TournamentModel CreateTournament(TournamentModel model)
+    public void CreateTournament(TournamentModel model)
     {
         using (
             IDbConnection connection = new System.Data.SqlClient.SqlConnection(
@@ -111,7 +111,6 @@ public class SqlConnector : IDataConnection
             SaveTournamentPrizes(connection, model);
             SaveTournamentEntries(connection, model);
         }
-        return model;
     }
 
     private void SaveTournament(IDbConnection connection, TournamentModel model)
