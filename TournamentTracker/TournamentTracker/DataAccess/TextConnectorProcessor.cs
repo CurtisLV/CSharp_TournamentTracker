@@ -5,18 +5,6 @@ namespace TrackerLibrary.DataAccess.TextHelpers;
 
 public static class TextConnectorProcessor
 {
-    // * Load the text file
-
-    // * Convert the text to List<PrizeModel>
-
-    // Find the max ID (like last row)
-
-    // Add new record with the new ID
-
-    // Convert prizes to List<string>
-
-    // Save the List<string> to the text file
-
     public static string FullFilePath(this string fileName) // PrizeModel.csv
     {
         // C:\Users\karli\Desktop\GitHub\CSharp_TournamentTracker\Text\PrizeModels.csv
@@ -92,11 +80,9 @@ public static class TextConnectorProcessor
         foreach (string line in lines)
         {
             string[] columns = line.Split(',');
-
             TeamModel t = new TeamModel { Id = int.Parse(columns[0]), TeamName = columns[1] };
 
             string[] personIds = columns[2].Split('|');
-
             foreach (string id in personIds)
             {
                 t.TeamMembers.Add(people.FirstOrDefault(x => x.Id == int.Parse(id)));
@@ -133,38 +119,21 @@ public static class TextConnectorProcessor
             tm.EntryFee = decimal.Parse(columns[2]);
 
             string[] teamIds = columns[3].Split('|');
-
             foreach (string team in teamIds)
             {
                 tm.EnteredTeams.Add(teams.First(x => x.Id == int.Parse(team)));
             }
 
             string[] prizeIds = columns[4].Split('|');
-
             foreach (string prize in prizeIds)
             {
                 tm.Prizes.Add(prizes.First(x => x.Id == int.Parse(prize)));
             }
 
             // TODO - Capture Rounds information
+
+            output.Add(tm);
         }
-    }
-
-    private static string ConvertPeopleListToString(List<PersonModel> people)
-    {
-        string output = "";
-
-        if (people.Count == 0)
-        {
-            return output;
-        }
-
-        foreach (PersonModel p in people)
-        {
-            output += $"{p.Id}|";
-        }
-
-        output = output.Substring(0, output.Length - 1);
 
         return output;
     }
@@ -200,9 +169,32 @@ public static class TextConnectorProcessor
         File.WriteAllLines(fileName.FullFilePath(), lines);
     }
 
-    /// <summary>
-    /// Helper method for SaveToTeamFile
-    /// </summary>
-    /// <param name="people"></param>
-    /// <returns></returns>
+    public static void SaveToTournamentFile(this List<TournamentModel> models, string fileName)
+    {
+        List<string> lines = new List<string>();
+
+        foreach (TournamentModel tm in models)
+        {
+            lines.Add($"{tm.Id},{tm.TournamentName},{tm.EntryFee},{""}");
+        }
+    }
+
+    private static string ConvertPeopleListToString(List<PersonModel> people)
+    {
+        string output = "";
+
+        if (people.Count == 0)
+        {
+            return output;
+        }
+
+        foreach (PersonModel p in people)
+        {
+            output += $"{p.Id}|";
+        }
+
+        output = output.Substring(0, output.Length - 1);
+
+        return output;
+    }
 }
