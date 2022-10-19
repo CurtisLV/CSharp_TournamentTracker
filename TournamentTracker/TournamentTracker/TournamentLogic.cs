@@ -11,6 +11,11 @@ public static class TournamentLogic
 
     public static void CreateRounds(TournamentModel model)
     {
+        List<TeamModel> randomizedTeams = RandomizeTeamOrder(model.EnteredTeams);
+    }
+
+    private static List<TeamModel> RandomizeTeamOrder(List<TeamModel> teams)
+    {
         //
     }
 }
