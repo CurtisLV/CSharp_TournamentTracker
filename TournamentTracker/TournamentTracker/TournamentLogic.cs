@@ -16,6 +16,6 @@ public static class TournamentLogic
 
     private static List<TeamModel> RandomizeTeamOrder(List<TeamModel> teams)
     {
-        //
+        return teams.OrderBy(x => Guid.NewGuid()).ToList();
     }
 }
