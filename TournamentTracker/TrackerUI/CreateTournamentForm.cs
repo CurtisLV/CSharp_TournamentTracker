@@ -119,7 +119,10 @@ namespace TrackerUI
             tm.EnteredTeams = selectedTeams;
 
             // TODO - Wire our matchups
-
+            // Order our list randomly of teams
+            // Check if the list is big enough, if not - add byes (automatic win)
+            // Create our first round of matchups
+            // Create every round after that - 8/4/2 matchups, 1 final
 
             // Create Tournament entry
             // Create all of the prizes entries
