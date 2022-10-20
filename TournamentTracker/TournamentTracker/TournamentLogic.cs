@@ -20,11 +20,13 @@ public static class TournamentLogic
         int output = 1;
         int val = 2;
 
-        while (true)
+        while (val < teamCount)
         {
-
-            //
+            output += 1;
+            val *= 2;
         }
+
+        return output;
     }
 
     private static List<TeamModel> RandomizeTeamOrder(List<TeamModel> teams)
