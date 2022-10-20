@@ -13,7 +13,7 @@ public static class TournamentLogic
     {
         List<TeamModel> randomizedTeams = RandomizeTeamOrder(model.EnteredTeams);
         int rounds = FindNumberOfRounds(randomizedTeams.Count);
-        int byes = 0;
+        int byes = NumberOfByes(rounds, randomizedTeams.Count);
     }
 
     private static int NumberOfByes(int rounds, int numberOfTeams)
@@ -25,7 +25,7 @@ public static class TournamentLogic
             totalTeams *= 2;
         }
 
-         output = totalTeams - numberOfTeams;
+        output = totalTeams - numberOfTeams;
         return output;
     }
 
