@@ -12,13 +12,19 @@ public static class TournamentLogic
     public static void CreateRounds(TournamentModel model)
     {
         List<TeamModel> randomizedTeams = RandomizeTeamOrder(model.EnteredTeams);
-
+        int rounds = FindNumberOfRounds(randomizedTeams.Count);
     }
 
-    private static int FindNumberOfRounds(List<TeamModel> teams)
+    private static int FindNumberOfRounds(int teamCount)
     {
-        //
+        int output = 1;
+        int val = 2;
 
+        while (true)
+        {
+
+            //
+        }
     }
 
     private static List<TeamModel> RandomizeTeamOrder(List<TeamModel> teams)
