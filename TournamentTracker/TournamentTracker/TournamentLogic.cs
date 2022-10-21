@@ -22,7 +22,16 @@ public static class TournamentLogic
 
     private static void CreateOtherRounds(TournamentModel model, int rounds)
     {
-        //
+        int round = 2;
+        List<MatchupModel> prevRound = model.Rounds[0];
+
+        while (round <= rounds)
+        {
+            foreach (MatchupModel match in prevRound)
+            {
+                //
+            }
+        }
     }
 
     private static List<MatchupModel> CreateFirstRound(int byes, List<TeamModel> teams)
