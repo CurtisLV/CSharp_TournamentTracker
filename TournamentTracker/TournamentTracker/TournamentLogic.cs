@@ -19,9 +19,16 @@ public static class TournamentLogic
     private static List<MatchupModel> CreateFirstRound(int byes, List<TeamModel> teams)
     {
         List<MatchupModel> output = new List<MatchupModel>();
+        MatchupModel curr = new MatchupModel();
+
         foreach (TeamModel team in teams)
         {
-            //
+            curr.Entries.Add(new MatchupEntryModel { TeamCompeting = team });
+
+            if (byes > 0 || curr.Entries.Count > 1)
+            {
+                curr.MatchupRound = 1;
+            }
         }
     }
 
