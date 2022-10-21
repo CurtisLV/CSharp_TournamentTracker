@@ -24,12 +24,19 @@ public static class TournamentLogic
     {
         int round = 2;
         List<MatchupModel> prevRound = model.Rounds[0];
+        List<MatchupModel> currRound = new List<MatchupModel>();
+        MatchupModel currMatchup = new MatchupModel();
 
         while (round <= rounds)
         {
             foreach (MatchupModel match in prevRound)
             {
-                //
+                currMatchup.Entries.Add(new MatchupEntryModel { ParentMatchup = match });
+
+                if (currMatchup.Entries.Count > 1)
+                {
+                    //
+                }
             }
         }
     }
