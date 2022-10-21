@@ -28,9 +28,19 @@ public static class TournamentLogic
             if (byes > 0 || curr.Entries.Count > 1)
             {
                 curr.MatchupRound = 1;
+                output.Add(curr);
+                curr = new MatchupModel();
+
+                if (byes > 0)
+                {
+                    byes -= 1;
+                }
             }
+
         }
+        return output;
     }
+
 
     private static int NumberOfByes(int rounds, int numberOfTeams)
     {
