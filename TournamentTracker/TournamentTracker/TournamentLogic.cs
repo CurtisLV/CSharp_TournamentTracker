@@ -16,6 +16,15 @@ public static class TournamentLogic
         int byes = NumberOfByes(rounds, randomizedTeams.Count);
     }
 
+    private static List<MatchupModel> CreateFirstRound(int byes, List<TeamModel> teams)
+    {
+        List<MatchupModel> output = new List<MatchupModel>();
+        foreach (TeamModel team in teams)
+        {
+            //
+        }
+    }
+
     private static int NumberOfByes(int rounds, int numberOfTeams)
     {
         int output = 0;
