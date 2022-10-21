@@ -40,7 +40,10 @@ public static class TournamentLogic
                     currMatchup = new MatchupModel();
                 }
             }
-
+            model.Rounds.Add(currRound);
+            prevRound = currRound;
+            currRound = new List<MatchupModel>();
+            round++;
         }
     }
 
