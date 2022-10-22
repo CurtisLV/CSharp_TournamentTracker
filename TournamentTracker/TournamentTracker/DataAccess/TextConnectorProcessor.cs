@@ -169,7 +169,11 @@ public static class TextConnectorProcessor
         File.WriteAllLines(fileName.FullFilePath(), lines);
     }
 
-    public static void SaveRoundsToFile(this TournamentModel model, string matchupFile, string matchupEntryFile)
+    public static void SaveRoundsToFile(
+        this TournamentModel model,
+        string matchupFile,
+        string matchupEntryFile
+    )
     {
         //
     }
