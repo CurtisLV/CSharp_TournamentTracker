@@ -173,17 +173,16 @@ public class SqlConnector : IDataConnection
         {
             foreach (MatchupModel matchup in round)
             {
-                //
-                //p.Add("@TournamendID", model.Id);
-                //p.Add("@TeamID", team.Id);
-                //p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
-
-                //connection.Execute(
-                //    "dbo.spTournamentEntries_Insert",
-                //    p,
-                //    commandType: CommandType.StoredProcedure
-                //);
                 var p = new DynamicParameters();
+                p.Add("@MatchupRound", matchup.MatchupRound);
+                p.Add("@TournamendId", model.Id);
+                p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                connection.Execute(
+                    "dbo.spMatchups_Insert",
+                    p,
+                    commandType: CommandType.StoredProcedure
+                );
             }
         }
     }
