@@ -161,21 +161,13 @@ public class SqlConnector : IDataConnection
 
     private void SaveTournamentRounds(IDbConnection connection, TournamentModel model)
     {
-        //List<List<MatchupModel>> Rounds
-        //List<MatchupEntryModel> Entries
-
-        // loop through the rounds
-        // inside that, loop through matchups
-        // inside that, save a matchup to db
-        // inside that, loop through the entries, save them
-
         foreach (List<MatchupModel> round in model.Rounds)
         {
             foreach (MatchupModel matchup in round)
             {
                 var p = new DynamicParameters();
                 p.Add("@MatchupRound", matchup.MatchupRound);
-                p.Add("@TournamendId", model.Id);
+                p.Add("@TournamentId", model.Id);
                 p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
                 connection.Execute(
@@ -189,8 +181,24 @@ public class SqlConnector : IDataConnection
                 {
                     p = new DynamicParameters();
                     p.Add("@MatchupId", matchup.Id);
-                    p.Add("@ParentMatchupId", entry.ParentMatchup);
-                    p.Add("@TeamCompetingId", entry.TeamCompeting.Id);
+
+                    if (entry.ParentMatchup == null)
+                    {
+                        p.Add("@ParentMatchupId", null);
+                    }
+                    else
+                    {
+                        p.Add("@ParentMatchupId", entry.ParentMatchup.Id);
+                    }
+
+                    if (entry.TeamCompeting == null)
+                    {
+                        p.Add("@TeamCompetingId", null);
+                    }
+                    else
+                    {
+                        p.Add("@TeamCompetingId", entry.TeamCompeting.Id);
+                    }
                     p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
 
                     connection.Execute(
