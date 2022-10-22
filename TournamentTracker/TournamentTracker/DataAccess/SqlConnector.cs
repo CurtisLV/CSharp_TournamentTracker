@@ -110,6 +110,7 @@ public class SqlConnector : IDataConnection
             SaveTournament(connection, model);
             SaveTournamentPrizes(connection, model);
             SaveTournamentEntries(connection, model);
+            SaveTournamentRounds(connection, model);
         }
     }
 
@@ -156,6 +157,11 @@ public class SqlConnector : IDataConnection
                 commandType: CommandType.StoredProcedure
             );
         }
+    }
+
+    private void SaveTournamentRounds(IDbConnection connection, TournamentModel model)
+    {
+        //
     }
 
     public List<PersonModel> GetPerson_All()
