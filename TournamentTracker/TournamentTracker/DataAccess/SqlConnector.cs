@@ -183,6 +183,21 @@ public class SqlConnector : IDataConnection
                     p,
                     commandType: CommandType.StoredProcedure
                 );
+                matchup.Id = p.Get<int>("@id");
+
+                foreach (MatchupEntryModel entry in matchup.Entries)
+                {
+                    p = new DynamicParameters();
+                    //p.Add("@MatchupRound", matchup.MatchupRound);
+                    //p.Add("@TournamendId", model.Id);
+                    //p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                    connection.Execute(
+                        "dbo.spMatchups_Insert",
+                        p,
+                        commandType: CommandType.StoredProcedure
+                    );
+                }
             }
         }
     }
