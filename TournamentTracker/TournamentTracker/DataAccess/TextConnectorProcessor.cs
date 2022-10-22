@@ -189,12 +189,24 @@ public static class TextConnectorProcessor
                 // Get the top id and add one
                 // Store the id
                 // Save the matchup record
-                matchup.SaveMatchupToFile(matchupFile);
+                matchup.SaveMatchupToFile(matchupFile, matchupEntryFile);
             }
         }
     }
 
-    public static void SaveMatchupToFile(this MatchupModel matchup, string matchupFile)
+    public static void SaveMatchupToFile(
+        this MatchupModel matchup,
+        string matchupFile,
+        string matchupEntryFile
+    )
+    {
+        foreach (MatchupEntryModel entry in matchup.Entries)
+        {
+            entry.SaveEntryToFile(matchupEntryFile);
+        }
+    }
+
+    public static void SaveEntryToFile(this MatchupEntryModel entry, string matchupEntryFile)
     {
         //
     }
