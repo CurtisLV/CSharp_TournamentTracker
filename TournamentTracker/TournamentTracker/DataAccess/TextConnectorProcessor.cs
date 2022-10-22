@@ -175,6 +175,27 @@ public static class TextConnectorProcessor
         string matchupEntryFile
     )
     {
+        // loop through each round
+        // in there, loop through each matchup
+        // get id for new matchup
+        // in there, save matchup
+        // loop through each entry, get ID and save it
+
+        foreach (List<MatchupModel> round in model.Rounds)
+        {
+            foreach (MatchupModel matchup in round)
+            {
+                // Load all of the matchups from file
+                // Get the top id and add one
+                // Store the id
+                // Save the matchup record
+                matchup.SaveMatchupToFile(matchupFile);
+            }
+        }
+    }
+
+    public static void SaveMatchupToFile(this MatchupModel matchup, string matchupFile)
+    {
         //
     }
 
