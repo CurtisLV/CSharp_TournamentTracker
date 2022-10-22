@@ -161,7 +161,31 @@ public class SqlConnector : IDataConnection
 
     private void SaveTournamentRounds(IDbConnection connection, TournamentModel model)
     {
-        //
+        //List<List<MatchupModel>> Rounds
+        //List<MatchupEntryModel> Entries
+
+        // loop through the rounds
+        // inside that, loop through matchups
+        // inside that, save a matchup to db
+        // inside that, loop through the entries, save them
+
+        foreach (List<MatchupModel> round in model.Rounds)
+        {
+            foreach (MatchupModel matchup in round)
+            {
+                //
+                //p.Add("@TournamendID", model.Id);
+                //p.Add("@TeamID", team.Id);
+                //p.Add("@id", 0, dbType: DbType.Int32, direction: ParameterDirection.Output);
+
+                //connection.Execute(
+                //    "dbo.spTournamentEntries_Insert",
+                //    p,
+                //    commandType: CommandType.StoredProcedure
+                //);
+                var p = new DynamicParameters();
+            }
+        }
     }
 
     public List<PersonModel> GetPerson_All()
