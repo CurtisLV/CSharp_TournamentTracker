@@ -216,10 +216,14 @@ public static class TextConnectorProcessor
         throw new NotImplementedException();
     }
 
-    private static TeamModel LookupTeamById(int id, string teamFile, string peopleFile)
+    private static TeamModel LookupTeamById(int id)
     {
-        List<TeamModel> teams = teamFile.FullFilePath().LoadFile().ConvertToTeamModels(peopleFile);
-        throw new NotImplementedException();
+        List<TeamModel> teams = GlobalConfig.TeamFile
+            .FullFilePath()
+            .LoadFile()
+            .ConvertToTeamModels(GlobalConfig.PeopleFile);
+
+        return teams.First(x => x.Id == id);
     }
 
     public static List<MatchupModel> ConvertToMatchupModels(this List<string> lines)
