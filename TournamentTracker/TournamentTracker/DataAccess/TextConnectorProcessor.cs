@@ -194,18 +194,27 @@ public static class TextConnectorProcessor
         }
     }
 
-    public static List<MatchupEntryModel> ConvertToMatchupEntryModels(this List<string> input)
+    public static List<MatchupEntryModel> ConvertToMatchupEntryModels(this List<string> lines)
     {
         List<MatchupEntryModel> output = new List<MatchupEntryModel>();
 
-        foreach (string line in )
+        foreach (string line in lines)
         {
             string[] columns = line.Split(',');
             MatchupEntryModel me = new MatchupEntryModel();
             me.Id = int.Parse(columns[0]);
-            me.TeamCompeting =  LookupTeamById(int.Parse(columns[1]));
+            me.TeamCompeting = LookupTeamById(int.Parse(columns[1]));
             me.Score = double.Parse(columns[2]);
-            me.ParentMatchup = LookupMatchupById(int.Parse(columns[3]));
+
+            int parentId = 0;
+            if (int.TryParse(columns[3], out parentId))
+            {
+                me.ParentMatchup = LookupMatchupById(parentId);
+            }
+            else
+            {
+                me.ParentMatchup = null;
+            }
 
             output.Add(me);
         }
@@ -259,7 +268,10 @@ public static class TextConnectorProcessor
 
     private static MatchupModel LookupMatchupById(int id)
     {
-        List<MatchupModel> matchups = GlobalConfig.MatchupFile.FullFilePath().LoadFile().ConvertToMatchupModels();
+        List<MatchupModel> matchups = GlobalConfig.MatchupFile
+            .FullFilePath()
+            .LoadFile()
+            .ConvertToMatchupModels();
         return matchups.First(x => x.Id == id);
     }
 
