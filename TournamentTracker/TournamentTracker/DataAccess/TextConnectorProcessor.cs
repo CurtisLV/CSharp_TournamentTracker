@@ -213,7 +213,20 @@ public static class TextConnectorProcessor
 
     private static List<MatchupEntryModel> ConvertStringToMatchupEntryModels(string input)
     {
-        throw new NotImplementedException();
+        string[] ids = input.Split('|');
+        List<MatchupEntryModel> output = new List<MatchupEntryModel>();
+
+        List<MatchupEntryModel> entries = GlobalConfig.MatchupEntryFile
+            .FullFilePath()
+            .LoadFile()
+            .ConvertToMatchupEntryModels();
+
+        foreach (string id in ids)
+        {
+            output.Add(entries.First(x => x.Id == int.Parse(id)));
+        }
+
+        return output;
     }
 
     private static TeamModel LookupTeamById(int id)
