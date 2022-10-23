@@ -211,6 +211,11 @@ public static class TextConnectorProcessor
         //
     }
 
+    private static List<MatchupEntryModel> ConvertStringToMatchupEntryModels(string input)
+    {
+        throw new NotImplementedException();
+    }
+
     public static List<MatchupModel> ConvertToMatchupModels(this List<string> lines)
     {
         List<MatchupModel> output = new List<MatchupModel>();
@@ -223,7 +228,7 @@ public static class TextConnectorProcessor
             // id = 0, entries = 1 (pipe delimited by id), winner = 2, matchupRound = 3
 
             p.Id = int.Parse(columns[0]);
-            p.Entries = int.Parse(columns[1]); // List<MatchupEntryModel>
+            p.Entries = ConvertStringToMatchupEntryModels(columns[1]); // List<MatchupEntryModel>
             p.Winner = columns[2]; // TeamModel
             p.MatchupRound = int.Parse(columns[3]);
 
