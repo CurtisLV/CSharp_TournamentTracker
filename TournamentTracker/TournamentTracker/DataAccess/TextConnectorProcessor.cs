@@ -245,11 +245,38 @@ public static class TextConnectorProcessor
         {
             entry.SaveEntryToFile(matchupEntryFile);
         }
+
+        // save to file
     }
 
     public static void SaveEntryToFile(this MatchupEntryModel entry, string matchupEntryFile)
     {
-        //
+        List<MatchupEntryModel> entries = GlobalConfig.MatchupEntryFile
+            .FullFilePath()
+            .LoadFile()
+            .ConvertToMatchupEntryModels();
+
+        int currentId = 1;
+        if (entries.Count > 0)
+        {
+            currentId = entries.OrderByDescending(x => x.Id).First().Id + 1;
+        }
+        entry.Id = currentId;
+        entries.Add(entry);
+
+        // save to file
+        List<string> lines = new List<string>();
+
+        foreach (MatchupEntryModel e in entries)
+        {
+            string parent = "";
+            if (e.ParentMatchup != null)
+            {
+                parent = e.ParentMatchup.Id.ToString();
+            }
+            lines.Add($"{e.Id},{e.TeamCompeting.Id},{e.Score},{parent}");
+        }
+        File.WriteAllLines(GlobalConfig.MatchupEntryFile.FullFilePath(), lines);
     }
 
     private static List<MatchupEntryModel> ConvertStringToMatchupEntryModels(string input)
