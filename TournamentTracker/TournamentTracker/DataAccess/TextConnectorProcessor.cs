@@ -216,6 +216,12 @@ public static class TextConnectorProcessor
         throw new NotImplementedException();
     }
 
+    private static TeamModel LookupTeamById(int id, string teamFile, string peopleFile)
+    {
+        List<TeamModel> teams = teamFile.FullFilePath().LoadFile().ConvertToTeamModels(peopleFile);
+        throw new NotImplementedException();
+    }
+
     public static List<MatchupModel> ConvertToMatchupModels(this List<string> lines)
     {
         List<MatchupModel> output = new List<MatchupModel>();
@@ -229,7 +235,7 @@ public static class TextConnectorProcessor
 
             p.Id = int.Parse(columns[0]);
             p.Entries = ConvertStringToMatchupEntryModels(columns[1]); // List<MatchupEntryModel>
-            p.Winner = columns[2]; // TeamModel
+            p.Winner = LookupTeamById(int.Parse(columns[2])); // TeamModel
             p.MatchupRound = int.Parse(columns[3]);
 
             output.Add(p);
