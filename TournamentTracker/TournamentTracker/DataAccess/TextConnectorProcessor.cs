@@ -257,6 +257,12 @@ public static class TextConnectorProcessor
         return teams.First(x => x.Id == id);
     }
 
+    private static MatchupModel LookupMatchupById(int id)
+    {
+        List<MatchupModel> matchups = GlobalConfig.MatchupFile.FullFilePath().LoadFile().ConvertToMatchupModels();
+        return matchups.First(x => x.Id == id);
+    }
+
     public static List<MatchupModel> ConvertToMatchupModels(this List<string> lines)
     {
         List<MatchupModel> output = new List<MatchupModel>();
