@@ -211,6 +211,27 @@ public static class TextConnectorProcessor
         //
     }
 
+    public static List<MatchupModel> ConvertToMatchupModels(this List<string> lines)
+    {
+        List<MatchupModel> output = new List<MatchupModel>();
+
+        foreach (string line in lines)
+        {
+            string[] columns = line.Split(',');
+
+            MatchupModel p = new MatchupModel();
+            // id = 0, entries = 1 (pipe delimited by id), winner = 2, matchupRound = 3
+
+            p.Id = int.Parse(columns[0]);
+            p.Entries = int.Parse(columns[1]); // List<MatchupEntryModel>
+            p.Winner = columns[2]; // TeamModel
+            p.MatchupRound = int.Parse(columns[3]);
+
+            output.Add(p);
+        }
+        return output;
+    }
+
     public static void SaveToTournamentFile(this List<TournamentModel> models, string fileName)
     {
         List<string> lines = new List<string>();
