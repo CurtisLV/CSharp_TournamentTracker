@@ -222,7 +222,15 @@ public static class TextConnectorProcessor
             string[] columns = line.Split(',');
             MatchupEntryModel me = new MatchupEntryModel();
             me.Id = int.Parse(columns[0]);
-            me.TeamCompeting = LookupTeamById(int.Parse(columns[1]));
+            if (columns[1].Length == 0)
+            {
+                me.TeamCompeting = null;
+            }
+            else
+            {
+                me.TeamCompeting = LookupTeamById(int.Parse(columns[1]));
+            }
+
             me.Score = double.Parse(columns[2]);
 
             int parentId = 0;
@@ -323,7 +331,13 @@ public static class TextConnectorProcessor
             {
                 parent = e.ParentMatchup.Id.ToString();
             }
-            lines.Add($"{e.Id},{e.TeamCompeting.Id},{e.Score},{parent}");
+
+            string teamCompeting = "";
+            if (e.TeamCompeting != null)
+            {
+                teamCompeting = e.TeamCompeting.Id.ToString();
+            }
+            lines.Add($"{e.Id},{teamCompeting},{e.Score},{parent}");
         }
         File.WriteAllLines(GlobalConfig.MatchupEntryFile.FullFilePath(), lines);
     }
