@@ -250,10 +250,17 @@ public static class TextConnectorProcessor
         List<string> lines = new List<string>();
         foreach (MatchupModel m in matchups)
         {
+            string winner = "";
+            if (m.Winner.Id != null)
+            {
+                winner = m.Winner.Id.ToString();
+            }
             lines.Add(
-                $"{m.Id},{ConvertMatchupEntryListToString(m.Entries)},{m.Winner.Id},{m.MatchupRound}"
+                $"{m.Id},{ConvertMatchupEntryListToString(m.Entries)},{winner},{m.MatchupRound}"
             );
         }
+
+        File.WriteAllLines(GlobalConfig.MatchupEntryFile.FullFilePath(), lines);
     }
 
     private static string ConvertMatchupEntryListToString(List<MatchupEntryModel> prizes)
