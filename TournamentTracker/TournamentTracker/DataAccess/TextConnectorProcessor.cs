@@ -136,19 +136,19 @@ public static class TextConnectorProcessor
                 tm.Prizes.Add(prizes.First(x => x.Id == int.Parse(prize)));
             }
 
-            // TODO - Capture Rounds information
-
+            // Capture Rounds information
             string[] rounds = columns[5].Split('|');
-            List<MatchupModel> ms = new List<MatchupModel>();
 
             foreach (string round in rounds)
             {
                 string[] msText = round.Split('^');
+                List<MatchupModel> ms = new List<MatchupModel>();
 
                 foreach (string matchupModelTextId in msText)
                 {
                     ms.Add(matchups.First(x => x.Id == int.Parse(matchupModelTextId)));
                 }
+                tm.Rounds.Add(ms);
             }
 
             output.Add(tm);
