@@ -247,6 +247,30 @@ public static class TextConnectorProcessor
         }
 
         // save to file
+        List<string> lines = new List<string>();
+        foreach (MatchupModel m in matchups)
+        {
+            lines.Add(
+                $"{m.Id},{ConvertMatchupEntryListToString(m.Entries)},{m.Winner.Id},{m.MatchupRound}"
+            );
+        }
+    }
+
+    private static string ConvertMatchupEntryListToString(List<MatchupEntryModel> prizes)
+    {
+        string output = "";
+        if (prizes.Count == 0)
+        {
+            return output;
+        }
+
+        foreach (MatchupEntryModel e in prizes)
+        {
+            output += $"{e.Id}|";
+        }
+
+        output = output.Substring(0, output.Length - 1);
+        return output;
     }
 
     public static void SaveEntryToFile(this MatchupEntryModel entry, string matchupEntryFile)
