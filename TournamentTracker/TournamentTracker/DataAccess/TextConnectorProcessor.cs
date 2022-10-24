@@ -110,6 +110,11 @@ public static class TextConnectorProcessor
 
         List<PrizeModel> prizes = prizeFileName.FullFilePath().LoadFile().ConvertToPrizeModels();
 
+        List<MatchupModel> matchups = GlobalConfig.MatchupFile
+            .FullFilePath()
+            .LoadFile()
+            .ConvertToMatchupModels();
+
         foreach (string line in lines)
         {
             string[] columns = line.Split(',');
@@ -132,6 +137,19 @@ public static class TextConnectorProcessor
             }
 
             // TODO - Capture Rounds information
+
+            string[] rounds = columns[5].Split('|');
+            List<MatchupModel> ms = new List<MatchupModel>();
+
+            foreach (string round in rounds)
+            {
+                string[] msText = round.Split('^');
+
+                foreach (string matchupModelTextId in msText)
+                {
+                    ms.Add(matchups.First(x => x.Id == int.Parse(matchupModelTextId)));
+                }
+            }
 
             output.Add(tm);
         }
