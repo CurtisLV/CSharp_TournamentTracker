@@ -260,7 +260,7 @@ public static class TextConnectorProcessor
             );
         }
 
-        File.WriteAllLines(GlobalConfig.MatchupEntryFile.FullFilePath(), lines);
+        File.WriteAllLines(GlobalConfig.MatchupFile.FullFilePath(), lines);
     }
 
     private static string ConvertMatchupEntryListToString(List<MatchupEntryModel> prizes)
