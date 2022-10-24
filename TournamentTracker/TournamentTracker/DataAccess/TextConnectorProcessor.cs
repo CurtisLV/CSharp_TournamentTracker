@@ -284,7 +284,7 @@ public static class TextConnectorProcessor
                 winner = m.Winner.Id.ToString();
             }
             lines.Add(
-                $"{m.Id},{ConvertMatchupEntryListToString(m.Entries)},{winner},{m.MatchupRound}"
+                $"{m.Id},{""},{winner},{m.MatchupRound}"
             );
         }
 
