@@ -267,29 +267,13 @@ public static class TextConnectorProcessor
 
         matchup.Id = currentId;
 
-        // save to file
-        List<string> lines = new List<string>();
-        foreach (MatchupModel m in matchups)
-        {
-            string winner = "";
-            if (m.Winner.Id != null)
-            {
-                winner = m.Winner.Id.ToString();
-            }
-            lines.Add(
-                $"{m.Id},{""},{winner},{m.MatchupRound}"
-            );
-        }
-
-        File.WriteAllLines(GlobalConfig.MatchupFile.FullFilePath(), lines);
-
         foreach (MatchupEntryModel entry in matchup.Entries)
         {
             entry.SaveEntryToFile(matchupEntryFile);
         }
 
         // save to file
-        lines = new List<string>();
+        List<string> lines = new List<string>();
         foreach (MatchupModel m in matchups)
         {
             string winner = "";
