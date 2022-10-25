@@ -358,9 +358,14 @@ public static class TextConnectorProcessor
         {
             foreach (string entry in entries)
             {
-                //
+                string[] columns = entry.Split(',');
+                if (columns[0] == id)
+                {
+                    matchingEntries.Add(entry);
+                }
             }
         }
+        output = matchingEntries.ConvertToMatchupEntryModels();
 
         return output;
     }
