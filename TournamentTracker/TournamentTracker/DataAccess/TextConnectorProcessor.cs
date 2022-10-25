@@ -23,6 +23,7 @@ public static class TextConnectorProcessor
         {
             return new List<string>();
         }
+        .
         return File.ReadAllLines(file).ToList();
     }
 
@@ -269,27 +270,13 @@ public static class TextConnectorProcessor
 
         matchups.Add(matchup);
 
-        // save to file
-        List<string> lines = new List<string>();
-        foreach (MatchupModel m in matchups)
-        {
-            string winner = "";
-            if (m.Winner != null)
-            {
-                winner = m.Winner.Id.ToString();
-            }
-            lines.Add($"{m.Id},{""},{winner},{m.MatchupRound}");
-        }
-
-        File.WriteAllLines(GlobalConfig.MatchupFile.FullFilePath(), lines);
-
         foreach (MatchupEntryModel entry in matchup.Entries)
         {
             entry.SaveEntryToFile(matchupEntryFile);
         }
 
         // save to file
-        lines = new List<string>();
+        List<string> lines = new List<string>();
         foreach (MatchupModel m in matchups)
         {
             string winner = "";
