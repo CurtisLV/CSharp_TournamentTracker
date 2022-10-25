@@ -408,7 +408,15 @@ public static class TextConnectorProcessor
 
             p.Id = int.Parse(columns[0]);
             p.Entries = ConvertStringToMatchupEntryModels(columns[1]); // List<MatchupEntryModel>
-            p.Winner = LookupTeamById(int.Parse(columns[2])); // TeamModel
+            if (columns[2].Length == 0)
+            {
+                p.Winner = null;
+            }
+            else
+            {
+                p.Winner = LookupTeamById(int.Parse(columns[2]));
+            }
+
             p.MatchupRound = int.Parse(columns[3]);
 
             output.Add(p);
