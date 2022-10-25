@@ -23,7 +23,7 @@ public static class TextConnectorProcessor
         {
             return new List<string>();
         }
-        .
+
         return File.ReadAllLines(file).ToList();
     }
 
