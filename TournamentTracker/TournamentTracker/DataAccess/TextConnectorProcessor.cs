@@ -349,9 +349,7 @@ public static class TextConnectorProcessor
     {
         string[] ids = input.Split('|');
         List<MatchupEntryModel> output = new List<MatchupEntryModel>();
-
         List<string> entries = GlobalConfig.MatchupEntryFile.FullFilePath().LoadFile();
-
         List<string> matchingEntries = new List<string>();
 
         foreach (string id in ids)
@@ -366,18 +364,26 @@ public static class TextConnectorProcessor
             }
         }
         output = matchingEntries.ConvertToMatchupEntryModels();
-
         return output;
     }
 
     private static TeamModel LookupTeamById(int id)
     {
-        List<TeamModel> teams = GlobalConfig.TeamFile
-            .FullFilePath()
-            .LoadFile()
-            .ConvertToTeamModels(GlobalConfig.PeopleFile);
+        List<string> teams = GlobalConfig.TeamFile.FullFilePath().LoadFile();
+        //.ConvertToTeamModels(GlobalConfig.PeopleFile);
 
-        return teams.First(x => x.Id == id);
+
+        foreach (string team in teams)
+        {
+            string[] columns = team.Split(',');
+            if (columns[0] == id.ToString())
+            {
+                List<string> matchingTeams = new List<string>();
+                matchingTeams.Add(team);
+                return matchingTeams.ConvertToTeamModels(GlobalConfig.PeopleFile).First();
+            }
+        }
+        return null;
     }
 
     private static MatchupModel LookupMatchupById(int id)
