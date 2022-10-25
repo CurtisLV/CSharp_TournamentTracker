@@ -350,14 +350,16 @@ public static class TextConnectorProcessor
         string[] ids = input.Split('|');
         List<MatchupEntryModel> output = new List<MatchupEntryModel>();
 
-        List<MatchupEntryModel> entries = GlobalConfig.MatchupEntryFile
-            .FullFilePath()
-            .LoadFile()
-            .ConvertToMatchupEntryModels();
+        List<string> entries = GlobalConfig.MatchupEntryFile.FullFilePath().LoadFile();
+
+        List<string> matchingEntries = new List<string>();
 
         foreach (string id in ids)
         {
-            output.Add(entries.First(x => x.Id == int.Parse(id)));
+            foreach (string entry in entries)
+            {
+                //
+            }
         }
 
         return output;
