@@ -388,11 +388,19 @@ public static class TextConnectorProcessor
 
     private static MatchupModel LookupMatchupById(int id)
     {
-        List<MatchupModel> matchups = GlobalConfig.MatchupFile
-            .FullFilePath()
-            .LoadFile()
-            .ConvertToMatchupModels();
-        return matchups.First(x => x.Id == id);
+        List<string> matchups = GlobalConfig.MatchupFile.FullFilePath().LoadFile();
+
+        foreach (string matchup in matchups)
+        {
+            string[] columns = matchup.Split(',');
+            if (columns[0] == id.ToString())
+            {
+                List<string> matchingMatchups = new List<string>();
+                matchingMatchups.Add(matchup);
+                return matchingMatchups.ConvertToMatchupModels().First();
+            }
+        }
+        return null;
     }
 
     public static List<MatchupModel> ConvertToMatchupModels(this List<string> lines)
