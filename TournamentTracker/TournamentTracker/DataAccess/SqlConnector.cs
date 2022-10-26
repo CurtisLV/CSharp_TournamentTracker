@@ -265,10 +265,25 @@ public class SqlConnector : IDataConnection
 
             foreach (TournamentModel t in output)
             {
-                //
+                // Populate prizes
+                t.Prizes = connection.Query<PrizeModel>("dbo.spPrizes_GetByTournament").ToList();
+                // Populate teams
+                t.EnteredTeams = connection.Query<TeamModel>("dbo.spTeam_GetByTournament").ToList();
+
+                foreach (TeamModel team in t.EnteredTeams)
+                {
+                    var p = new DynamicParameters();
+                    p.Add("@TeamId", team.Id);
+                    team.TeamMembers = connection
+                        .Query<PersonModel>(
+                            "dbo.spTeamMembers_GetByTeam",
+                            p,
+                            commandType: CommandType.StoredProcedure
+                        )
+                        .ToList();
+                }
             }
 
-            // Populate prizes
             // Populate teams
             // Populate rounds
         }
