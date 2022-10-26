@@ -251,4 +251,18 @@ public class SqlConnector : IDataConnection
         }
         return output;
     }
+
+    public List<TournamentModel> GetTournament_All()
+    {
+        List<TournamentModel> output;
+        using (
+            IDbConnection connection = new System.Data.SqlClient.SqlConnection(
+                GlobalConfig.ConnectionString(db)
+            )
+        )
+        {
+            output = connection.Query<TournamentModel>("dbo.spPeople_GetAll").ToList();
+        }
+        return output;
+    }
 }
