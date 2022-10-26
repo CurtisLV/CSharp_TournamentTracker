@@ -282,10 +282,9 @@ public class SqlConnector : IDataConnection
                         )
                         .ToList();
                 }
-            }
+                // Populate rounds
 
-            // Populate teams
-            // Populate rounds
+            }
         }
         return output;
     }
