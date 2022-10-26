@@ -261,7 +261,16 @@ public class SqlConnector : IDataConnection
             )
         )
         {
-            output = connection.Query<TournamentModel>("dbo.spPeople_GetAll").ToList();
+            output = connection.Query<TournamentModel>("dbo.spTournaments_GetAll").ToList();
+
+            foreach (TournamentModel t in output)
+            {
+                //
+            }
+
+            // Populate prizes
+            // Populate teams
+            // Populate rounds
         }
         return output;
     }
