@@ -305,6 +305,23 @@ public class SqlConnector : IDataConnection
                             commandType: CommandType.StoredProcedure
                         )
                         .ToList();
+
+                    //Populate each entry 2models
+                    // Populate each matchup 1 model
+
+                    List<TeamModel> allTeams = GetTeam_All();
+                    foreach (var me in m.Entries)
+                    {
+                        if (me.TeamCompetingId > 0)
+                        {
+                            me.TeamCompeting = allTeams.First(x => x.Id == me.TeamCompetingId);
+                        }
+
+                        if (me.ParentMatchupId > 0)
+                        {
+                            me.ParentMatchup = allTeams.First(x => x.Id == me.ParentMatchupId);
+                        }
+                    }
                 }
             }
         }
