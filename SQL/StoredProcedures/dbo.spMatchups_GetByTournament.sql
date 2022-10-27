@@ -4,9 +4,8 @@ AS
 BEGIN
 	SET NOCOUNT ON;
 
-	select m.*, t.TeamName
+	select m.*
 	from dbo.Matchups m
-	left join dbo.Teams t on m.WinnerId = t.id
 	where m.TournamentId = @TournamentId;
 END
 GO
