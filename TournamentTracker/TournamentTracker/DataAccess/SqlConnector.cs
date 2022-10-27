@@ -255,21 +255,37 @@ public class SqlConnector : IDataConnection
     public List<TournamentModel> GetTournament_All()
     {
         List<TournamentModel> output;
+        var p = new DynamicParameters();
         using (
             IDbConnection connection = new System.Data.SqlClient.SqlConnection(
                 GlobalConfig.ConnectionString(db)
             )
         )
         {
-            var p = new DynamicParameters();
             output = connection.Query<TournamentModel>("dbo.spTournaments_GetAll").ToList();
 
             foreach (TournamentModel t in output)
             {
+                p = new DynamicParameters();
+                p.Add("@TournamentId", t.Id);
                 // Populate prizes
-                t.Prizes = connection.Query<PrizeModel>("dbo.spPrizes_GetByTournament").ToList();
+                t.Prizes = connection
+                    .Query<PrizeModel>(
+                        "dbo.spPrizes_GetByTournament",
+                        p,
+                        commandType: CommandType.StoredProcedure
+                    )
+                    .ToList();
                 // Populate teams
-                t.EnteredTeams = connection.Query<TeamModel>("dbo.spTeam_GetByTournament").ToList();
+                p = new DynamicParameters();
+                p.Add("@TournamentId", t.Id);
+                t.EnteredTeams = connection
+                    .Query<TeamModel>(
+                        "dbo.spTeam_GetByTournament",
+                        p,
+                        commandType: CommandType.StoredProcedure
+                    )
+                    .ToList();
 
                 foreach (TeamModel team in t.EnteredTeams)
                 {
