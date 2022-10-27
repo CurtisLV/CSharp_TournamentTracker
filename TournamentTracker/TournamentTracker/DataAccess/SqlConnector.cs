@@ -261,6 +261,7 @@ public class SqlConnector : IDataConnection
             )
         )
         {
+            var p = new DynamicParameters();
             output = connection.Query<TournamentModel>("dbo.spTournaments_GetAll").ToList();
 
             foreach (TournamentModel t in output)
@@ -272,7 +273,7 @@ public class SqlConnector : IDataConnection
 
                 foreach (TeamModel team in t.EnteredTeams)
                 {
-                    var p = new DynamicParameters();
+                    p = new DynamicParameters();
                     p.Add("@TeamId", team.Id);
                     team.TeamMembers = connection
                         .Query<PersonModel>(
@@ -284,7 +285,7 @@ public class SqlConnector : IDataConnection
                 }
                 // Populate rounds spMatchups_GetByTournament
 
-                var p = new DynamicParameters();
+                p = new DynamicParameters();
                 p.Add("@TournamentId", t.Id);
                 List<MatchupModel> matchups = connection
                     .Query<MatchupModel>(
@@ -310,6 +311,12 @@ public class SqlConnector : IDataConnection
                     // Populate each matchup 1 model
 
                     List<TeamModel> allTeams = GetTeam_All();
+
+                    if (m.WinnerId > 0)
+                    {
+                        m.Winner = allTeams.First(x => x.Id == m.WinnerId);
+                    }
+
                     foreach (var me in m.Entries)
                     {
                         if (me.TeamCompetingId > 0)
