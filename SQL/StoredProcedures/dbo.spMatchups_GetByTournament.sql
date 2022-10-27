@@ -6,6 +6,7 @@ BEGIN
 
 	select m.*
 	from dbo.Matchups m
-	where m.TournamentId = @TournamentId;
+	where m.TournamentId = @TournamentId
+	order by MatchupRound;
 END
 GO

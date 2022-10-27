@@ -319,7 +319,7 @@ public class SqlConnector : IDataConnection
 
                         if (me.ParentMatchupId > 0)
                         {
-                            me.ParentMatchup = allTeams.First(x => x.Id == me.ParentMatchupId);
+                            me.ParentMatchup = matchups.First(x => x.Id == me.ParentMatchupId);
                         }
                     }
                 }
