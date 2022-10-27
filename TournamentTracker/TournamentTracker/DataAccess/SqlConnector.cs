@@ -283,6 +283,29 @@ public class SqlConnector : IDataConnection
                         .ToList();
                 }
                 // Populate rounds spMatchups_GetByTournament
+
+                var p = new DynamicParameters();
+                p.Add("@TournamentId", t.Id);
+                List<MatchupModel> matchups = connection
+                    .Query<MatchupModel>(
+                        "dbo.spMatchups_GetByTournament",
+                        p,
+                        commandType: CommandType.StoredProcedure
+                    )
+                    .ToList();
+
+                foreach (MatchupModel m in matchups)
+                {
+                    p = new DynamicParameters();
+                    p.Add("@MatchupId", m.Id);
+                    m.Entries = connection
+                        .Query<MatchupEntryModel>(
+                            "dbo.spMatchups_GetByTournament",
+                            p,
+                            commandType: CommandType.StoredProcedure
+                        )
+                        .ToList();
+                }
             }
         }
         return output;

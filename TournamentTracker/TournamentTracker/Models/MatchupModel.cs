@@ -16,6 +16,11 @@ public class MatchupModel
     public List<MatchupEntryModel> Entries { get; set; } = new List<MatchupEntryModel>();
 
     /// <summary>
+    /// The ID from Db that will be used to identify the winner
+    /// </summary>
+    public int WinnerId { get; set; }
+
+    /// <summary>
     /// Match winner
     /// </summary>
     public TeamModel Winner { get; set; }
