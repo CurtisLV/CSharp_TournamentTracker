@@ -339,8 +339,12 @@ public class SqlConnector : IDataConnection
                     if (m.MatchupRound > currRound)
                     {
                         t.Rounds.Add(currRow);
+                        currRow = new List<MatchupModel>();
+                        currRound++;
                     }
+                    currRow.Add(m);
                 }
+                t.Rounds.Add(currRow);
             }
         }
         return output;
