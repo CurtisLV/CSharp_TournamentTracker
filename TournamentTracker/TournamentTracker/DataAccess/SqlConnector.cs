@@ -330,6 +330,17 @@ public class SqlConnector : IDataConnection
                         }
                     }
                 }
+
+                // List<List<<MatchupModel>>
+                List<MatchupModel> currRow = new List<MatchupModel>();
+                int currRound = 1;
+                foreach (MatchupModel m in matchups)
+                {
+                    if (m.MatchupRound > currRound)
+                    {
+                        t.Rounds.Add(currRow);
+                    }
+                }
             }
         }
         return output;
