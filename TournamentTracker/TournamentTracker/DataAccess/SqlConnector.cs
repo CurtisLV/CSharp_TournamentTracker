@@ -300,7 +300,7 @@ public class SqlConnector : IDataConnection
                     p.Add("@MatchupId", m.Id);
                     m.Entries = connection
                         .Query<MatchupEntryModel>(
-                            "dbo.spMatchups_GetByTournament",
+                            "dbo.spMatchupEntries_GetByMatchup",
                             p,
                             commandType: CommandType.StoredProcedure
                         )
