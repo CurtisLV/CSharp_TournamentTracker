@@ -85,11 +85,6 @@ namespace TrackerUI
                 return;
             }
 
-            teamOneName.Text = "";
-            teamOneScoreValue.Text = "";
-            teamTwoName.Text = "";
-            teamTwoScoreValue.Text = "";
-
             MatchupModel m = (MatchupModel)matchupListBox.SelectedItem;
 
             for (int i = 0; i < m.Entries.Count; i++)
@@ -100,6 +95,8 @@ namespace TrackerUI
                     {
                         teamOneName.Text = m.Entries[0].TeamCompeting.TeamName;
                         teamOneScoreValue.Text = m.Entries[0].Score.ToString();
+                        teamTwoName.Text = "Not Yet Set";
+                        teamTwoScoreValue.Text = "";
                     }
                     else
                     {
