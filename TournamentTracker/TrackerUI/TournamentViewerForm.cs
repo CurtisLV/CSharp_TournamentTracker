@@ -13,6 +13,7 @@ namespace TrackerUI
             tournament = tournamentModel;
 
             LoadFormData();
+            LoadRounds();
         }
 
         private void LoadFormData()
@@ -20,8 +21,16 @@ namespace TrackerUI
             tournamentName.Text = tournament.TournamentName;
         }
 
+        private void WireUpLists()
+        {
+            roundDropDown.DataSource = null;
+            roundDropDown.DataSource = rounds;
+        }
+
         private void LoadRounds()
         {
+            rounds = new List<int>();
+
             rounds.Add(1);
             int currRound = 1;
 
@@ -31,9 +40,10 @@ namespace TrackerUI
                 {
                     currRound = matchups.First().MatchupRound;
                     rounds.Add(currRound);
-                    
                 }
             }
+
+            WireUpLists();
         }
     }
 }
