@@ -62,10 +62,6 @@ namespace TrackerUI
 
         private void LoadMatchups()
         {
-            if (roundDropDown.SelectedItem == null)
-            {
-                return;
-            }
             int round = (int)roundDropDown.SelectedItem;
             foreach (List<MatchupModel> matchups in tournament.Rounds)
             {
@@ -95,8 +91,8 @@ namespace TrackerUI
                     {
                         teamOneName.Text = m.Entries[0].TeamCompeting.TeamName;
                         teamOneScoreValue.Text = m.Entries[0].Score.ToString();
-                        teamTwoName.Text = "Not Yet Set";
-                        teamTwoScoreValue.Text = "";
+                        teamTwoName.Text = "<bye>";
+                        teamTwoScoreValue.Text = "0";
                     }
                     else
                     {
