@@ -80,6 +80,16 @@ namespace TrackerUI
 
         private void LoadMatchup()
         {
+            if (matchupListBox.SelectedItem == null)
+            {
+                return;
+            }
+
+            teamOneName.Text = "";
+            teamOneScoreValue.Text = "";
+            teamTwoName.Text = "";
+            teamTwoScoreValue.Text = "";
+
             MatchupModel m = (MatchupModel)matchupListBox.SelectedItem;
 
             for (int i = 0; i < m.Entries.Count; i++)
@@ -115,7 +125,7 @@ namespace TrackerUI
 
         private void matchupListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //
+            LoadMatchup();
         }
     }
 }
