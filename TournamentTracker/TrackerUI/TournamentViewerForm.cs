@@ -59,6 +59,10 @@ namespace TrackerUI
 
         private void LoadMatchups()
         {
+            if (roundDropDown.SelectedItem == null)
+            {
+                return;
+            }
             int round = (int)roundDropDown.SelectedItem;
             foreach (List<MatchupModel> matchups in tournament.Rounds)
             {
