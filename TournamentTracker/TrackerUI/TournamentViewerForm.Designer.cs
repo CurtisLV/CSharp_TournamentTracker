@@ -54,7 +54,6 @@
             this.headerLabel.Size = new System.Drawing.Size(271, 62);
             this.headerLabel.TabIndex = 0;
             this.headerLabel.Text = "Tournament:";
-            this.headerLabel.Click += new System.EventHandler(this.label1_Click);
             // 
             // tournamentName
             // 
@@ -75,7 +74,6 @@
             this.roundLabel.Size = new System.Drawing.Size(117, 46);
             this.roundLabel.TabIndex = 2;
             this.roundLabel.Text = "Round";
-            this.roundLabel.Click += new System.EventHandler(this.label1_Click_1);
             // 
             // roundDropDown
             // 
