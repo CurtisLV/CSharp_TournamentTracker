@@ -40,7 +40,7 @@
             this.teamOneScoreValue = new System.Windows.Forms.TextBox();
             this.teamTwoScoreValue = new System.Windows.Forms.TextBox();
             this.teamTwoScoreLabel = new System.Windows.Forms.Label();
-            this.teamTwoLabel = new System.Windows.Forms.Label();
+            this.teamTwoName = new System.Windows.Forms.Label();
             this.versusLabel = new System.Windows.Forms.Label();
             this.scoreButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -150,15 +150,15 @@
             this.teamTwoScoreLabel.TabIndex = 10;
             this.teamTwoScoreLabel.Text = "Score";
             // 
-            // teamTwoLabel
+            // teamTwoName
             // 
-            this.teamTwoLabel.AutoSize = true;
-            this.teamTwoLabel.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.teamTwoLabel.Location = new System.Drawing.Point(463, 499);
-            this.teamTwoLabel.Name = "teamTwoLabel";
-            this.teamTwoLabel.Size = new System.Drawing.Size(202, 45);
-            this.teamTwoLabel.TabIndex = 9;
-            this.teamTwoLabel.Text = "<team two>";
+            this.teamTwoName.AutoSize = true;
+            this.teamTwoName.Font = new System.Drawing.Font("Segoe UI", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.teamTwoName.Location = new System.Drawing.Point(463, 499);
+            this.teamTwoName.Name = "teamTwoName";
+            this.teamTwoName.Size = new System.Drawing.Size(202, 45);
+            this.teamTwoName.TabIndex = 9;
+            this.teamTwoName.Text = "<team two>";
             // 
             // versusLabel
             // 
@@ -194,7 +194,7 @@
             this.Controls.Add(this.versusLabel);
             this.Controls.Add(this.teamTwoScoreValue);
             this.Controls.Add(this.teamTwoScoreLabel);
-            this.Controls.Add(this.teamTwoLabel);
+            this.Controls.Add(this.teamTwoName);
             this.Controls.Add(this.teamOneScoreValue);
             this.Controls.Add(this.teamOneScoreLabel);
             this.Controls.Add(this.teamOneName);
@@ -228,7 +228,7 @@
         private TextBox teamOneScoreValue;
         private TextBox teamTwoScoreValue;
         private Label teamTwoScoreLabel;
-        private Label teamTwoLabel;
+        private Label teamTwoName;
         private Label versusLabel;
         private Button scoreButton;
     }
