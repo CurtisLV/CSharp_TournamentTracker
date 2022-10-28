@@ -30,7 +30,7 @@ namespace TrackerUI
             matchupListBox.DataSource = null;
             matchupListBox.DataSource = selectMatchups;
 
-            matchupListBox.DisplayMember = "";
+            matchupListBox.DisplayMember = "DisplayName";
         }
 
         private void LoadRounds()
