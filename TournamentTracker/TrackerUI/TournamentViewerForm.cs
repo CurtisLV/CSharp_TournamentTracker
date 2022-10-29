@@ -142,8 +142,6 @@ namespace TrackerUI
                 {
                     if (m.Entries[0].TeamCompeting != null)
                     {
-                        teamOneName.Text = m.Entries[0].TeamCompeting.TeamName;
-
                         bool scoreValid = double.TryParse(
                             teamOneScoreValue.Text,
                             out double scoreVal
@@ -151,7 +149,7 @@ namespace TrackerUI
 
                         if (scoreValid)
                         {
-                            m.Entries[0].Score = double.Parse(teamOneScoreValue.Text);
+                            m.Entries[0].Score = scoreVal;
                         }
                         else
                         {
@@ -164,13 +162,21 @@ namespace TrackerUI
                 {
                     if (m.Entries[1].TeamCompeting != null)
                     {
-                        teamTwoName.Text = m.Entries[1].TeamCompeting.TeamName;
-                        m.Entries[1].Score = double.Parse(teamTwoScoreValue.Text);
-                    }
-                    else
-                    {
-                        teamTwoName.Text = "Not Yet Set";
-                        teamTwoScoreValue.Text = "";
+
+                        bool scoreValid = double.TryParse(
+                            teamTwoScoreValue.Text,
+                            out double scoreVal
+                        );
+
+                        if (scoreValid)
+                        {
+                            m.Entries[1].Score = scoreVal;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please enter a valid score for team 2!");
+                            return;
+                        }
                     }
                 }
             }
