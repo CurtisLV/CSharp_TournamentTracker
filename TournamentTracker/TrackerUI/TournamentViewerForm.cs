@@ -135,6 +135,8 @@ namespace TrackerUI
         private void scoreButton_Click(object sender, EventArgs e)
         {
             MatchupModel m = (MatchupModel)matchupListBox.SelectedItem;
+            double teamOneScore = 0;
+            double teamTwoScore = 0;
 
             for (int i = 0; i < m.Entries.Count; i++)
             {
@@ -142,14 +144,11 @@ namespace TrackerUI
                 {
                     if (m.Entries[0].TeamCompeting != null)
                     {
-                        bool scoreValid = double.TryParse(
-                            teamOneScoreValue.Text,
-                            out double scoreVal
-                        );
+                        bool scoreValid = double.TryParse(teamOneScoreValue.Text, out teamOneScore);
 
                         if (scoreValid)
                         {
-                            m.Entries[0].Score = scoreVal;
+                            m.Entries[0].Score = teamOneScore;
                         }
                         else
                         {
@@ -162,15 +161,11 @@ namespace TrackerUI
                 {
                     if (m.Entries[1].TeamCompeting != null)
                     {
-
-                        bool scoreValid = double.TryParse(
-                            teamTwoScoreValue.Text,
-                            out double scoreVal
-                        );
+                        bool scoreValid = double.TryParse(teamTwoScoreValue.Text, out teamTwoScore);
 
                         if (scoreValid)
                         {
-                            m.Entries[1].Score = scoreVal;
+                            m.Entries[1].Score = teamTwoScore;
                         }
                         else
                         {
@@ -179,6 +174,20 @@ namespace TrackerUI
                         }
                     }
                 }
+            }
+            if (teamOneScore > teamTwoScore)
+            {
+                // Team one wins
+                m.Winner = m.Entries[0].TeamCompeting;
+            }
+            else if (teamOneScore < teamTwoScore)
+            {
+                // Team two wins
+                m.Winner = m.Entries[1].TeamCompeting;
+            } else
+            {
+                MessageBox.Show("I do not handle tie games!");
+
             }
         }
     }
