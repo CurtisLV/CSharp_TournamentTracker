@@ -386,6 +386,25 @@ public class SqlConnector : IDataConnection
                 p,
                 commandType: CommandType.StoredProcedure
             );
+
+            // dbo.spMatchupEntries_Update
+            //            @id int,
+            //@TeamCompetingId int = null,
+            //@Score float = null
+
+            foreach (MatchupEntryModel me in model.Entries)
+            {
+                p = new DynamicParameters();
+                p.Add("@id", me.Id);
+                p.Add("@TeamCompetingId", me.TeamCompeting.Id);
+                p.Add("@Score", me.Score);
+
+                connection.Execute(
+                    "dbo.spMatchupEntries_Update",
+                    p,
+                    commandType: CommandType.StoredProcedure
+                );
+            }
         }
     }
 }
