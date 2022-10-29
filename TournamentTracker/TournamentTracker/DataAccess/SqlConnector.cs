@@ -365,4 +365,9 @@ public class SqlConnector : IDataConnection
         }
         return output;
     }
+
+    public void UpdateMatchup(MatchupModel model)
+    {
+        //
+    }
 }

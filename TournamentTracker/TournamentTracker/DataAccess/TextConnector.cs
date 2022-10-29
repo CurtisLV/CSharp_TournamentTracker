@@ -113,4 +113,9 @@ public class TextConnector : IDataConnection
             .LoadFile()
             .ConvertToTournamentModels(TeamFile, PeopleFile, PrizesFile);
     }
+
+    public void UpdateMatchup(MatchupModel model)
+    {
+        throw new NotImplementedException();
+    }
 }
