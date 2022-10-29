@@ -368,6 +368,24 @@ public class SqlConnector : IDataConnection
 
     public void UpdateMatchup(MatchupModel model)
     {
-        //
+        // dbo.spMatchups_Update
+        // @id int,
+        //@WinnerId int
+        using (
+            IDbConnection connection = new System.Data.SqlClient.SqlConnection(
+                GlobalConfig.ConnectionString(db)
+            )
+        )
+        {
+            var p = new DynamicParameters();
+            p.Add("@id", model.Id);
+            p.Add("@WinnerId", model.Winner.Id);
+
+            connection.Execute(
+                "dbo.spMatchups_Update",
+                p,
+                commandType: CommandType.StoredProcedure
+            );
+        }
     }
 }
