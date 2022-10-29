@@ -131,5 +131,49 @@ namespace TrackerUI
         {
             LoadMatchups((int)roundDropDown.SelectedItem);
         }
+
+        private void scoreButton_Click(object sender, EventArgs e)
+        {
+            MatchupModel m = (MatchupModel)matchupListBox.SelectedItem;
+
+            for (int i = 0; i < m.Entries.Count; i++)
+            {
+                if (i == 0)
+                {
+                    if (m.Entries[0].TeamCompeting != null)
+                    {
+                        teamOneName.Text = m.Entries[0].TeamCompeting.TeamName;
+
+                        bool scoreValid = double.TryParse(
+                            teamOneScoreValue.Text,
+                            out double scoreVal
+                        );
+
+                        if (scoreValid)
+                        {
+                            m.Entries[0].Score = double.Parse(teamOneScoreValue.Text);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please enter a valid score for team 1!");
+                            return;
+                        }
+                    }
+                }
+                if (i == 1)
+                {
+                    if (m.Entries[1].TeamCompeting != null)
+                    {
+                        teamTwoName.Text = m.Entries[1].TeamCompeting.TeamName;
+                        m.Entries[1].Score = double.Parse(teamTwoScoreValue.Text);
+                    }
+                    else
+                    {
+                        teamTwoName.Text = "Not Yet Set";
+                        teamTwoScoreValue.Text = "";
+                    }
+                }
+            }
+        }
     }
 }
