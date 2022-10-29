@@ -6,7 +6,7 @@ namespace TrackerUI
     {
         private TournamentModel tournament;
         List<int> rounds = new List<int>();
-        List<MatchupModel> selectMatchups = new List<MatchupModel>();
+        List<MatchupModel> selectedMatchups = new List<MatchupModel>();
 
         public TournamentViewerForm(TournamentModel tournamentModel)
         {
@@ -31,7 +31,7 @@ namespace TrackerUI
         private void WireUpMatchupsLists()
         {
             matchupListBox.DataSource = null;
-            matchupListBox.DataSource = selectMatchups;
+            matchupListBox.DataSource = selectedMatchups;
 
             matchupListBox.DisplayMember = "DisplayName";
         }
@@ -66,7 +66,14 @@ namespace TrackerUI
             {
                 if (matchups.First().MatchupRound == round)
                 {
-                    selectMatchups = matchups;
+                    if (unplayedOnlyCheckBox.Checked)
+                    {
+                        selectedMatchups = matchups.Where(mu => mu.Winner == null).ToList();
+                    }
+                    else
+                    {
+                        selectedMatchups = matchups;
+                    }
                 }
             }
 
