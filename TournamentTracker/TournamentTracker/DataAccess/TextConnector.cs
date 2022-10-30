@@ -116,6 +116,6 @@ public class TextConnector : IDataConnection
 
     public void UpdateMatchup(MatchupModel model)
     {
-        throw new NotImplementedException();
+        model.UpdateMatchupToFile();
     }
 }

@@ -317,7 +317,7 @@ public static class TextConnectorProcessor
 
         foreach (MatchupEntryModel entry in matchup.Entries)
         {
-            entry.UpdateEntryToFile(matchupEntryFile);
+            entry.UpdateEntryToFile();
         }
 
         // save to file
@@ -390,7 +390,7 @@ public static class TextConnectorProcessor
         File.WriteAllLines(GlobalConfig.MatchupEntryFile.FullFilePath(), lines);
     }
 
-    public static void UpdateEntryToFile(this MatchupEntryModel entry, string matchupEntryFile)
+    public static void UpdateEntryToFile(this MatchupEntryModel entry)
     {
         List<MatchupEntryModel> entries = GlobalConfig.MatchupEntryFile
             .FullFilePath()
