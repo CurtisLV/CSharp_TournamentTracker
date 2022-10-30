@@ -397,12 +397,17 @@ public static class TextConnectorProcessor
             .LoadFile()
             .ConvertToMatchupEntryModels();
 
-        int currentId = 1;
-        if (entries.Count > 0)
+        MatchupEntryModel oldEntry = new MatchupEntryModel();
+
+        foreach (MatchupEntryModel e in entries)
         {
-            currentId = entries.OrderByDescending(x => x.Id).First().Id + 1;
+            if (e.Id == entry.Id)
+            {
+                oldEntry = e;
+            }
         }
-        entry.Id = currentId;
+        entries.Remove(oldEntry);
+
         entries.Add(entry);
 
         // save to file
