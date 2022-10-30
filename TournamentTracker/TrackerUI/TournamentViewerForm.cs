@@ -207,8 +207,16 @@ namespace TrackerUI
             {
                 MessageBox.Show("I do not handle tie games!");
             }
-            LoadMatchups((int)roundDropDown.SelectedItem);
 
+            foreach (List<MatchupModel> round in tournament.Rounds)
+            {
+                foreach (MatchupModel rm in round)
+                {
+                    //
+                }
+            }
+
+            LoadMatchups((int)roundDropDown.SelectedItem);
             GlobalConfig.Connection.UpdateMatchup(m);
         }
     }
