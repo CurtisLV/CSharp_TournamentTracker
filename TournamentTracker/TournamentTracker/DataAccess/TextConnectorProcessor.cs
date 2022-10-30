@@ -297,17 +297,17 @@ public static class TextConnectorProcessor
     public static void UpdateMatchupToFile(this MatchupModel matchup)
     {
         List<MatchupModel> matchups = GlobalConfig.MatchupFile
-    .FullFilePath()
-    .LoadFile()
-    .ConvertToMatchupModels();
+            .FullFilePath()
+            .LoadFile()
+            .ConvertToMatchupModels();
 
-        int currentId = 1;
-        if (matchups.Count > 0)
+        foreach (MatchupModel m in matchups)
         {
-            currentId = matchups.OrderByDescending(x => x.Id).First().Id + 1;
+            if (m.Id == matchup.Id)
+            {
+                matchups.Remove(m);
+            }
         }
-
-        matchup.Id = currentId;
 
         matchups.Add(matchup);
 
