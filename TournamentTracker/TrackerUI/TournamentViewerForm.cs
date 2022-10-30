@@ -214,10 +214,13 @@ namespace TrackerUI
                 {
                     foreach (MatchupEntryModel me in rm.Entries)
                     {
-                        if (me.ParentMatchup.Id == m.Id)
+                        if (me.ParentMatchup != null)
                         {
-                            me.TeamCompeting = m.Winner;
-                            GlobalConfig.Connection.UpdateMatchup(rm);
+                            if (me.ParentMatchup.Id == m.Id)
+                            {
+                                me.TeamCompeting = m.Winner;
+                                GlobalConfig.Connection.UpdateMatchup(rm);
+                            } 
                         }
                     }
                 }
