@@ -317,7 +317,7 @@ public static class TextConnectorProcessor
 
         foreach (MatchupEntryModel entry in matchup.Entries)
         {
-            entry.SaveEntryToFile(matchupEntryFile);
+            entry.UpdateEntryToFile(matchupEntryFile);
         }
 
         // save to file
@@ -355,6 +355,42 @@ public static class TextConnectorProcessor
     }
 
     public static void SaveEntryToFile(this MatchupEntryModel entry, string matchupEntryFile)
+    {
+        List<MatchupEntryModel> entries = GlobalConfig.MatchupEntryFile
+            .FullFilePath()
+            .LoadFile()
+            .ConvertToMatchupEntryModels();
+
+        int currentId = 1;
+        if (entries.Count > 0)
+        {
+            currentId = entries.OrderByDescending(x => x.Id).First().Id + 1;
+        }
+        entry.Id = currentId;
+        entries.Add(entry);
+
+        // save to file
+        List<string> lines = new List<string>();
+
+        foreach (MatchupEntryModel e in entries)
+        {
+            string parent = "";
+            if (e.ParentMatchup != null)
+            {
+                parent = e.ParentMatchup.Id.ToString();
+            }
+
+            string teamCompeting = "";
+            if (e.TeamCompeting != null)
+            {
+                teamCompeting = e.TeamCompeting.Id.ToString();
+            }
+            lines.Add($"{e.Id},{teamCompeting},{e.Score},{parent}");
+        }
+        File.WriteAllLines(GlobalConfig.MatchupEntryFile.FullFilePath(), lines);
+    }
+
+    public static void UpdateEntryToFile(this MatchupEntryModel entry, string matchupEntryFile)
     {
         List<MatchupEntryModel> entries = GlobalConfig.MatchupEntryFile
             .FullFilePath()
