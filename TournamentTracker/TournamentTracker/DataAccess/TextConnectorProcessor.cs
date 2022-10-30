@@ -301,13 +301,17 @@ public static class TextConnectorProcessor
             .LoadFile()
             .ConvertToMatchupModels();
 
+        MatchupModel oldMatchup = new MatchupModel();
+
         foreach (MatchupModel m in matchups)
         {
             if (m.Id == matchup.Id)
             {
-                matchups.Remove(m);
+                oldMatchup = m;
             }
         }
+
+        matchups.Remove(oldMatchup);
 
         matchups.Add(matchup);
 
