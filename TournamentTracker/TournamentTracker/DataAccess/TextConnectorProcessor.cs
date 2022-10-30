@@ -294,6 +294,11 @@ public static class TextConnectorProcessor
         File.WriteAllLines(GlobalConfig.MatchupFile.FullFilePath(), lines);
     }
 
+    public static void UpdateMatchupToFile()
+    {
+        //
+    }
+
     private static string ConvertMatchupEntryListToString(List<MatchupEntryModel> prizes)
     {
         string output = "";
