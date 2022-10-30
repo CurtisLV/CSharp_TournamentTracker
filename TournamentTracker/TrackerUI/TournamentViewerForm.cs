@@ -212,7 +212,14 @@ namespace TrackerUI
             {
                 foreach (MatchupModel rm in round)
                 {
-                    //
+                    foreach (MatchupEntryModel me in rm.Entries)
+                    {
+                        if (me.ParentMatchup.Id == m.Id)
+                        {
+                            me.TeamCompeting = m.Winner;
+                            GlobalConfig.Connection.UpdateMatchup(rm);
+                        }
+                    }
                 }
             }
 
