@@ -294,9 +294,43 @@ public static class TextConnectorProcessor
         File.WriteAllLines(GlobalConfig.MatchupFile.FullFilePath(), lines);
     }
 
-    public static void UpdateMatchupToFile()
+    public static void UpdateMatchupToFile(this MatchupModel matchup)
     {
-        //
+        List<MatchupModel> matchups = GlobalConfig.MatchupFile
+    .FullFilePath()
+    .LoadFile()
+    .ConvertToMatchupModels();
+
+        int currentId = 1;
+        if (matchups.Count > 0)
+        {
+            currentId = matchups.OrderByDescending(x => x.Id).First().Id + 1;
+        }
+
+        matchup.Id = currentId;
+
+        matchups.Add(matchup);
+
+        foreach (MatchupEntryModel entry in matchup.Entries)
+        {
+            entry.SaveEntryToFile(matchupEntryFile);
+        }
+
+        // save to file
+        List<string> lines = new List<string>();
+        foreach (MatchupModel m in matchups)
+        {
+            string winner = "";
+            if (m.Winner != null)
+            {
+                winner = m.Winner.Id.ToString();
+            }
+            lines.Add(
+                $"{m.Id},{ConvertMatchupEntryListToString(m.Entries)},{winner},{m.MatchupRound}"
+            );
+        }
+
+        File.WriteAllLines(GlobalConfig.MatchupFile.FullFilePath(), lines);
     }
 
     private static string ConvertMatchupEntryListToString(List<MatchupEntryModel> prizes)
