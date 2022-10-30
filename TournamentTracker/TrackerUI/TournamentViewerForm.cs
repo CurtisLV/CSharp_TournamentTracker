@@ -220,7 +220,7 @@ namespace TrackerUI
                             {
                                 me.TeamCompeting = m.Winner;
                                 GlobalConfig.Connection.UpdateMatchup(rm);
-                            } 
+                            }
                         }
                     }
                 }
