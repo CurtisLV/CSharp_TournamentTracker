@@ -56,7 +56,7 @@ public partial class CreateTeamForm : Form
             p.EmailAddress = emailValue.Text;
             p.PhoneNumber = cellphoneValue.Text;
 
-            p = GlobalConfig.Connection.CreatePerson(p);
+            GlobalConfig.Connection.CreatePerson(p);
 
             selectedTeamMembers.Add(p);
             WireUpLists();
