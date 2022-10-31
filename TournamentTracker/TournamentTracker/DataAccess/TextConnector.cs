@@ -12,7 +12,7 @@ public class TextConnector : IDataConnection
     private const string MatchupFile = "MatchupModels.csv";
     private const string MatchupEntryFile = "MatchupEntryModels.csv";
 
-    public PersonModel CreatePerson(PersonModel model)
+    public void CreatePerson(PersonModel model)
     {
         List<PersonModel> persons = PeopleFile.FullFilePath().LoadFile().ConvertToPersonModel();
         int currentId = 1;
@@ -24,11 +24,9 @@ public class TextConnector : IDataConnection
         model.Id = currentId;
         persons.Add(model);
         persons.SaveToPeopleFile(PeopleFile);
-
-        return model;
     }
 
-    public PrizeModel CreatePrize(PrizeModel model)
+    public void CreatePrize(PrizeModel model)
     {
         // Load the text file
         // Convert the text to List<PrizeModel>
@@ -50,8 +48,6 @@ public class TextConnector : IDataConnection
         // Save the List<string> to the text file
 
         prizes.SaveToPrizeFile(PrizesFile);
-
-        return model;
     }
 
     public List<PersonModel> GetPerson_All()
@@ -59,7 +55,7 @@ public class TextConnector : IDataConnection
         return PeopleFile.FullFilePath().LoadFile().ConvertToPersonModel();
     }
 
-    public TeamModel CreateTeam(TeamModel model)
+    public void CreateTeam(TeamModel model)
     {
         List<TeamModel> teams = TeamFile.FullFilePath().LoadFile().ConvertToTeamModels(PeopleFile);
 
@@ -75,8 +71,6 @@ public class TextConnector : IDataConnection
         teams.Add(model);
 
         teams.SaveToTeamFile(TeamFile);
-
-        return model;
     }
 
     public List<TeamModel> GetTeam_All()
