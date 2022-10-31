@@ -1,4 +1,5 @@
-﻿using TrackerLibrary.Models;
+﻿using System.Configuration;
+using TrackerLibrary.Models;
 
 namespace TrackerLibrary;
 
@@ -27,27 +28,17 @@ public static class TournamentLogic
         {
             foreach (MatchupModel rm in round)
             {
-                if (rm.Entries.Any(x => x.Score != 0) || rm.Entries.Count == 1)
+                if (
+                    rm.Winner != null
+                    && (rm.Entries.Any(x => x.Score != 0) || rm.Entries.Count == 1)
+                )
                 {
                     toScore.Add(rm);
                 }
             }
         }
 
-        //if (teamOneScore > teamTwoScore)
-        //{
-        //    // Team one wins
-        //    m.Winner = m.Entries[0].TeamCompeting;
-        //}
-        //else if (teamOneScore < teamTwoScore)
-        //{
-        //    // Team two wins
-        //    m.Winner = m.Entries[1].TeamCompeting;
-        //}
-        //else
-        //{
-        //    MessageBox.Show("I do not handle tie games!");
-        //}
+        ScoreMatchups(toScore);
 
         //foreach (List<MatchupModel> round in model.Rounds)
         //{
@@ -68,6 +59,27 @@ public static class TournamentLogic
         //}
 
         //GlobalConfig.Connection.UpdateMatchup(m);
+    }
+
+    private static void ScoreMatchups(List<MatchupModel> models)
+    {
+        // 0 - lesser wins, anything else - greater wins
+        string greaterWins = ConfigurationManager.AppSettings["greaterWins"];
+
+        //if (teamOneScore > teamTwoScore)
+        //{
+        //    // Team one wins
+        //    m.Winner = m.Entries[0].TeamCompeting;
+        //}
+        //else if (teamOneScore < teamTwoScore)
+        //{
+        //    // Team two wins
+        //    m.Winner = m.Entries[1].TeamCompeting;
+        //}
+        //else
+        //{
+        //    MessageBox.Show("I do not handle tie games!");
+        //}
     }
 
     private static void CreateOtherRounds(TournamentModel model, int rounds)
