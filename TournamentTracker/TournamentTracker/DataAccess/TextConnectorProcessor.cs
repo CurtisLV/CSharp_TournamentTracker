@@ -67,16 +67,16 @@ public static class TextConnectorProcessor
         return output;
     }
 
-    public static List<TeamModel> ConvertToTeamModels(
-        this List<string> lines,
-        string peopleFileName
-    )
+    public static List<TeamModel> ConvertToTeamModels(this List<string> lines)
     {
         // id, team name, list of ids, separated by pipe |
         // 3, Tim's team, 1|3|5
 
         List<TeamModel> output = new List<TeamModel>();
-        List<PersonModel> people = peopleFileName.FullFilePath().LoadFile().ConvertToPersonModel();
+        List<PersonModel> people = GlobalConfig.PeopleFile
+            .FullFilePath()
+            .LoadFile()
+            .ConvertToPersonModel();
 
         foreach (string line in lines)
         {
@@ -101,7 +101,7 @@ public static class TextConnectorProcessor
         List<TeamModel> teams = GlobalConfig.TeamFile
             .FullFilePath()
             .LoadFile()
-            .ConvertToTeamModels(GlobalConfig.PeopleFile);
+            .ConvertToTeamModels();
 
         List<PrizeModel> prizes = GlobalConfig.PrizesFile
             .FullFilePath()
@@ -205,7 +205,7 @@ public static class TextConnectorProcessor
                 // Get the top id and add one
                 // Store the id
                 // Save the matchup record
-                matchup.SaveMatchupToFile(GlobalConfig.MatchupFile, GlobalConfig.MatchupEntryFile);
+                matchup.SaveMatchupToFile();
             }
         }
     }
@@ -264,7 +264,7 @@ public static class TextConnectorProcessor
 
         foreach (MatchupEntryModel entry in matchup.Entries)
         {
-            entry.SaveEntryToFile(GlobalConfig.MatchupEntryFile);
+            entry.SaveEntryToFile();
         }
 
         // save to file
@@ -456,7 +456,7 @@ public static class TextConnectorProcessor
             {
                 List<string> matchingTeams = new List<string>();
                 matchingTeams.Add(team);
-                return matchingTeams.ConvertToTeamModels(GlobalConfig.PeopleFile).First();
+                return matchingTeams.ConvertToTeamModels().First();
             }
         }
         return null;

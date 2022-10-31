@@ -59,7 +59,7 @@ public class TextConnector : IDataConnection
         List<TeamModel> teams = GlobalConfig.TeamFile
             .FullFilePath()
             .LoadFile()
-            .ConvertToTeamModels(GlobalConfig.PeopleFile);
+            .ConvertToTeamModels();
 
         // Find the max ID (like last row)
         int currentId = 1;
@@ -77,10 +77,7 @@ public class TextConnector : IDataConnection
 
     public List<TeamModel> GetTeam_All()
     {
-        return GlobalConfig.TeamFile
-            .FullFilePath()
-            .LoadFile()
-            .ConvertToTeamModels(GlobalConfig.PeopleFile);
+        return GlobalConfig.TeamFile.FullFilePath().LoadFile().ConvertToTeamModels();
     }
 
     public void CreateTournament(TournamentModel model)
@@ -88,11 +85,7 @@ public class TextConnector : IDataConnection
         List<TournamentModel> tournaments = GlobalConfig.TournamentFile
             .FullFilePath()
             .LoadFile()
-            .ConvertToTournamentModels(
-                GlobalConfig.TeamFile,
-                GlobalConfig.PeopleFile,
-                GlobalConfig.PrizesFile
-            );
+            .ConvertToTournamentModels();
 
         int currentId = 1;
         if (tournaments.Count > 0)
@@ -102,7 +95,7 @@ public class TextConnector : IDataConnection
 
         model.Id = currentId;
 
-        model.SaveRoundsToFile(GlobalConfig.MatchupFile, GlobalConfig.MatchupEntryFile);
+        model.SaveRoundsToFile();
 
         tournaments.Add(model);
 
@@ -111,14 +104,7 @@ public class TextConnector : IDataConnection
 
     public List<TournamentModel> GetTournament_All()
     {
-        return GlobalConfig.TournamentFile
-            .FullFilePath()
-            .LoadFile()
-            .ConvertToTournamentModels(
-                GlobalConfig.TeamFile,
-                GlobalConfig.PeopleFile,
-                GlobalConfig.PrizesFile
-            );
+        return GlobalConfig.TournamentFile.FullFilePath().LoadFile().ConvertToTournamentModels();
     }
 
     public void UpdateMatchup(MatchupModel model)
