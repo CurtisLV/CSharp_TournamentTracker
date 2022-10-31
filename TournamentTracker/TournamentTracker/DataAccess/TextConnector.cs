@@ -19,7 +19,7 @@ public class TextConnector : IDataConnection
 
         model.Id = currentId;
         persons.Add(model);
-        persons.SaveToPeopleFile(GlobalConfig.PeopleFile);
+        persons.SaveToPeopleFile();
     }
 
     public void CreatePrize(PrizeModel model)
@@ -46,7 +46,7 @@ public class TextConnector : IDataConnection
         // Convert prizes to List<string>
         // Save the List<string> to the text file
 
-        prizes.SaveToPrizeFile(GlobalConfig.PrizesFile);
+        prizes.SaveToPrizeFile();
     }
 
     public List<PersonModel> GetPerson_All()
@@ -72,7 +72,7 @@ public class TextConnector : IDataConnection
 
         teams.Add(model);
 
-        teams.SaveToTeamFile(GlobalConfig.TeamFile);
+        teams.SaveToTeamFile();
     }
 
     public List<TeamModel> GetTeam_All()
@@ -99,7 +99,7 @@ public class TextConnector : IDataConnection
 
         tournaments.Add(model);
 
-        tournaments.SaveToTournamentFile(GlobalConfig.TournamentFile);
+        tournaments.SaveToTournamentFile();
     }
 
     public List<TournamentModel> GetTournament_All()
