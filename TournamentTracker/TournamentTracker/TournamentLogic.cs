@@ -22,40 +22,52 @@ public static class TournamentLogic
 
     public static void UpdateTournamentResults(TournamentModel model)
     {
-        if (teamOneScore > teamTwoScore)
-        {
-            // Team one wins
-            m.Winner = m.Entries[0].TeamCompeting;
-        }
-        else if (teamOneScore < teamTwoScore)
-        {
-            // Team two wins
-            m.Winner = m.Entries[1].TeamCompeting;
-        }
-        else
-        {
-            MessageBox.Show("I do not handle tie games!");
-        }
-
-        foreach (List<MatchupModel> round in tournament.Rounds)
+        List<MatchupModel> toScore = new List<MatchupModel>();
+        foreach (List<MatchupModel> round in model.Rounds)
         {
             foreach (MatchupModel rm in round)
             {
-                foreach (MatchupEntryModel me in rm.Entries)
+                if (rm.Entries.Any(x => x.Score != 0) || rm.Entries.Count == 1)
                 {
-                    if (me.ParentMatchup != null)
-                    {
-                        if (me.ParentMatchup.Id == m.Id)
-                        {
-                            me.TeamCompeting = m.Winner;
-                            GlobalConfig.Connection.UpdateMatchup(rm);
-                        }
-                    }
+                    toScore.Add(rm);
                 }
             }
         }
 
-        GlobalConfig.Connection.UpdateMatchup(m);
+        //if (teamOneScore > teamTwoScore)
+        //{
+        //    // Team one wins
+        //    m.Winner = m.Entries[0].TeamCompeting;
+        //}
+        //else if (teamOneScore < teamTwoScore)
+        //{
+        //    // Team two wins
+        //    m.Winner = m.Entries[1].TeamCompeting;
+        //}
+        //else
+        //{
+        //    MessageBox.Show("I do not handle tie games!");
+        //}
+
+        //foreach (List<MatchupModel> round in model.Rounds)
+        //{
+        //    foreach (MatchupModel rm in round)
+        //    {
+        //        foreach (MatchupEntryModel me in rm.Entries)
+        //        {
+        //            if (me.ParentMatchup != null)
+        //            {
+        //                if (me.ParentMatchup.Id == m.Id)
+        //                {
+        //                    me.TeamCompeting = m.Winner;
+        //                    GlobalConfig.Connection.UpdateMatchup(rm);
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
+
+        //GlobalConfig.Connection.UpdateMatchup(m);
     }
 
     private static void CreateOtherRounds(TournamentModel model, int rounds)
