@@ -93,22 +93,20 @@ public static class TextConnectorProcessor
         return output;
     }
 
-    public static List<TournamentModel> ConvertToTournamentModels(
-        this List<string> lines,
-        string teamFileName,
-        string peopleFileName,
-        string prizeFileName
-    )
+    public static List<TournamentModel> ConvertToTournamentModels(this List<string> lines)
     {
         // ID,TournamentName,EntryFee,(id|id|id - Entered Teams), (id|id|id - Prizes), (Rounds - id^id^id|id^id^id|id^id^id)
 
         List<TournamentModel> output = new List<TournamentModel>();
-        List<TeamModel> teams = teamFileName
+        List<TeamModel> teams = GlobalConfig.TeamFile
             .FullFilePath()
             .LoadFile()
-            .ConvertToTeamModels(peopleFileName);
+            .ConvertToTeamModels(GlobalConfig.PeopleFile);
 
-        List<PrizeModel> prizes = prizeFileName.FullFilePath().LoadFile().ConvertToPrizeModels();
+        List<PrizeModel> prizes = GlobalConfig.PrizesFile
+            .FullFilePath()
+            .LoadFile()
+            .ConvertToPrizeModels();
 
         List<MatchupModel> matchups = GlobalConfig.MatchupFile
             .FullFilePath()
@@ -191,11 +189,7 @@ public static class TextConnectorProcessor
         File.WriteAllLines(fileName.FullFilePath(), lines);
     }
 
-    public static void SaveRoundsToFile(
-        this TournamentModel model,
-        string matchupFile,
-        string matchupEntryFile
-    )
+    public static void SaveRoundsToFile(this TournamentModel model)
     {
         // loop through each round
         // in there, loop through each matchup
@@ -211,7 +205,7 @@ public static class TextConnectorProcessor
                 // Get the top id and add one
                 // Store the id
                 // Save the matchup record
-                matchup.SaveMatchupToFile(matchupFile, matchupEntryFile);
+                matchup.SaveMatchupToFile(GlobalConfig.MatchupFile, GlobalConfig.MatchupEntryFile);
             }
         }
     }
@@ -251,11 +245,7 @@ public static class TextConnectorProcessor
         return output;
     }
 
-    public static void SaveMatchupToFile(
-        this MatchupModel matchup,
-        string matchupFile,
-        string matchupEntryFile
-    )
+    public static void SaveMatchupToFile(this MatchupModel matchup)
     {
         List<MatchupModel> matchups = GlobalConfig.MatchupFile
             .FullFilePath()
@@ -274,7 +264,7 @@ public static class TextConnectorProcessor
 
         foreach (MatchupEntryModel entry in matchup.Entries)
         {
-            entry.SaveEntryToFile(matchupEntryFile);
+            entry.SaveEntryToFile(GlobalConfig.MatchupEntryFile);
         }
 
         // save to file
@@ -354,7 +344,7 @@ public static class TextConnectorProcessor
         return output;
     }
 
-    public static void SaveEntryToFile(this MatchupEntryModel entry, string matchupEntryFile)
+    public static void SaveEntryToFile(this MatchupEntryModel entry)
     {
         List<MatchupEntryModel> entries = GlobalConfig.MatchupEntryFile
             .FullFilePath()
