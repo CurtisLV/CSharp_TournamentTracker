@@ -63,8 +63,26 @@ public static class TournamentLogic
 
     private static void ScoreMatchups(List<MatchupModel> models)
     {
-        // 0 - lesser wins, anything else - greater wins
         string greaterWins = ConfigurationManager.AppSettings["greaterWins"];
+
+        // 0 = false - low score wins (like golf), anything else - high score wins
+        foreach (MatchupModel m in models)
+        {
+            if (greaterWins == "0")
+            {
+                if (m.Entries[0].Score < m.Entries[1].Score)
+                {
+                    m.Winner = m.Entries[0].TeamCompeting;
+                } else
+                {
+                    //
+                }
+            }                                                                         
+            else
+            {                                         
+            
+            }
+        }
 
         //if (teamOneScore > teamTwoScore)
         //{
