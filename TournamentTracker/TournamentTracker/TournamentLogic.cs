@@ -84,9 +84,8 @@ public static class TournamentLogic
                 }
                 else if (m.Entries[1].Score < m.Entries[0].Score)
                 {
-
                     m.Winner = m.Entries[1].TeamCompeting;
-                } 
+                }
                 else
                 {
                     throw new Exception("We do not allow ties in this application!");
@@ -101,7 +100,6 @@ public static class TournamentLogic
                 }
                 else if (m.Entries[1].Score > m.Entries[0].Score)
                 {
-
                     m.Winner = m.Entries[1].TeamCompeting;
                 }
                 else
@@ -110,20 +108,21 @@ public static class TournamentLogic
                 }
             }
 
-        //if (teamOneScore > teamTwoScore)
-        //{
-        //    // Team one wins
-        //    m.Winner = m.Entries[0].TeamCompeting;
-        //}
-        //else if (teamOneScore < teamTwoScore)
-        //{
-        //    // Team two wins
-        //    m.Winner = m.Entries[1].TeamCompeting;
-        //}
-        //else
-        //{
-        //    MessageBox.Show("I do not handle tie games!");
-        //}
+            //if (teamOneScore > teamTwoScore)
+            //{
+            //    // Team one wins
+            //    m.Winner = m.Entries[0].TeamCompeting;
+            //}
+            //else if (teamOneScore < teamTwoScore)
+            //{
+            //    // Team two wins
+            //    m.Winner = m.Entries[1].TeamCompeting;
+            //}
+            //else
+            //{
+            //    MessageBox.Show("I do not handle tie games!");
+            //}
+        }
     }
 
     private static void CreateOtherRounds(TournamentModel model, int rounds)
