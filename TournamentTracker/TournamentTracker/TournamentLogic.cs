@@ -38,7 +38,7 @@ public static class TournamentLogic
             }
         }
 
-        ScoreMatchups(toScore);
+        MarkWinnersInMatchups(toScore);
 
         //foreach (List<MatchupModel> round in model.Rounds)
         //{
@@ -61,7 +61,7 @@ public static class TournamentLogic
         //GlobalConfig.Connection.UpdateMatchup(m);
     }
 
-    private static void ScoreMatchups(List<MatchupModel> models)
+    private static void MarkWinnersInMatchups(List<MatchupModel> models)
     {
         string greaterWins = ConfigurationManager.AppSettings["greaterWins"];
 
