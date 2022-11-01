@@ -82,7 +82,7 @@ public static class TournamentLogic
                 {
                     m.Winner = m.Entries[0].TeamCompeting;
                 }
-                else if (m.Entries[0].Score > m.Entries[1].Score)
+                else if (m.Entries[1].Score < m.Entries[0].Score)
                 {
 
                     m.Winner = m.Entries[1].TeamCompeting;
@@ -93,8 +93,21 @@ public static class TournamentLogic
                 }
             }
             else
-            { 
+            {
                 // 1 = true, or high score wins}
+                if (m.Entries[0].Score > m.Entries[1].Score)
+                {
+                    m.Winner = m.Entries[0].TeamCompeting;
+                }
+                else if (m.Entries[1].Score > m.Entries[0].Score)
+                {
+
+                    m.Winner = m.Entries[1].TeamCompeting;
+                }
+                else
+                {
+                    throw new Exception("We do not allow ties in this application!");
+                }
             }
 
         //if (teamOneScore > teamTwoScore)
