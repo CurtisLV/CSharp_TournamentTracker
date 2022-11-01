@@ -40,6 +40,13 @@ public static class TournamentLogic
 
         MarkWinnersInMatchups(toScore);
 
+        AdvanceWinners(toScore);
+
+        //GlobalConfig.Connection.UpdateMatchup(m);
+    }
+
+    private static void AdvanceWinners(List<MatchupModel> models)
+    {
         //foreach (List<MatchupModel> round in model.Rounds)
         //{
         //    foreach (MatchupModel rm in round)
@@ -58,7 +65,7 @@ public static class TournamentLogic
         //    }
         //}
 
-        //GlobalConfig.Connection.UpdateMatchup(m);
+       
     }
 
     private static void MarkWinnersInMatchups(List<MatchupModel> models)
