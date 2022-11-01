@@ -66,22 +66,28 @@ public static class TournamentLogic
         string greaterWins = ConfigurationManager.AppSettings["greaterWins"];
 
         // 0 = false - low score wins (like golf), anything else - high score wins
+
         foreach (MatchupModel m in models)
         {
+
+            // checks for the byes / auto win
+            if (m.Entries.Count == 1)
+            {
+                m.Winner = m.Entries[0].TeamCompeting;
+            }
+
             if (greaterWins == "0")
             {
                 if (m.Entries[0].Score < m.Entries[1].Score)
                 {
                     m.Winner = m.Entries[0].TeamCompeting;
-                } else
+                }
+                else
                 {
                     //
                 }
-            }                                                                         
-            else
-            {                                         
-            
             }
+            else { }
         }
 
         //if (teamOneScore > teamTwoScore)
