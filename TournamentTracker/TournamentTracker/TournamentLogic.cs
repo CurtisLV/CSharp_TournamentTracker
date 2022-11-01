@@ -19,6 +19,7 @@ public static class TournamentLogic
         model.Rounds.Add(CreateFirstRound(byes, randomizedTeams));
 
         CreateOtherRounds(model, rounds);
+        UpdateTournamentResults(model);
     }
 
     public static void UpdateTournamentResults(TournamentModel model)
