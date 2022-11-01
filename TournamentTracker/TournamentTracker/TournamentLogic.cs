@@ -42,7 +42,7 @@ public static class TournamentLogic
 
         AdvanceWinners(toScore, model);
 
-        //GlobalConfig.Connection.UpdateMatchup(m);
+        toScore.ForEach(x => GlobalConfig.Connection.UpdateMatchup(x));
     }
 
     private static void AdvanceWinners(List<MatchupModel> models, TournamentModel tournament)
@@ -115,21 +115,6 @@ public static class TournamentLogic
                     throw new Exception("We do not allow ties in this application!");
                 }
             }
-
-            //if (teamOneScore > teamTwoScore)
-            //{
-            //    // Team one wins
-            //    m.Winner = m.Entries[0].TeamCompeting;
-            //}
-            //else if (teamOneScore < teamTwoScore)
-            //{
-            //    // Team two wins
-            //    m.Winner = m.Entries[1].TeamCompeting;
-            //}
-            //else
-            //{
-            //    MessageBox.Show("I do not handle tie games!");
-            //}
         }
     }
 
