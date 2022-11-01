@@ -69,11 +69,11 @@ public static class TournamentLogic
 
         foreach (MatchupModel m in models)
         {
-
             // checks for the byes / auto win
             if (m.Entries.Count == 1)
             {
                 m.Winner = m.Entries[0].TeamCompeting;
+                continue;
             }
 
             if (greaterWins == "0")
@@ -82,13 +82,20 @@ public static class TournamentLogic
                 {
                     m.Winner = m.Entries[0].TeamCompeting;
                 }
+                else if (m.Entries[0].Score > m.Entries[1].Score)
+                {
+
+                    m.Winner = m.Entries[1].TeamCompeting;
+                } 
                 else
                 {
-                    //
+                    throw new Exception("We do not allow ties in this application!");
                 }
             }
-            else { }
-        }
+            else
+            { 
+                // 1 = true, or high score wins}
+            }
 
         //if (teamOneScore > teamTwoScore)
         //{
