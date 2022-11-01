@@ -21,7 +21,7 @@ public static class TournamentLogic
         CreateOtherRounds(model, rounds);
     }
 
-    public static void UpdateTournamentResults(TournamentModel model)
+    public static void UpdateTournamentsResults(TournamentModel model)
     {
         List<MatchupModel> toScore = new List<MatchupModel>();
         foreach (List<MatchupModel> round in model.Rounds)
@@ -29,7 +29,7 @@ public static class TournamentLogic
             foreach (MatchupModel rm in round)
             {
                 if (
-                    rm.Winner != null
+                    rm.Winner == null
                     && (rm.Entries.Any(x => x.Score != 0) || rm.Entries.Count == 1)
                 )
                 {

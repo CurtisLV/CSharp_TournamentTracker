@@ -100,7 +100,8 @@ public class TextConnector : IDataConnection
         tournaments.Add(model);
 
         tournaments.SaveToTournamentFile();
-        TournamentLogic.UpdateTournamentResults(model);
+
+        TournamentLogic.UpdateTournamentsResults(model);
     }
 
     public List<TournamentModel> GetTournament_All()

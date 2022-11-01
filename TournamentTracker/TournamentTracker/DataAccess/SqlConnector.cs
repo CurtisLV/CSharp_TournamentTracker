@@ -105,7 +105,7 @@ public class SqlConnector : IDataConnection
             SaveTournamentPrizes(connection, model);
             SaveTournamentEntries(connection, model);
             SaveTournamentRounds(connection, model);
-            TournamentLogic.UpdateTournamentResults(model);
+            TournamentLogic.UpdateTournamentsResults(model);
         }
     }
 

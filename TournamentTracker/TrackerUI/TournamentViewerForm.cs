@@ -58,11 +58,13 @@ namespace TrackerUI
 
         private void roundDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            LoadMatchups((int)roundDropDown.SelectedItem);
+            LoadMatchups();
         }
 
-        private void LoadMatchups(int round)
+        private void LoadMatchups()
         {
+            int round = (int)roundDropDown.SelectedItem;
+
             foreach (List<MatchupModel> matchups in tournament.Rounds)
             {
                 if (matchups.First().MatchupRound == round)
@@ -147,7 +149,7 @@ namespace TrackerUI
 
         private void unplayedOnlyCheckBox_CheckedChanged(object sender, EventArgs e)
         {
-            LoadMatchups((int)roundDropDown.SelectedItem);
+            LoadMatchups();
         }
 
         private void scoreButton_Click(object sender, EventArgs e)
@@ -194,7 +196,7 @@ namespace TrackerUI
                 }
             }
             TournamentLogic.UpdateTournamentResults(tournament);
-            LoadMatchups((int)roundDropDown.SelectedItem);
+            LoadMatchups();
         }
     }
 }
