@@ -195,7 +195,7 @@ namespace TrackerUI
                     }
                 }
             }
-            TournamentLogic.UpdateTournamentResults(tournament);
+            TournamentLogic.UpdateTournamentsResults(tournament);
             LoadMatchups();
         }
     }
