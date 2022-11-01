@@ -40,32 +40,33 @@ public static class TournamentLogic
 
         MarkWinnersInMatchups(toScore);
 
-        AdvanceWinners(toScore);
+        AdvanceWinners(toScore, model);
 
         //GlobalConfig.Connection.UpdateMatchup(m);
     }
 
-    private static void AdvanceWinners(List<MatchupModel> models)
+    private static void AdvanceWinners(List<MatchupModel> models, TournamentModel tournament)
     {
-        //foreach (List<MatchupModel> round in model.Rounds)
-        //{
-        //    foreach (MatchupModel rm in round)
-        //    {
-        //        foreach (MatchupEntryModel me in rm.Entries)
-        //        {
-        //            if (me.ParentMatchup != null)
-        //            {
-        //                if (me.ParentMatchup.Id == m.Id)
-        //                {
-        //                    me.TeamCompeting = m.Winner;
-        //                    GlobalConfig.Connection.UpdateMatchup(rm);
-        //                }
-        //            }
-        //        }
-        //    }
-        //}
-
-       
+        foreach (MatchupModel m in models)
+        {
+            foreach (List<MatchupModel> round in tournament.Rounds)
+            {
+                foreach (MatchupModel rm in round)
+                {
+                    foreach (MatchupEntryModel me in rm.Entries)
+                    {
+                        if (me.ParentMatchup != null)
+                        {
+                            if (me.ParentMatchup.Id == m.Id)
+                            {
+                                me.TeamCompeting = m.Winner;
+                                GlobalConfig.Connection.UpdateMatchup(rm);
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     private static void MarkWinnersInMatchups(List<MatchupModel> models)
