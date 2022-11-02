@@ -168,12 +168,10 @@ namespace TrackerUI
             {
                 output = "The score Two value is not a valid number!";
             }
-
             else if (teamOneScore == 0 && teamTwoScore == 0)
             {
                 output = "No score entered for any of the teams!";
             }
-
             else if (teamOneScore == teamTwoScore)
             {
                 output = "We do not allow ties in this application!";
@@ -206,11 +204,7 @@ namespace TrackerUI
                         {
                             m.Entries[0].Score = teamOneScore;
                         }
-                        else
-                        {
-                            MessageBox.Show("Please enter a valid score for team 1!");
-                            return;
-                        }
+                       
                     }
                 }
                 if (i == 1)
@@ -223,11 +217,6 @@ namespace TrackerUI
                         {
                             m.Entries[1].Score = teamTwoScore;
                         }
-                        else
-                        {
-                            MessageBox.Show("Please enter a valid score for team 2!");
-                            return;
-                        }
                     }
                 }
             }
@@ -238,6 +227,7 @@ namespace TrackerUI
             catch (Exception ex)
             {
                 MessageBox.Show($"The app had following error: {ex.Message}");
+                return;
             }
             LoadMatchups();
         }
