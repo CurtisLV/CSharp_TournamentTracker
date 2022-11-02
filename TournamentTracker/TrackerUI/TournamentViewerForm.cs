@@ -152,8 +152,24 @@ namespace TrackerUI
             LoadMatchups();
         }
 
+        private bool IsValidData()
+        {
+            double teamOneScore = 0;
+            double teamTwoScore = 0;
+            bool scoreOneValid = double.TryParse(teamOneScoreValue.Text, out teamOneScore);
+            bool scoreTwoValid = double.TryParse(teamTwoScoreValue.Text, out teamTwoScore);
+
+            bool output = true;
+
+            //teamOneScoreValue.Text teamTwoScoreValue.Text
+        }
+
         private void scoreButton_Click(object sender, EventArgs e)
         {
+            if (!IsValidData())
+            {
+                MessageBox.Show("You need to insert valid data before we can score this matchup.");
+            }
             MatchupModel m = (MatchupModel)matchupListBox.SelectedItem;
             double teamOneScore = 0;
             double teamTwoScore = 0;
