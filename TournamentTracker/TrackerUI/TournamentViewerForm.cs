@@ -154,14 +154,28 @@ namespace TrackerUI
 
         private bool IsValidData()
         {
+            bool output = true;
             double teamOneScore = 0;
             double teamTwoScore = 0;
             bool scoreOneValid = double.TryParse(teamOneScoreValue.Text, out teamOneScore);
             bool scoreTwoValid = double.TryParse(teamTwoScoreValue.Text, out teamTwoScore);
 
-            bool output = true;
+            if (!scoreOneValid || !scoreTwoValid)
+            {
+                output = false;
+            }
 
-            //teamOneScoreValue.Text teamTwoScoreValue.Text
+            if (teamOneScore == 0 || teamTwoScore == 0)
+            {
+                output = false;
+            }
+
+            if (teamOneScore == teamTwoScore)
+            {
+                output = false;
+            }
+
+            return output;
         }
 
         private void scoreButton_Click(object sender, EventArgs e)
