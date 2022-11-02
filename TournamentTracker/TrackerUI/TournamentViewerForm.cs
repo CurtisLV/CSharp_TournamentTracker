@@ -152,27 +152,31 @@ namespace TrackerUI
             LoadMatchups();
         }
 
-        private bool IsValidData()
+        private string ValidateData()
         {
-            bool output = true;
+            string output = "";
             double teamOneScore = 0;
             double teamTwoScore = 0;
             bool scoreOneValid = double.TryParse(teamOneScoreValue.Text, out teamOneScore);
             bool scoreTwoValid = double.TryParse(teamTwoScoreValue.Text, out teamTwoScore);
 
-            if (!scoreOneValid || !scoreTwoValid)
+            if (!scoreOneValid)
             {
-                output = false;
+                output = "The score One value is not a valid number!";
+            }
+            if (!scoreTwoValid)
+            {
+                output = "The score Two value is not a valid number!";
             }
 
             if (teamOneScore == 0 || teamTwoScore == 0)
             {
-                output = false;
+                output = "No score entered for any of the teams!";
             }
 
             if (teamOneScore == teamTwoScore)
             {
-                output = false;
+                output = "We do not allow ties in this application!";
             }
 
             return output;
@@ -180,9 +184,11 @@ namespace TrackerUI
 
         private void scoreButton_Click(object sender, EventArgs e)
         {
-            if (!IsValidData())
+            string errorMsg = ValidateData();
+            if (errorMsg.Length > 0)
             {
                 MessageBox.Show("You need to insert valid data before we can score this matchup.");
+                return;
             }
             MatchupModel m = (MatchupModel)matchupListBox.SelectedItem;
             double teamOneScore = 0;
