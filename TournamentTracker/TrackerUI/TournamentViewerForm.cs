@@ -204,7 +204,6 @@ namespace TrackerUI
                         {
                             m.Entries[0].Score = teamOneScore;
                         }
-                       
                     }
                 }
                 if (i == 1)
