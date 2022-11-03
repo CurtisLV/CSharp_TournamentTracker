@@ -77,6 +77,29 @@ public static class TournamentLogic
         }
     }
 
+    private static void AlertPersonToNewRound(
+        PersonModel p,
+        string teamName,
+        MatchupEntryModel? competitor
+    )
+    {
+        string from = "";
+        List<string> to = new List<string>();
+        string subject = "";
+        string body = "";
+
+        if (competitor != null)
+        {
+            subject = $"You have a new matchup with {competitor.TeamCompeting.TeamName}";
+        }
+        else
+        {
+            subject = "Yiu have a bye week this round!";
+        }
+
+        EmailLogic.SendEmail(from, to, subject, body);
+    }
+
     private static int CheckCurrentRound(this TournamentModel model)
     {
         int output = 1;
