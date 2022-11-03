@@ -45,6 +45,11 @@ public static class TournamentLogic
         toScore.ForEach(x => GlobalConfig.Connection.UpdateMatchup(x));
     }
 
+    private static int CheckCurrentRound(this TournamentModel model)
+    {
+        //
+    }
+
     private static void AdvanceWinners(List<MatchupModel> models, TournamentModel tournament)
     {
         foreach (MatchupModel m in models)
