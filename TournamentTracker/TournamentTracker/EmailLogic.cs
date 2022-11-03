@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace TrackerLibrary;
 
-internal class EmailLogic
+public static class EmailLogic
 {
-    //
+    public static void SendEmail(string from, List<string> to, string subject, string body)
+    {
+        //
+    }
 }
