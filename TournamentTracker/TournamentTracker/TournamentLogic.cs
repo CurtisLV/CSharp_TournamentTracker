@@ -59,6 +59,22 @@ public static class TournamentLogic
         List<MatchupModel> currentRound = model.Rounds.First(
             x => x.First().MatchupRound == currentRoundNum
         );
+
+        foreach (MatchupModel matchup in currentRound)
+        {
+            foreach (MatchupEntryModel me in matchup.Entries)
+            {
+                foreach (PersonModel p in me.TeamCompeting.TeamMembers)
+                {
+                    AlertPersonToNewRound(
+                        p,
+                        me.TeamCompeting.TeamName,
+                        matchup.Entries.FirstOrDefault(x => x.TeamCompeting != me.TeamCompeting)
+                    );
+                    ;
+                }
+            }
+        }
     }
 
     private static int CheckCurrentRound(this TournamentModel model)
