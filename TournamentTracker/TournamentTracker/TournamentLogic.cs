@@ -23,6 +23,7 @@ public static class TournamentLogic
 
     public static void UpdateTournamentsResults(TournamentModel model)
     {
+        int startingRound = model.CheckCurrentRound();
         List<MatchupModel> toScore = new List<MatchupModel>();
         foreach (List<MatchupModel> round in model.Rounds)
         {
@@ -43,6 +44,7 @@ public static class TournamentLogic
         AdvanceWinners(toScore, model);
 
         toScore.ForEach(x => GlobalConfig.Connection.UpdateMatchup(x));
+        int endingRound = model.CheckCurrentRound();
     }
 
     private static int CheckCurrentRound(this TournamentModel model)
@@ -53,9 +55,11 @@ public static class TournamentLogic
         {
             if (round.All(x => x.Winner != null))
             {
-                //
+                output += 1;
             }
         }
+
+        return output;
     }
 
     private static void AdvanceWinners(List<MatchupModel> models, TournamentModel tournament)
