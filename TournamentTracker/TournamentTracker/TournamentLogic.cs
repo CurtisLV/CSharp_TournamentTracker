@@ -1,4 +1,5 @@
 ﻿using System.Configuration;
+using System.Text;
 using TrackerLibrary.Models;
 
 namespace TrackerLibrary;
@@ -88,6 +89,8 @@ public static class TournamentLogic
         string subject = "";
         string body = "";
 
+        StringBuilder sb = new StringBuilder();
+
         if (competitor != null)
         {
             subject = $"You have a new matchup with {competitor.TeamCompeting.TeamName}";
@@ -96,6 +99,10 @@ public static class TournamentLogic
         {
             subject = "Yiu have a bye week this round!";
         }
+
+        sb.AppendLine("<h1>You have a new matchup</h1>");
+        sb.Append("<strong>Competitor: </strong>");
+        sb.AppendLine(competitor.TeamCompeting.TeamName);
 
         EmailLogic.SendEmail(from, to, subject, body);
     }
