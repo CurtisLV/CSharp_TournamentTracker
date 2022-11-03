@@ -49,7 +49,16 @@ public static class TournamentLogic
         if (endingRound > startingRound)
         {
             // where we alert users - email
+            //EmailLogic.SendEmail();
         }
+    }
+
+    private static void AlertUsersToNewRound(this TournamentModel model)
+    {
+        int currentRoundNum = model.CheckCurrentRound();
+        List<MatchupModel> currentRound = model.Rounds.First(
+            x => x.First().MatchupRound == currentRoundNum
+        );
     }
 
     private static int CheckCurrentRound(this TournamentModel model)
