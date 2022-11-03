@@ -45,6 +45,11 @@ public static class TournamentLogic
 
         toScore.ForEach(x => GlobalConfig.Connection.UpdateMatchup(x));
         int endingRound = model.CheckCurrentRound();
+
+        if (endingRound > startingRound)
+        {
+            // where we alert users - email
+        }
     }
 
     private static int CheckCurrentRound(this TournamentModel model)
