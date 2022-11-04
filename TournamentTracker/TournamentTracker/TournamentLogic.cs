@@ -51,11 +51,11 @@ public static class TournamentLogic
         {
             // where we alert users - email
 
-            AlertUsersToNewRound(model);
+            model.AlertUsersToNewRound();
         }
     }
 
-    private static void AlertUsersToNewRound(this TournamentModel model)
+    public static void AlertUsersToNewRound(this TournamentModel model)
     {
         int currentRoundNum = model.CheckCurrentRound();
         List<MatchupModel> currentRound = model.Rounds.First(
