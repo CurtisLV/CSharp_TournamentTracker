@@ -90,7 +90,7 @@ public static class TournamentLogic
             return;
         }
 
-        List<string> to = new List<string>();
+        string to = "";
         string subject = "";
         StringBuilder body = new StringBuilder();
 
@@ -113,7 +113,7 @@ public static class TournamentLogic
             body.AppendLine("~ Tournament Tracker ~");
         }
 
-        to.Add(p.EmailAddress);
+        to = p.EmailAddress;
 
         EmailLogic.SendEmail(to, subject, body.ToString());
     }

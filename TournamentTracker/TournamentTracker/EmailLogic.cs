@@ -9,10 +9,14 @@ namespace TrackerLibrary;
 
 public static class EmailLogic
 {
-    public static void SendEmail(List<string> to, string subject, string body)
+    public static void SendEmail(string to, string subject, string body)
     {
-        
-        
-        MailAddress fromMailAddress = new MailAddress(GlobalConfig.AppKeyLookup("senderEmail"), GlobalConfig.AppKeyLookup("senderEmail"));
+        MailAddress fromMailAddress = new MailAddress(
+            GlobalConfig.AppKeyLookup("senderEmail"),
+            GlobalConfig.AppKeyLookup("senderDisplayName")
+        );
+
+        MailMessage mail = new MailMessage();
+        mail.To.Add(to);
     }
 }
