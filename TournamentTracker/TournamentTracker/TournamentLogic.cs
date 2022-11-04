@@ -50,7 +50,8 @@ public static class TournamentLogic
         if (endingRound > startingRound)
         {
             // where we alert users - email
-            //EmailLogic.SendEmail();
+
+            AlertUsersToNewRound(model);
         }
     }
 
