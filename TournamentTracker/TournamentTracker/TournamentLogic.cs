@@ -94,15 +94,21 @@ public static class TournamentLogic
         if (competitor != null)
         {
             subject = $"You have a new matchup with {competitor.TeamCompeting.TeamName}";
+
+            sb.AppendLine("<h1>You have a new matchup</h1>");
+            sb.Append("<strong>Competitor: </strong>");
+            sb.Append(competitor.TeamCompeting.TeamName);
+            sb.AppendLine();
+            sb.AppendLine();
+            sb.AppendLine("Have a great time!");
+            sb.AppendLine("~ Tournament Tracker ~");
         }
         else
         {
             subject = "Yiu have a bye week this round!";
+            sb.AppendLine("Enjoy your round off!");
+            sb.AppendLine("~ Tournament Tracker ~");
         }
-
-        sb.AppendLine("<h1>You have a new matchup</h1>");
-        sb.Append("<strong>Competitor: </strong>");
-        sb.AppendLine(competitor.TeamCompeting.TeamName);
 
         EmailLogic.SendEmail(from, to, subject, body);
     }
