@@ -19,6 +19,10 @@ public static class EmailLogic
         mail.IsBodyHtml = true;
 
         SmtpClient client = new SmtpClient();
+        client.DeliveryMethod = SmtpDeliveryMethod.Network;
+        client.Host = "127.0.0.1";
+        client.Port = 25;
+        client.UseDefaultCredentials = true;
 
         client.Send(mail);
     }
