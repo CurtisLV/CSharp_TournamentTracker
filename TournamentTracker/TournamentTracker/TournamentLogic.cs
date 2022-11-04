@@ -90,7 +90,6 @@ public static class TournamentLogic
             return;
         }
 
-        string fromAddress = "";
         List<string> to = new List<string>();
         string subject = "";
         StringBuilder body = new StringBuilder();
@@ -116,9 +115,7 @@ public static class TournamentLogic
 
         to.Add(p.EmailAddress);
 
-        fromAddress = GlobalConfig.AppKeyLookup("senderEmail");
-
-        EmailLogic.SendEmail(fromAddress, to, subject, body.ToString());
+        EmailLogic.SendEmail(to, subject, body.ToString());
     }
 
     private static int CheckCurrentRound(this TournamentModel model)
