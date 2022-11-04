@@ -84,33 +84,38 @@ public static class TournamentLogic
         MatchupEntryModel? competitor
     )
     {
+        if (p.EmailAddress.Length == 0)
+        {
+            return;
+        }
+
         string from = "";
         List<string> to = new List<string>();
         string subject = "";
-        string body = "";
-
-        StringBuilder sb = new StringBuilder();
+        StringBuilder body = new StringBuilder();
 
         if (competitor != null)
         {
             subject = $"You have a new matchup with {competitor.TeamCompeting.TeamName}";
 
-            sb.AppendLine("<h1>You have a new matchup</h1>");
-            sb.Append("<strong>Competitor: </strong>");
-            sb.Append(competitor.TeamCompeting.TeamName);
-            sb.AppendLine();
-            sb.AppendLine();
-            sb.AppendLine("Have a great time!");
-            sb.AppendLine("~ Tournament Tracker ~");
+            body.AppendLine("<h1>You have a new matchup</h1>");
+            body.Append("<strong>Competitor: </strong>");
+            body.Append(competitor.TeamCompeting.TeamName);
+            body.AppendLine();
+            body.AppendLine();
+            body.AppendLine("Have a great time!");
+            body.AppendLine("~ Tournament Tracker ~");
         }
         else
         {
             subject = "Yiu have a bye week this round!";
-            sb.AppendLine("Enjoy your round off!");
-            sb.AppendLine("~ Tournament Tracker ~");
+            body.AppendLine("Enjoy your round off!");
+            body.AppendLine("~ Tournament Tracker ~");
         }
 
-        EmailLogic.SendEmail(from, to, subject, body);
+        to.Add(p.EmailAddress);
+
+        EmailLogic.SendEmail(from, to, subject, body.ToString());
     }
 
     private static int CheckCurrentRound(this TournamentModel model)
