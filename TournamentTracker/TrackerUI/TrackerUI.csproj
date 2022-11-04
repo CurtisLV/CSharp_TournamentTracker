@@ -13,10 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentEmail.Smtp" Version="3.0.2" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\TournamentTracker\TrackerLibrary.csproj" />
   </ItemGroup>
 
