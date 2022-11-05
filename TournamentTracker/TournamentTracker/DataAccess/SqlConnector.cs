@@ -411,6 +411,20 @@ public class SqlConnector : IDataConnection
 
     public void CompleteTournament(TournamentModel model)
     {
-        //
+        //dbo.spTournaments_Complete
+        using (
+            IDbConnection connection = new System.Data.SqlClient.SqlConnection(
+                GlobalConfig.ConnectionString(db)
+            )
+        )
+        {
+            var p = new DynamicParameters();
+            p.Add("@id", model.Id);
+            connection.Query<PersonModel>(
+                "dbo.spTournaments_Complete",
+                p,
+                commandType: CommandType.StoredProcedure
+            );
+        }
     }
 }
