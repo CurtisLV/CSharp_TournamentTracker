@@ -411,6 +411,6 @@ public class SqlConnector : IDataConnection
 
     public void CompleteTournament(TournamentModel model)
     {
-        throw new NotImplementedException();
+        //
     }
 }
