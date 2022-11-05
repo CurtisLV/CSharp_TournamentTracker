@@ -140,7 +140,12 @@ public static class TournamentLogic
 
     private static void CompleteTournament(TournamentModel model)
     {
-        model.
+        GlobalConfig.Connection.CompleteTournament(model);
+
+        if (model.Prizes.Count > 0)
+        {
+            decimal totalIncome = model.EnteredTeams.Count * model.EntryFee;
+        }
     }
 
     private static void AdvanceWinners(List<MatchupModel> models, TournamentModel tournament)
