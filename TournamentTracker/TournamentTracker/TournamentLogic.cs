@@ -155,7 +155,30 @@ public static class TournamentLogic
         if (model.Prizes.Count > 0)
         {
             decimal totalIncome = model.EnteredTeams.Count * model.EntryFee;
+
+            PrizeModel firstPlacePrize = model.Prizes.FirstOrDefault(x => x.PlaceNumber == 1);
+
+            if (firstPlacePrize != null)
+            {
+                // calculate value
+                CalculatePrizePayout();
+            }
         }
+    }
+
+    private static decimal CalculatePrizePayout(this PrizeModel prize, decimal totalIncome)
+    {
+        decimal output = 0;
+        if (prize.PrizeAmount > 0)
+        {
+            output = prize.PrizeAmount;
+        }
+        else
+        {
+            output = Decimal.Multiply(totalIncome, Convert.ToDecimal(prize.PrizePercentage / 100));
+        }
+
+        return output;
     }
 
     private static void AdvanceWinners(List<MatchupModel> models, TournamentModel tournament)
