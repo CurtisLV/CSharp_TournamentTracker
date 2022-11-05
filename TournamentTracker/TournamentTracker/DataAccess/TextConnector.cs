@@ -116,6 +116,18 @@ public class TextConnector : IDataConnection
 
     public void CompleteTournament(TournamentModel model)
     {
-        throw new NotImplementedException();
+        List<TournamentModel> tournaments = GlobalConfig.TournamentFile
+            .FullFilePath()
+            .LoadFile()
+            .ConvertToTournamentModels();
+
+        // Removes the complete tournament from file - but not other its data
+        // Text file specific logic
+        // TODO - maybe can just change name?
+        tournaments.Remove(model);
+
+        tournaments.SaveToTournamentFile();
+
+        TournamentLogic.UpdateTournamentsResults(model);
     }
 }
