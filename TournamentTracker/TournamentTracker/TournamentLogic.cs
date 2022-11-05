@@ -135,12 +135,12 @@ public static class TournamentLogic
         }
 
         // Tournament is complete
-        CompleteTournament();
+        CompleteTournament(model);
     }
 
-    private static void CompleteTournament()
+    private static void CompleteTournament(TournamentModel model)
     {
-        throw new NotImplementedException();
+        model.
     }
 
     private static void AdvanceWinners(List<MatchupModel> models, TournamentModel tournament)

@@ -113,4 +113,9 @@ public class TextConnector : IDataConnection
     {
         model.UpdateMatchupToFile();
     }
+
+    public void CompleteTournament(TournamentModel model)
+    {
+        throw new NotImplementedException();
+    }
 }
