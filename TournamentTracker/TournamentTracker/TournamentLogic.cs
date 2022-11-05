@@ -128,9 +128,19 @@ public static class TournamentLogic
             {
                 output += 1;
             }
+            else
+            {
+                return output;
+            }
         }
 
-        return output;
+        // Tournament is complete
+        CompleteTournament();
+    }
+
+    private static void CompleteTournament()
+    {
+        throw new NotImplementedException();
     }
 
     private static void AdvanceWinners(List<MatchupModel> models, TournamentModel tournament)
