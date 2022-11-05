@@ -142,6 +142,16 @@ public static class TournamentLogic
     {
         GlobalConfig.Connection.CompleteTournament(model);
 
+        TeamModel winners = model.Rounds.Last().First().Winner;
+        TeamModel runnerUp = model.Rounds
+            .Last()
+            .First()
+            .Entries.First(x => x.TeamCompeting != winners)
+            .TeamCompeting;
+
+        decimal winnerPrize = 0;
+        decimal runnerUpPrize = 0;
+
         if (model.Prizes.Count > 0)
         {
             decimal totalIncome = model.EnteredTeams.Count * model.EntryFee;
