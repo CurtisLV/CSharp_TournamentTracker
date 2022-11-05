@@ -161,7 +161,7 @@ public static class TournamentLogic
             if (firstPlacePrize != null)
             {
                 // calculate value
-                CalculatePrizePayout();
+                winnerPrize = firstPlacePrize.CalculatePrizePayout(totalIncome);
             }
         }
     }
