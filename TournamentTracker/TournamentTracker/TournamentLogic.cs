@@ -136,6 +136,8 @@ public static class TournamentLogic
 
         // Tournament is complete
         CompleteTournament(model);
+
+        return output - 1;
     }
 
     private static void CompleteTournament(TournamentModel model)
@@ -170,6 +172,23 @@ public static class TournamentLogic
                 runnerUpPrize = secondPlacePrize.CalculatePrizePayout(totalIncome);
             }
         }
+
+        // send email to all tournament
+
+        string subject = "";
+        StringBuilder body = new StringBuilder();
+
+        subject = $"In {model.TournamentName},  {winners.TeamName}";
+
+        body.AppendLine("<h1>You have a new matchup</h1>");
+        body.Append("<strong>Competitor: </strong>");
+        body.Append(competitor.TeamCompeting.TeamName);
+        body.AppendLine();
+        body.AppendLine();
+        body.AppendLine("Have a great time!");
+        body.AppendLine("~ Tournament Tracker ~");
+
+        EmailLogic.SendEmail(to, subject, body.ToString());
     }
 
     private static decimal CalculatePrizePayout(this PrizeModel prize, decimal totalIncome)
