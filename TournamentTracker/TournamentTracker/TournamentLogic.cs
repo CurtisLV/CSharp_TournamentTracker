@@ -183,11 +183,19 @@ public static class TournamentLogic
         body.AppendLine("<h1>We have a winner!</h1>");
         body.AppendLine("<p>Congratz to our winner on a great tournament!</p>");
         body.AppendLine("<br />");
-        if (winnerPrize > 0 || runnerUpPrize > 0)
+        if (winnerPrize > 0)
         {
-            //
+            body.AppendLine(
+                $"<p>{winners.TeamName} will receive ${winnerPrize} for first place!</p>"
+            );
         }
-        body.AppendLine("Have a great time!");
+        if (runnerUpPrize > 0)
+        {
+            body.AppendLine(
+                $"<p>{runnerUp.TeamName} will receive ${runnerUpPrize} for second place!</p>"
+            );
+        }
+        body.AppendLine("<p>Thanks for a great tournament, everyone!</p>");
         body.AppendLine("~ Tournament Tracker ~");
 
         EmailLogic.SendEmail(to, subject, body.ToString());
