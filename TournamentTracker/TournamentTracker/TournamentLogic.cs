@@ -101,14 +101,13 @@ public static class TournamentLogic
             body.AppendLine("<h1>You have a new matchup</h1>");
             body.Append("<strong>Competitor: </strong>");
             body.Append(competitor.TeamCompeting.TeamName);
-            body.AppendLine();
-            body.AppendLine();
+            body.AppendLine("<br />");
             body.AppendLine("Have a great time!");
             body.AppendLine("~ Tournament Tracker ~");
         }
         else
         {
-            subject = "Yiu have a bye week this round!";
+            subject = "You have a bye week this round!";
             body.AppendLine("Enjoy your round off!");
             body.AppendLine("~ Tournament Tracker ~");
         }
@@ -178,7 +177,7 @@ public static class TournamentLogic
         string subject = "";
         StringBuilder body = new StringBuilder();
 
-        subject = $"In {model.TournamentName},  {winners.TeamName} has won!";
+        subject = $"In {model.TournamentName}, {winners.TeamName} has won!";
 
         body.AppendLine("<h1>We have a winner!</h1>");
         body.AppendLine("<p>Congratz to our winner on a great tournament!</p>");

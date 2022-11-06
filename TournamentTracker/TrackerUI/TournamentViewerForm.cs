@@ -22,7 +22,7 @@ namespace TrackerUI
 
         private void Tournament_OnTournamentComplete(object? sender, DateTime e)
         {
-            //
+            this.Close();
         }
 
         private void LoadFormData()
