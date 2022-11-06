@@ -6,7 +6,7 @@ public static class EmailLogic
 {
     public static void SendEmail(string to, string subject, string body)
     {
-        //
+        SendEmail(new List<string> { to }, new List<string>(), subject, body);
     }
 
     public static void SendEmail(List<string> to, List<string> bcc, string subject, string body)

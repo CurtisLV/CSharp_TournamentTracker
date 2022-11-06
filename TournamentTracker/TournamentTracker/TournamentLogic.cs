@@ -198,7 +198,20 @@ public static class TournamentLogic
         body.AppendLine("<p>Thanks for a great tournament, everyone!</p>");
         body.AppendLine("~ Tournament Tracker ~");
 
-        EmailLogic.SendEmail(to, subject, body.ToString());
+        List<string> bcc = new List<string>();
+
+        foreach (TeamModel t in model.EnteredTeams)
+        {
+            foreach (PersonModel p in t.TeamMembers)
+            {
+                if (p.EmailAddress.Length > 0)
+                {
+                    bcc.Add(p.EmailAddress);
+                }
+            }
+        }
+
+        EmailLogic.SendEmail(new List<string>(),bcc, subject, body.ToString());
     }
 
     private static decimal CalculatePrizePayout(this PrizeModel prize, decimal totalIncome)
