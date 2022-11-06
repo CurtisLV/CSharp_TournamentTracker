@@ -211,7 +211,10 @@ public static class TournamentLogic
             }
         }
 
-        EmailLogic.SendEmail(new List<string>(),bcc, subject, body.ToString());
+        EmailLogic.SendEmail(new List<string>(), bcc, subject, body.ToString());
+
+        // Complete Tournament
+        model.CompleteTournament();
     }
 
     private static decimal CalculatePrizePayout(this PrizeModel prize, decimal totalIncome)
