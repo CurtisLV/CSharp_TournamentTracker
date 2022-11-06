@@ -157,11 +157,17 @@ public static class TournamentLogic
             decimal totalIncome = model.EnteredTeams.Count * model.EntryFee;
 
             PrizeModel firstPlacePrize = model.Prizes.FirstOrDefault(x => x.PlaceNumber == 1);
+            PrizeModel secondPlacePrize = model.Prizes.FirstOrDefault(x => x.PlaceNumber == 2);
 
             if (firstPlacePrize != null)
             {
                 // calculate value
                 winnerPrize = firstPlacePrize.CalculatePrizePayout(totalIncome);
+            }
+            if (secondPlacePrize != null)
+            {
+                // calculate value
+                runnerUpPrize = secondPlacePrize.CalculatePrizePayout(totalIncome);
             }
         }
     }
