@@ -1,5 +1,4 @@
 ﻿using TrackerLibrary;
-using TrackerLibrary.DataAccess;
 using TrackerLibrary.Models;
 
 namespace TrackerUI

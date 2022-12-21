@@ -1,5 +1,4 @@
-﻿using System.Configuration;
-using TrackerLibrary.Models;
+﻿using TrackerLibrary.Models;
 
 namespace TrackerLibrary.DataAccess.TextHelpers;
 
